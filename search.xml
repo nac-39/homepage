@@ -36,5 +36,63 @@
 <li>更新したい時はスクリプト3をからupdateを選択、実行する。</li>
 </ol>
 ]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>GAS</tag>
+        <tag>Coding</tag>
+        <tag>JavaScript</tag>
+        <tag>NUCT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Reactが何かわかるようになるWeb入門</title>
+    <url>/homepage/2021/08/13/React%E3%81%8C%E4%BD%95%E3%81%8B%E3%82%8F%E3%81%8B%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8BWeb%E5%85%A5%E9%96%80/</url>
+    <content><![CDATA[<p>Reactとは何かが理解できるようになるweb入門</p>
+<p>最初に宣言しておくと，冗長です！</p>
+<p>かつて私が読みたかったものを書いたつもりです．</p>
+<p>まあ，これを読むよりも触っていろいろ体感した方が理解が深まると思います．</p>
+<h1 id="webページの表示の仕組み"><a href="#webページの表示の仕組み" class="headerlink" title="webページの表示の仕組み"></a>webページの表示の仕組み</h1><p>まずそもそも，webページの仕組みから説明します．（分かってたら読み飛ばして）</p>
+<p>Webページは</p>
+<p>webサーバーにhtmlとcssとjavascriptのファイルが置いてあって，</p>
+<p>ユーザーが「このサイトみたい！」ってメッセージを送ると，</p>
+<p>webサーバーがそのhtmlとcssとjavascriptのファイルのセットをユーザーに送ってくれて，</p>
+<p>ユーザーのPCのブラウザがhtmlとcssとjavascriptの情報を読み取っていい感じに表示してくれる．</p>
+<p>という仕組みで私たちのブラウザに表示されています．</p>
+<p>つまり，webページを公開したいと思ったら，htmlとcssとjavascriptの三点セットを作ってサーバに置いておけばいいわけです．</p>
+<p>ちなみに，ブラウザが実行できるのはこの三点セットだけです．なんやかんや道具を使っても最終的にはこの三点セットが出来上がります．</p>
+<p>あと．pythonとかCのコードをブラウザに送っても，ブラウザはなんもできません．</p>
+<h1 id="htmlとcss"><a href="#htmlとcss" class="headerlink" title="htmlとcss"></a>htmlとcss</h1><p>次にhtmlとcssとはなんぞや？というところを軽ーく説明します（わかってたら（略））<br>HTMLとCSSはざっくりいうと，リッチなテキストを表示するための道具です．</p>
+<p>.txtという拡張子のファイルをみたことがあると思います．黒い文字しか表示されないやつです．</p>
+<p>それだと無機質すぎるので，タイトルを大きい文字にしたり，青字のリンクを追加したり，強調は太字や赤文字にしたり，画像や動画，音楽を挿入したり，ポインターが触れると表示が変わったり，諸々したいわけです．それができるのがhtmlとcssです．htmlは文字をタグ（<code>&lt;h1&gt;文字&lt;/h1&gt;</code>みたいな）で囲って，ここにこういう装飾をしたいというのを表します．cssはタグやidを指定して，htmlの一部分に装飾をしたいときに使います．</p>
+<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><p>続いて，javascriptとはなんぞや？というところを説明します．（わ（略））</p>
+<p>普段，webページを見ていて，自分の行動でwebの表示が変わることって結構あると思います．簡単な例を挙げると，ボタンをクリックするとカウンターが１ずつ増えていくみたいな．</p>
+<p>それをやってるのがjavascript（略してjs）です．</p>
+<p>jsはいろいろできます．その一つがhtmlを書き換えるっていうことです．例えば，Webページに今日の日付が表示されるようにしたいと思ったとします．そしたら，今日の日付を取得して，htmlを書きかえなければいけないですね．そのコードはこんな感じになります．</p>
+<p>HTML</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>今日の日付は……<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&#x27;show_today&#x27;</span>&gt;</span>今日の日付がここに挿入される<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="comment">//scriptタグの中にjavascriptを書く</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> today = <span class="keyword">new</span> <span class="built_in">Date</span>() <span class="comment">//今日の日付を取得</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> show = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;show_today&#x27;</span>) <span class="comment">//変数showにidがshow_todayのタグと中身を入れる</span></span></span><br><span class="line"><span class="javascript">show.innnerHTML = today <span class="comment">//showの中身をtodayに書き換える</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>出力</p>
+<h1 id="今日の日付は……"><a href="#今日の日付は……" class="headerlink" title="今日の日付は……"></a>今日の日付は……</h1><p>Fri Aug 13 2021 14:52:29 GMT+0900 (日本標準時)</p>
+<h1 id="結局Reactって？"><a href="#結局Reactって？" class="headerlink" title="結局Reactって？"></a>結局Reactって？</h1><p>例えば，あなたがアマゾンの商品検索結果みたいなwebページを作りたいと思ったとします．あなたの武器はhtmlとcssとjsだけです．見た目だけ商品検索結果ページにすればよく，データベースから商品情報を引っ張ってくるとかは考えなくていいです．</p>
+<p>多分あなたは作業の多さと単調さで死にます．なぜなら，例えばこういったコードを大量生産しないといけないからです（cssは省略）．</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;goods-box&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/image/goods1&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;商品１の画像&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;goods-information&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>商品1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;author&quot;</span>&gt;</span>へのへのもへじ<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;star&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;star0&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;評価&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;kindle&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;analogOrKindle&quot;</span>&gt;</span>単行本/Kindle<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;price&quot;</span>&gt;</span>¥値段<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;point&quot;</span>&gt;</span>%ポイント<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;when&quot;</span>&gt;</span>すぐに購読可能<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>コピペで済めばいいですが，商品ごとに情報が違うので，いちいち「商品１」というテキストを選択して，商品２に書き換えて…という操作を大量に行うのです．<strong>超面倒</strong>です．</p>
+<p>それなら，商品の情報とHTMLを別々にして，いい感じにHTMLに商品の情報を代入していけばいいじゃないか，そう思うはずです．</p>
+<p>そう，それを解決するのがReactです（多分いいところのほんの一部しか伝えられていない）</p>
+<p>Reactなら，<strong>雛形を作って，そこに値を代入して複製するだけ</strong>で同じ形で情報だけが違うものが大量生産できます！！！なんも知らん人がみた利点はそんな感じだと思います．私がそうなので……</p>
+<p>propsもstateも何かよくわかっていないものが書いた記事ですが，役に立てればと思います．</p>
+<p>progateちゃんと進めたいです．</p>
+]]></content>
+      <categories>
+        <category>coding</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>React</tag>
+        <tag>coding</tag>
+      </tags>
   </entry>
 </search>
