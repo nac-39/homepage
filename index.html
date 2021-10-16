@@ -171,7 +171,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/homepage/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">ポスト</span>
         </a>
       </div>
@@ -184,7 +184,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/homepage/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">タグ</span></a>
       </div>
   </nav>
@@ -221,6 +221,123 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/nac-39/homepage/2021/10/17/%E3%83%A9%E3%82%BA%E3%83%91%E3%82%A4%E3%81%ABubuntu%20server%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/homepage/images/avatar.gif">
+      <meta itemprop="name" content="nac-39">
+      <meta itemprop="description" content="This is nac-39s blog or notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nac-39">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/homepage/2021/10/17/%E3%83%A9%E3%82%BA%E3%83%91%E3%82%A4%E3%81%ABubuntu%20server%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B/" class="post-title-link" itemprop="url">ラズパイにubuntu serverをダウンロードする</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+      
+
+      <time title="作成日：2021-10-17 00:58:28 / 修正日：01:02:17" itemprop="dateCreated datePublished" datetime="2021-10-17T00:58:28+09:00">2021-10-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Raspberry-Piにubuntu-server-LTS-21-10をダウンロードしてみる"><a href="#Raspberry-Piにubuntu-server-LTS-21-10をダウンロードしてみる" class="headerlink" title="Raspberry Piにubuntu server LTS 21.10をダウンロードしてみる"></a>Raspberry Piにubuntu server LTS 21.10をダウンロードしてみる</h1><p>参考にできそうな記事が，ver18のやつだったので新しく書いてみる．でも全く同じことをして接続できてしまった．参考記事の方が詳しいので，これは個人的な記録としての意味合いしかない．</p>
+<h1 id="方針"><a href="#方針" class="headerlink" title="方針"></a>方針</h1><p>普通はubuntu serverのイメージをダウンロードしたラズパイをディスプレイに接続し，そこで設定をする．しかしHDMIケーブルが家にないので，全てMacで操作することでなんとかする．<br>ラズパイにイメージを挿す前に．</p>
+<ul>
+<li>WiFiの設定</li>
+<li>ユーザーの設定</li>
+<li>キーボードの設定</li>
+<li>sshの公開鍵の設定</li>
+</ul>
+<p>をあらかじめ書き込んでおく．<br>そして，ラズパイの起動後にPCからラズパイのMACアドレスを頼りに，割り振られているIPアドレスを見つけ出す．<br>ssh接続をしてubuntu serverを操作する．</p>
+<h1 id="これからやる人へのアドバイス"><a href="#これからやる人へのアドバイス" class="headerlink" title="これからやる人へのアドバイス"></a>これからやる人へのアドバイス</h1><p>うまくいかなかったら，SDカードのイメージを焼き直せばOK！！気楽にいこう！！</p>
+<h1 id="参考にしたページ"><a href="#参考にしたページ" class="headerlink" title="参考にしたページ"></a>参考にしたページ</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://zenn.dev/noraworld/articles/setup-ubuntu-on-raspberry-pi-without-keyboard">モニター・キーボード不要！ Raspberry Pi に Ubuntu を超簡単にインストールして SSH する方法</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://aquasoftware.net/blog/?p=1404">Raspberry Pi に Ubuntu を入れて SSH でログインするまでの A to B</a></li>
+</ul>
+<h1 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h1><h2 id="1-ラズパイ公式イメージャーをダウンロードする"><a href="#1-ラズパイ公式イメージャーをダウンロードする" class="headerlink" title="1. ラズパイ公式イメージャーをダウンロードする"></a>1. ラズパイ公式イメージャーをダウンロードする</h2><p><a target="_blank" rel="noopener" href="https://www.raspberrypi.com/software/">公式ページ</a>からダウンロードする．<br>macだとhomebrewで以下のようにダウンロードできる</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install raspberry-pi-imager --cask</span><br></pre></td></tr></table></figure>
+<h2 id="2-SDカードをフォーマットする．"><a href="#2-SDカードをフォーマットする．" class="headerlink" title="2. SDカードをフォーマットする．"></a>2. SDカードをフォーマットする．</h2><p><img src="./SD_format.png" alt="SDカードをフォーマットする"><br>eraseを選び，storageから書き込み先のSDカードを選び，WRITEを押す．</p>
+<h2 id="3-ubuntu-server21-10-RPI-3-4-400-64bitを書き込む"><a href="#3-ubuntu-server21-10-RPI-3-4-400-64bitを書き込む" class="headerlink" title="3. ubuntu server21.10(RPI 3/4/400) 64bitを書き込む"></a>3. ubuntu server21.10(RPI 3/4/400) 64bitを書き込む</h2><p><img src="./ubuntu_server_image.png" alt="ubuntu server21.10(RPI 3/4/400) 64bitを書き込む"><br>ubuntu server21.10(RPI 3/4/400) 64bitを選び，storageから書き込み先のSDカードを選び，WRITEを押す．これには少し時間がかかるので待つ．<br>書き込みが終わったら，一回SDカードを抜いてまた差し込む．すると，デスクトップに”system-boot”という名前のディスクが表示される．<br><img src="./system-boot.png" alt="system-boot"></p>
+<h2 id="4-system-bootを書き換える．"><a href="#4-system-bootを書き換える．" class="headerlink" title="4. system-bootを書き換える．"></a>4. system-bootを書き換える．</h2><p>system-bootのREADMEの内容は以下のようになっている．</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">An overview of the files on the /boot/firmware partition (the 1st partition</span><br><span class="line">on the SD card) used by the Ubuntu boot process (roughly in order) is as</span><br><span class="line">follows:</span><br><span class="line"></span><br><span class="line">* bootcode.bin   - this is the second stage bootloader loaded by all pis with</span><br><span class="line">                   the exception of the pi4 (where this is replaced by flash</span><br><span class="line">                   memory)</span><br><span class="line">* config.txt     - the configuration file read by the boot process</span><br><span class="line">* start*.elf     - the third stage bootloader, which handles device-tree</span><br><span class="line">                   modification and which loads...</span><br><span class="line">* vmlinuz        - the Linux kernel</span><br><span class="line">* cmdline.txt    - the Linux kernel command line</span><br><span class="line">* initrd.img     - the initramfs</span><br><span class="line">* meta-data      - meta-data for cloud-init; usually just contains the</span><br><span class="line">                   instance id</span><br><span class="line">* network-config - network configuration for cloud-init; edit this to set up</span><br><span class="line">                   wifi access points and other networking settings</span><br><span class="line">* user-data      - user-data for cloud-init; edit this to configure initial</span><br><span class="line">                   users, SSH keys, packages, etc.</span><br></pre></td></tr></table></figure>
+
+<p>このREADMEが参考記事と違っている．sysconfigとuserconfig, uboot*.bin, boot.scrなどが書かれていない．よくわかんない．</p>
+<h3 id="1-user-data書き換え"><a href="#1-user-data書き換え" class="headerlink" title="1. user-data書き換え"></a>1. user-data書き換え</h3><p>とりあえず，参考記事と同じようにuser-dataを書き換える．</p>
+<p>書き換え後</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># On first boot, set the (default) ubuntu user&#x27;s password to &quot;ubuntu&quot; and</span></span><br><span class="line"><span class="comment"># expire user passwords</span></span><br><span class="line"><span class="attr">chpasswd:</span></span><br><span class="line">  <span class="attr">expire:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">list:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">newusername:ubuntu</span></span><br><span class="line"><span class="comment"># Override the default user name defined in cloud.cfg</span></span><br><span class="line"><span class="attr">system_info:</span></span><br><span class="line">  <span class="attr">default_user:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">newusername</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-sshの設定"><a href="#2-sshの設定" class="headerlink" title="2. sshの設定"></a>2. sshの設定</h3><p>デフォルトだとパスワード認証になっているので公開鍵認証にする．パスワードよりも公開鍵認証の方が安全．<br>公開鍵の作成方法は以下を参照．<a target="_blank" rel="noopener" href="https://qiita.com/wakahara3/items/52094d476774f3a2f619">Macで公開鍵を作成する方法</a><br>すでに作成してある場合，Macだと~/.ssh/id_rsa.pubに公開鍵が記録されている．</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Enable password authentication with the SSH daemon</span></span><br><span class="line"><span class="attr">ssh_pwauth:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">ssh_authorized_keys:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">ssh-rsa</span> <span class="string">AAAA&lt;中略&gt;==</span> <span class="string">rsa-key-of-user1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-実行時のコマンド類？"><a href="#3-実行時のコマンド類？" class="headerlink" title="3. 実行時のコマンド類？"></a>3. 実行時のコマンド類？</h3><p>よくわからないが，起動後に実行されるコマンド類らしい．詳細は元記事を<a target="_blank" rel="noopener" href="https://aquasoftware.net/blog/?p=1404#toc-8">参照</a>．</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Run arbitrary commands at rc.local like time</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#- [ ls, -l, / ]</span></span><br><span class="line"><span class="comment">#- [ sh, -xc, &quot;echo $(date) &#x27;: hello world!&#x27;&quot; ]</span></span><br><span class="line"><span class="comment">#- [ wget, &quot;http://ubuntu.com&quot;, -O, /run/mydir/index.html ]</span></span><br><span class="line"><span class="attr">runcmd:</span></span><br><span class="line"><span class="comment"># apply keyboard configration</span></span><br><span class="line"><span class="bullet">-</span> [ <span class="string">dpkg-reconfigure</span>, <span class="string">-f</span>, <span class="string">noninteractive</span>, <span class="string">keyboard-configuration</span> ]</span><br><span class="line"><span class="comment"># apply netplan config defined on &#x27;network-config&#x27;</span></span><br><span class="line"><span class="bullet">-</span> [ <span class="string">netplan</span>, <span class="string">apply</span> ]</span><br><span class="line"><span class="comment"># after wlan0 is connected, write the arp entry to target machine on background job</span></span><br><span class="line"><span class="bullet">-</span> [ <span class="string">nohup</span>, <span class="string">sh</span>, <span class="string">-c</span>, <span class="string">&#x27;sleep 30; ping 192.168.0.2 &amp;&#x27;</span> ]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Restart 2 minutes after running all config modules (for apply keyboard configration)</span></span><br><span class="line"><span class="attr">power_state:</span></span><br><span class="line">  <span class="attr">delay:</span> <span class="string">&#x27;+2&#x27;</span></span><br><span class="line">  <span class="attr">mode:</span> <span class="string">reboot</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-network-config書き換え"><a href="#4-network-config書き換え" class="headerlink" title="4. network-config書き換え"></a>4. network-config書き換え</h3><p>ラズパイは2.4Ghzのwifiにしか対応していないので注意．<br>ここを書き換えただけでは初回起動時にwifiに接続できないらしい．（詳細は<a target="_blank" rel="noopener" href="https://aquasoftware.net/blog/?p=14049#toc-7">元記事</a>を参照）</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">wifis:</span></span><br><span class="line">  <span class="attr">wlan0:</span></span><br><span class="line">    <span class="attr">dhcp4:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">optional:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">access-points:</span></span><br><span class="line">      <span class="attr">&quot;SSID of your homewifi&quot;:</span></span><br><span class="line">        <span class="attr">password:</span> <span class="string">&quot;password of home wifi&quot;</span></span><br><span class="line">    <span class="comment">#  myworkwifi:</span></span><br><span class="line">    <span class="comment">#     password: &quot;correct battery horse staple&quot;</span></span><br><span class="line">    <span class="comment">#   workssid:</span></span><br><span class="line">    <span class="comment">#     auth:</span></span><br><span class="line">    <span class="comment">#       key-management: eap</span></span><br><span class="line">    <span class="comment">#       method: peap</span></span><br><span class="line">    <span class="comment">#       identity: &quot;me@example.com&quot;</span></span><br><span class="line">    <span class="comment">#       password: &quot;passw0rd&quot;</span></span><br><span class="line">    <span class="comment">#       ca-certificate: /etc/my_ca.pem</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="5-ラズパイ起動"><a href="#5-ラズパイ起動" class="headerlink" title="5. ラズパイ起動"></a>5. ラズパイ起動</h2><p>書き込み終わったSDカードを適切にパソコンから抜いて，ラズパイに差し込む．<br>ラズパイの電源を入れる．<br>ipアドレスを探すのがうまくいかなかったら，一回電源をぶちっと切ってもう一回入れ直す．</p>
+<h3 id="1-ssh接続するためにラズパイのipアドレスを探す．"><a href="#1-ssh接続するためにラズパイのipアドレスを探す．" class="headerlink" title="1. ssh接続するためにラズパイのipアドレスを探す．"></a>1. ssh接続するためにラズパイのipアドレスを探す．</h3><p>以下，<a target="_blank" rel="noopener" href="https://zenn.dev/noraworld/articles/setup-ubuntu-on-raspberry-pi-without-keyboard#tips%3A-arp-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AF%E3%81%86%E3%81%BE%E3%81%8F%E3%81%84%E3%81%8B%E3%81%AA%E3%81%84%E7%90%86%E7%94%B1">参考記事</a>からの抜粋<br>ipアドレスはルーターが動的に割り振る(DHCPで検索)ので，どの番号になっているかわからない．それをラズパイのMACアドレスを頼りに探す．<br>Macのターミナルで<code>arp-scan</code>コマンドを使って探す．<br>Macにarp-scanコマンドをダウンロードする．</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install arp-scan</span><br></pre></td></tr></table></figure>
+
+<p>そのまま以下を実行する．</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo arp-scan -l --interface en0 </span><br></pre></td></tr></table></figure>
+<p>こんな感じの結果が出る．</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">192.168.0.1	MACアドレス	NEC Platforms, Ltd.</span><br><span class="line">192.168.0.3	MACアドレス	Apple, Inc.</span><br><span class="line">192.168.0.4	MACアドレス	Sony Corporation</span><br><span class="line">192.168.0.7	MACアドレス	(Unknown)</span><br><span class="line">192.168.0.13 MACアドレス	(Unknown: locally administered)</span><br><span class="line">192.168.0.5	MACアドレス	(Unknown: locally administered)</span><br></pre></td></tr></table></figure>
+<p>ラズパイはMACアドレスが”dc:a6:32” や “b8:27:eb”の場合が多いらしいが，私のはe4:5f:から始まっていた．勘でipアドレスを当てたら（今回は192.168.0.7だった．)<br>なんかうまく行った．</p>
+<h3 id="2-ssh接続をする"><a href="#2-ssh接続をする" class="headerlink" title="2. ssh接続をする"></a>2. ssh接続をする</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh &lt;USER_NAME&gt;@&lt;IP_ADRESS&gt;</span><br></pre></td></tr></table></figure>
+<p>を実行することでssh接続できる．</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Are you sure you want to continue connecting (yes/no/[fingerprint])?</span><br></pre></td></tr></table></figure>
+<p>にはyesで答える．</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WARNING: Your password has expired.</span><br><span class="line">You must change your password now and login again!</span><br><span class="line">Changing password for ユーザー名.</span><br><span class="line">Current password:</span><br></pre></td></tr></table></figure>
+<p>と表示されるので，Current passwordには<code>ubuntu</code>と入力する．ユーザー名は変えたけど，パスワードは変わっていない．<br>そのあと，<code>New password:</code>と聞かれるので，新しいパスワードを入力する．</p>
+<p>パスワードの確認が終わると，接続が切れるので，また<code>$ ssh &lt;USER_NAME&gt;@&lt;IP_ADRESS&gt;</code>で接続する．</p>
+<p>こうして晴れてubuntu serverにssh接続することができるようになった！</p>
+<p>終わり！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
