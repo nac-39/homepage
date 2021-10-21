@@ -171,7 +171,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/homepage/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">ポスト</span>
         </a>
       </div>
@@ -221,6 +221,170 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/nac-39/homepage/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/homepage/images/avatar.gif">
+      <meta itemprop="name" content="nac-39">
+      <meta itemprop="description" content="This is nac-39s blog or notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nac-39">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/homepage/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/" class="post-title-link" itemprop="url">Google Tasks api 叩いてpillowでデスクトップ画像生成</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+      
+
+      <time title="作成日：2021-10-21 00:33:23 / 修正日：15:44:57" itemprop="dateCreated datePublished" datetime="2021-10-21T00:33:23+09:00">2021-10-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="やりたいこと"><a href="#やりたいこと" class="headerlink" title="やりたいこと"></a>やりたいこと</h1><p>Tasksをパソコンのデスクトップ画面に表示したい</p>
+<h1 id="やったこと．"><a href="#やったこと．" class="headerlink" title="やったこと．"></a>やったこと．</h1><h3 id="PythonでTasks-APIを叩く"><a href="#PythonでTasks-APIを叩く" class="headerlink" title="PythonでTasks APIを叩く"></a>PythonでTasks APIを叩く</h3><p>API叩くのはよくわからないので，以下のリンクのquickstart.pyをコピペしてくる．<br><a target="_blank" rel="noopener" href="https://developers.google.com/tasks/quickstart/python">https://developers.google.com/tasks/quickstart/python</a></p>
+<p>しかし，quickstart.pyを実行したら，<code>credentials.json</code>がないと言われた.</p>
+<p><a href="https://github.com/googleworkspace/python-samples/issues/211">https://github.com/googleworkspace/python-samples/issues/211</a></p>
+<p>このissueに解決方法が書いてあった．要するにOAuthの認証情報をGoogle Cloud Platformで作って，それをjson形式でダウンロードしておかないといけなかったらしい．</p>
+<p>quickstart.pyを実行するとタスクリストの名前とidが出てくるので，それを以下のコードの<code>tasklist=&quot;task id&quot;</code>に入れたら，タスクの一覧がとってこれる．<br>この辺の詳細は<a target="_blank" rel="noopener" href="https://developers.google.com/resources/api-libraries/documentation/tasks/v1/python/latest/index.html">Google Tasks API PyDoc documentation</a>をみよう．</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Call the Tasks API</span></span><br><span class="line">    results = service.tasklists().<span class="built_in">list</span>(maxResults=<span class="number">10</span>).execute()</span><br><span class="line">    items = results.get(<span class="string">&#x27;items&#x27;</span>, [])</span><br><span class="line">    </span><br><span class="line">    task_list = service.tasks().<span class="built_in">list</span>(tasklist=<span class="string">&quot;task id&quot;</span>).execute()</span><br></pre></td></tr></table></figure>
+
+<h3 id="pillowで画像を生成する"><a href="#pillowで画像を生成する" class="headerlink" title="pillowで画像を生成する"></a>pillowで画像を生成する</h3><p>コード貼っとくので，適当に改良して使って（このコード自体八割コピペ）</p>
+<p>ちょっと解説</p>
+<ul>
+<li><code>img = Image.new(mode, size color=(0,0,0))</code>で新しく単一色の画像を生成してる．</li>
+<li>フォントのパスはデフォルトで入ってるのは<code>/System/Library/Fonts/hogehoge.ttc</code>だけど，自分で追加したやつは<code>/Users/ユーザー名/Library/hogehoge.ttf</code>になる．</li>
+<li>フォントは文字ごとに高さが違うらしいので，文字の高さを基準に描画しない方がいい</li>
+<li><code>draw.text((x,y), 文字, font=フォント, fill=(R,G,B))</code>で文字を描画する．</li>
+<li>色の指定にはカラーピッカーで検索すると便利．</li>
+<li><code>strftime</code>の引数は<a target="_blank" rel="noopener" href="https://note.nkmk.me/python-datetime-usage/#_1">ここ</a>を参照．</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createImage</span>(<span class="params">items</span>):</span> <span class="comment">#items = [[タイトル,締切日時],[タイトル,締切日時]...]</span></span><br><span class="line">    <span class="comment">#img = Image.open(&#x27;bg.png&#x27;).copy() # 入力ファイルを指定</span></span><br><span class="line">    img = Image.new(<span class="string">&quot;RGB&quot;</span>, (<span class="number">2500</span>,<span class="number">1600</span>), color=(<span class="number">22</span>, <span class="number">26</span>, <span class="number">59</span>))</span><br><span class="line">    imagesize = img.size        <span class="comment"># img.size[0]は幅、img.size[1]は高さを表す</span></span><br><span class="line">    draw = ImageDraw.Draw(img)  <span class="comment"># ImageDrawオブジェクトを作成</span></span><br><span class="line"></span><br><span class="line">    font1 = ImageFont.truetype(<span class="string">&quot;/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc&quot;</span>, <span class="number">64</span>)  <span class="comment"># フォントを指定、64はサイズでピクセル単位</span></span><br><span class="line">    font2 = ImageFont.truetype(<span class="string">&quot;/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc&quot;</span>, <span class="number">48</span>)  <span class="comment"># フォントを指定、64はサイズでピクセル単位</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> text, due <span class="keyword">in</span> items:</span><br><span class="line">        size1 = font1.getsize(text)</span><br><span class="line">        size2 = font2.getsize(text)</span><br><span class="line">        tate = <span class="number">131</span> <span class="comment">#dueとtitle合わせた高さ，適当に決めた．</span></span><br><span class="line">        draw.text((<span class="number">10</span>, <span class="number">80</span> + count * tate), due, font=font2, fill=(<span class="number">174</span>, <span class="number">196</span>, <span class="number">230</span>))</span><br><span class="line">        draw.text((<span class="number">64</span>, <span class="number">80</span> + count * tate+ size2[<span class="number">1</span>] +<span class="number">10</span>), text, font=font1, fill=<span class="string">&#x27;#FFF&#x27;</span>)</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> count &gt; <span class="number">10</span>:<span class="comment">#10個だけを表示する．</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="comment">#画像の生成日時も入れる．</span></span><br><span class="line">    now = datetime.datetime.now().strftime(<span class="string">&quot;%b %d %H:%M&quot;</span>)</span><br><span class="line">    draw.text((<span class="number">10</span>,imagesize[<span class="number">1</span>]-<span class="number">48</span>),now,font=font2,fill=(<span class="number">145</span>,<span class="number">145</span>,<span class="number">145</span>))</span><br><span class="line">    <span class="comment"># ファイルを保存</span></span><br><span class="line">    img.save(<span class="string">&#x27;new_bg.png&#x27;</span>, <span class="string">&#x27;PNG&#x27;</span>, quality=<span class="number">100</span>, optimize=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="コマンドで壁紙を設定できるようにする．"><a href="#コマンドで壁紙を設定できるようにする．" class="headerlink" title="コマンドで壁紙を設定できるようにする．"></a>コマンドで壁紙を設定できるようにする．</h3><ul>
+<li><code>wallpaper</code>っていうコマンドをhomebrewでインストールして使った．他にもOSの壁紙が保存してあるディレクトリに画像を直接追加する方法もあるみたい．</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install wallpaper</span><br><span class="line">wallpaper <span class="built_in">set</span> ./hogehoge.png</span><br></pre></td></tr></table></figure>
+
+<p>これでhogehoge.pngが今いるデスクトップの壁紙になった．また，パソコンを立ち上げた時のログイン画面の壁紙もこれになる．</p>
+<p>シェルのコマンドをPythonから使うために，<code>subprocess</code>モジュールを使う．<br>詳しくはググって欲しい．試行錯誤の末，これならうまく行った．</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subprocess.run([<span class="string">&quot;wallpaper set 生成した画像への絶対パス&quot;</span>],shell=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="定期的に実行する．"><a href="#定期的に実行する．" class="headerlink" title="定期的に実行する．"></a>定期的に実行する．</h3><p>定期的に実行するためには，<code>schedule</code>モジュールを使う．</p>
+<p>scheduleの基本の型はこんなかんじ</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> schedule</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">job</span>():</span></span><br><span class="line">    <span class="comment">#一回の動作でやること</span></span><br><span class="line">    hogehoge()</span><br><span class="line"><span class="comment">#1時間毎のjob実行を登録</span></span><br><span class="line">schedule.every(<span class="number">1</span>).hour.do(job)</span><br><span class="line"><span class="comment">#hour-&gt;minuteとかに変えられる</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    schedule.run_pending()</span><br><span class="line">    time.sleep(<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>while True:</code>がないと一回限りで終わってしまう．</p>
+<h3 id="これをいい感じに組み合わせると完成！！！！！！！！！"><a href="#これをいい感じに組み合わせると完成！！！！！！！！！" class="headerlink" title="これをいい感じに組み合わせると完成！！！！！！！！！"></a>これをいい感じに組み合わせると完成！！！！！！！！！</h3><p>動けばいいやのクソコードなので公開はしないかな<br>タスク管理ツールは作る気力があるのにタスクをやる気が起きません…………</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/nac-39/homepage/2021/10/19/hogehoge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/homepage/images/avatar.gif">
+      <meta itemprop="name" content="nac-39">
+      <meta itemprop="description" content="This is nac-39s blog or notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nac-39">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/homepage/2021/10/19/hogehoge/" class="post-title-link" itemprop="url">無題</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2021-10-19 16:02:54" itemprop="dateCreated datePublished" datetime="2021-10-19T16:02:54+09:00">2021-10-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<p>title: hogehoge<br>date: 2021-10-19 16:02:20<br>tags:<br>categories:<br>–</p>
+<h1 id=""><a href="#" class="headerlink" title="-"></a>-</h1>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

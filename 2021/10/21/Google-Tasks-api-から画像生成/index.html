@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/homepage/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/homepage/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/homepage/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/homepage/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/homepage/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/homepage/","images":"/homepage/images","scheme":"Muse","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"}};
+  </script>
+<meta name="description" content="やりたいことTasksをパソコンのデスクトップ画面に表示したい やったこと．PythonでTasks APIを叩くAPI叩くのはよくわからないので，以下のリンクのquickstart.pyをコピペしてくる．https:&#x2F;&#x2F;developers.google.com&#x2F;tasks&#x2F;quickstart&#x2F;python しかし，quickstart.pyを実行したら，credentials.jsonがない">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google Tasks api 叩いてpillowでデスクトップ画像生成">
+<meta property="og:url" content="https://github.com/nac-39/homepage/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/index.html">
+<meta property="og:site_name" content="nac-39">
+<meta property="og:description" content="やりたいことTasksをパソコンのデスクトップ画面に表示したい やったこと．PythonでTasks APIを叩くAPI叩くのはよくわからないので，以下のリンクのquickstart.pyをコピペしてくる．https:&#x2F;&#x2F;developers.google.com&#x2F;tasks&#x2F;quickstart&#x2F;python しかし，quickstart.pyを実行したら，credentials.jsonがない">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2021-10-20T15:33:23.000Z">
+<meta property="article:modified_time" content="2021-10-21T06:44:57.423Z">
+<meta property="article:author" content="nac-39">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://github.com/nac-39/homepage/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'ja'
+  };
+</script>
+<title>Google Tasks api 叩いてpillowでデスクトップ画像生成 | nac-39</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションバーの切り替え" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/homepage/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">nac-39</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What awkward prose this blog is!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/homepage/" rel="section"><i class="fa fa-home fa-fw"></i>ホーム</a></li>
+        <li class="menu-item menu-item-about"><a href="/homepage/about/" rel="section"><i class="fa fa-user fa-fw"></i>プロフィール</a></li>
+        <li class="menu-item menu-item-tags"><a href="/homepage/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>タグ</a></li>
+        <li class="menu-item menu-item-categories"><a href="/homepage/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリ</a></li>
+        <li class="menu-item menu-item-archives"><a href="/homepage/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          見出し
+        </li>
+        <li class="sidebar-nav-overview">
+          概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%82%84%E3%82%8A%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8"><span class="nav-number">1.</span> <span class="nav-text">やりたいこと</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%82%84%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8%EF%BC%8E"><span class="nav-number">2.</span> <span class="nav-text">やったこと．</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python%E3%81%A7Tasks-API%E3%82%92%E5%8F%A9%E3%81%8F"><span class="nav-number">2.0.1.</span> <span class="nav-text">PythonでTasks APIを叩く</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pillow%E3%81%A7%E7%94%BB%E5%83%8F%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B"><span class="nav-number">2.0.2.</span> <span class="nav-text">pillowで画像を生成する</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E5%A3%81%E7%B4%99%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8B%EF%BC%8E"><span class="nav-number">2.0.3.</span> <span class="nav-text">コマンドで壁紙を設定できるようにする．</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E6%9C%9F%E7%9A%84%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%EF%BC%8E"><span class="nav-number">2.0.4.</span> <span class="nav-text">定期的に実行する．</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%81%93%E3%82%8C%E3%82%92%E3%81%84%E3%81%84%E6%84%9F%E3%81%98%E3%81%AB%E7%B5%84%E3%81%BF%E5%90%88%E3%82%8F%E3%81%9B%E3%82%8B%E3%81%A8%E5%AE%8C%E6%88%90%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81"><span class="nav-number">2.0.5.</span> <span class="nav-text">これをいい感じに組み合わせると完成！！！！！！！！！</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">nac-39</p>
+  <div class="site-description" itemprop="description">This is nac-39s blog or notes.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/homepage/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">ポスト</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/homepage/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">カテゴリ</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/homepage/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/nac-39" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nac-39"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/nac_39_kiitos" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nac_39_kiitos" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://github.com/nac-39/homepage/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/homepage/images/avatar.gif">
+      <meta itemprop="name" content="nac-39">
+      <meta itemprop="description" content="This is nac-39s blog or notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nac-39">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Google Tasks api 叩いてpillowでデスクトップ画像生成
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+      
+
+      <time title="作成日：2021-10-21 00:33:23 / 修正日：15:44:57" itemprop="dateCreated datePublished" datetime="2021-10-21T00:33:23+09:00">2021-10-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="やりたいこと"><a href="#やりたいこと" class="headerlink" title="やりたいこと"></a>やりたいこと</h1><p>Tasksをパソコンのデスクトップ画面に表示したい</p>
+<h1 id="やったこと．"><a href="#やったこと．" class="headerlink" title="やったこと．"></a>やったこと．</h1><h3 id="PythonでTasks-APIを叩く"><a href="#PythonでTasks-APIを叩く" class="headerlink" title="PythonでTasks APIを叩く"></a>PythonでTasks APIを叩く</h3><p>API叩くのはよくわからないので，以下のリンクのquickstart.pyをコピペしてくる．<br><a target="_blank" rel="noopener" href="https://developers.google.com/tasks/quickstart/python">https://developers.google.com/tasks/quickstart/python</a></p>
+<p>しかし，quickstart.pyを実行したら，<code>credentials.json</code>がないと言われた.</p>
+<p><a href="https://github.com/googleworkspace/python-samples/issues/211">https://github.com/googleworkspace/python-samples/issues/211</a></p>
+<p>このissueに解決方法が書いてあった．要するにOAuthの認証情報をGoogle Cloud Platformで作って，それをjson形式でダウンロードしておかないといけなかったらしい．</p>
+<p>quickstart.pyを実行するとタスクリストの名前とidが出てくるので，それを以下のコードの<code>tasklist=&quot;task id&quot;</code>に入れたら，タスクの一覧がとってこれる．<br>この辺の詳細は<a target="_blank" rel="noopener" href="https://developers.google.com/resources/api-libraries/documentation/tasks/v1/python/latest/index.html">Google Tasks API PyDoc documentation</a>をみよう．</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Call the Tasks API</span></span><br><span class="line">    results = service.tasklists().<span class="built_in">list</span>(maxResults=<span class="number">10</span>).execute()</span><br><span class="line">    items = results.get(<span class="string">&#x27;items&#x27;</span>, [])</span><br><span class="line">    </span><br><span class="line">    task_list = service.tasks().<span class="built_in">list</span>(tasklist=<span class="string">&quot;task id&quot;</span>).execute()</span><br></pre></td></tr></table></figure>
+
+<h3 id="pillowで画像を生成する"><a href="#pillowで画像を生成する" class="headerlink" title="pillowで画像を生成する"></a>pillowで画像を生成する</h3><p>コード貼っとくので，適当に改良して使って（このコード自体八割コピペ）</p>
+<p>ちょっと解説</p>
+<ul>
+<li><code>img = Image.new(mode, size color=(0,0,0))</code>で新しく単一色の画像を生成してる．</li>
+<li>フォントのパスはデフォルトで入ってるのは<code>/System/Library/Fonts/hogehoge.ttc</code>だけど，自分で追加したやつは<code>/Users/ユーザー名/Library/hogehoge.ttf</code>になる．</li>
+<li>フォントは文字ごとに高さが違うらしいので，文字の高さを基準に描画しない方がいい</li>
+<li><code>draw.text((x,y), 文字, font=フォント, fill=(R,G,B))</code>で文字を描画する．</li>
+<li>色の指定にはカラーピッカーで検索すると便利．</li>
+<li><code>strftime</code>の引数は<a target="_blank" rel="noopener" href="https://note.nkmk.me/python-datetime-usage/#_1">ここ</a>を参照．</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createImage</span>(<span class="params">items</span>):</span> <span class="comment">#items = [[タイトル,締切日時],[タイトル,締切日時]...]</span></span><br><span class="line">    <span class="comment">#img = Image.open(&#x27;bg.png&#x27;).copy() # 入力ファイルを指定</span></span><br><span class="line">    img = Image.new(<span class="string">&quot;RGB&quot;</span>, (<span class="number">2500</span>,<span class="number">1600</span>), color=(<span class="number">22</span>, <span class="number">26</span>, <span class="number">59</span>))</span><br><span class="line">    imagesize = img.size        <span class="comment"># img.size[0]は幅、img.size[1]は高さを表す</span></span><br><span class="line">    draw = ImageDraw.Draw(img)  <span class="comment"># ImageDrawオブジェクトを作成</span></span><br><span class="line"></span><br><span class="line">    font1 = ImageFont.truetype(<span class="string">&quot;/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc&quot;</span>, <span class="number">64</span>)  <span class="comment"># フォントを指定、64はサイズでピクセル単位</span></span><br><span class="line">    font2 = ImageFont.truetype(<span class="string">&quot;/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc&quot;</span>, <span class="number">48</span>)  <span class="comment"># フォントを指定、64はサイズでピクセル単位</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> text, due <span class="keyword">in</span> items:</span><br><span class="line">        size1 = font1.getsize(text)</span><br><span class="line">        size2 = font2.getsize(text)</span><br><span class="line">        tate = <span class="number">131</span> <span class="comment">#dueとtitle合わせた高さ，適当に決めた．</span></span><br><span class="line">        draw.text((<span class="number">10</span>, <span class="number">80</span> + count * tate), due, font=font2, fill=(<span class="number">174</span>, <span class="number">196</span>, <span class="number">230</span>))</span><br><span class="line">        draw.text((<span class="number">64</span>, <span class="number">80</span> + count * tate+ size2[<span class="number">1</span>] +<span class="number">10</span>), text, font=font1, fill=<span class="string">&#x27;#FFF&#x27;</span>)</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> count &gt; <span class="number">10</span>:<span class="comment">#10個だけを表示する．</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="comment">#画像の生成日時も入れる．</span></span><br><span class="line">    now = datetime.datetime.now().strftime(<span class="string">&quot;%b %d %H:%M&quot;</span>)</span><br><span class="line">    draw.text((<span class="number">10</span>,imagesize[<span class="number">1</span>]-<span class="number">48</span>),now,font=font2,fill=(<span class="number">145</span>,<span class="number">145</span>,<span class="number">145</span>))</span><br><span class="line">    <span class="comment"># ファイルを保存</span></span><br><span class="line">    img.save(<span class="string">&#x27;new_bg.png&#x27;</span>, <span class="string">&#x27;PNG&#x27;</span>, quality=<span class="number">100</span>, optimize=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="コマンドで壁紙を設定できるようにする．"><a href="#コマンドで壁紙を設定できるようにする．" class="headerlink" title="コマンドで壁紙を設定できるようにする．"></a>コマンドで壁紙を設定できるようにする．</h3><ul>
+<li><code>wallpaper</code>っていうコマンドをhomebrewでインストールして使った．他にもOSの壁紙が保存してあるディレクトリに画像を直接追加する方法もあるみたい．</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install wallpaper</span><br><span class="line">wallpaper <span class="built_in">set</span> ./hogehoge.png</span><br></pre></td></tr></table></figure>
+
+<p>これでhogehoge.pngが今いるデスクトップの壁紙になった．また，パソコンを立ち上げた時のログイン画面の壁紙もこれになる．</p>
+<p>シェルのコマンドをPythonから使うために，<code>subprocess</code>モジュールを使う．<br>詳しくはググって欲しい．試行錯誤の末，これならうまく行った．</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subprocess.run([<span class="string">&quot;wallpaper set 生成した画像への絶対パス&quot;</span>],shell=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="定期的に実行する．"><a href="#定期的に実行する．" class="headerlink" title="定期的に実行する．"></a>定期的に実行する．</h3><p>定期的に実行するためには，<code>schedule</code>モジュールを使う．</p>
+<p>scheduleの基本の型はこんなかんじ</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> schedule</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">job</span>():</span></span><br><span class="line">    <span class="comment">#一回の動作でやること</span></span><br><span class="line">    hogehoge()</span><br><span class="line"><span class="comment">#1時間毎のjob実行を登録</span></span><br><span class="line">schedule.every(<span class="number">1</span>).hour.do(job)</span><br><span class="line"><span class="comment">#hour-&gt;minuteとかに変えられる</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    schedule.run_pending()</span><br><span class="line">    time.sleep(<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>while True:</code>がないと一回限りで終わってしまう．</p>
+<h3 id="これをいい感じに組み合わせると完成！！！！！！！！！"><a href="#これをいい感じに組み合わせると完成！！！！！！！！！" class="headerlink" title="これをいい感じに組み合わせると完成！！！！！！！！！"></a>これをいい感じに組み合わせると完成！！！！！！！！！</h3><p>動けばいいやのクソコードなので公開はしないかな<br>タスク管理ツールは作る気力があるのにタスクをやる気が起きません…………</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>他の公開チャンネルへようこそ</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/nac_39_kiitos">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/homepage/2021/10/19/hogehoge/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nac-39</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/homepage/js/utils.js"></script><script src="/homepage/js/motion.js"></script><script src="/homepage/js/schemes/muse.js"></script><script src="/homepage/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
