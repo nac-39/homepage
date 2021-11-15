@@ -7,12 +7,12 @@
 <meta name="generator" content="Hexo 5.4.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/homepage/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/homepage/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/homepage/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/homepage/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/homepage/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
 
@@ -21,12 +21,12 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"github.com","root":"/homepage/","images":"/homepage/images","scheme":"Muse","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"}};
+    var CONFIG = {"hostname":"nac-39.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"}};
   </script>
 <meta name="description" content="やりたいことTasksをパソコンのデスクトップ画面に表示したい やったこと．PythonでTasks APIを叩くAPI叩くのはよくわからないので，以下のリンクのquickstart.pyをコピペしてくる．https:&#x2F;&#x2F;developers.google.com&#x2F;tasks&#x2F;quickstart&#x2F;python しかし，quickstart.pyを実行したら，credentials.jsonがない">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Google Tasks api 叩いてpillowでデスクトップ画像生成">
-<meta property="og:url" content="https://github.com/nac-39/homepage/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/index.html">
+<meta property="og:url" content="https://nac-39.com/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/index.html">
 <meta property="og:site_name" content="nac-39">
 <meta property="og:description" content="やりたいことTasksをパソコンのデスクトップ画面に表示したい やったこと．PythonでTasks APIを叩くAPI叩くのはよくわからないので，以下のリンクのquickstart.pyをコピペしてくる．https:&#x2F;&#x2F;developers.google.com&#x2F;tasks&#x2F;quickstart&#x2F;python しかし，quickstart.pyを実行したら，credentials.jsonがない">
 <meta property="og:locale" content="ja_JP">
@@ -36,7 +36,7 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://github.com/nac-39/homepage/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/">
+<link rel="canonical" href="https://nac-39.com/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/">
 
 
 <script class="page-configurations">
@@ -107,7 +107,7 @@
 
   <div class="site-meta">
 
-    <a href="/homepage/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <h1 class="site-title">nac-39</h1>
       <i class="logo-line"></i>
@@ -125,11 +125,11 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/homepage/" rel="section"><i class="fa fa-home fa-fw"></i>ホーム</a></li>
-        <li class="menu-item menu-item-about"><a href="/homepage/about/" rel="section"><i class="fa fa-user fa-fw"></i>プロフィール</a></li>
-        <li class="menu-item menu-item-tags"><a href="/homepage/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>タグ</a></li>
-        <li class="menu-item menu-item-categories"><a href="/homepage/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリ</a></li>
-        <li class="menu-item menu-item-archives"><a href="/homepage/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ</a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>ホーム</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>プロフィール</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>タグ</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリ</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ</a></li>
   </ul>
 </nav>
 
@@ -172,20 +172,20 @@
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/homepage/archives/">
+          <a href="/archives/">
         
           <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">ポスト</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/homepage/categories/">
+            <a href="/categories/">
           
         <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">カテゴリ</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/homepage/tags/">
+            <a href="/tags/">
           
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">タグ</span></a>
@@ -194,7 +194,7 @@
 </div>
   <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/nac-39" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nac-39"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/nac-39" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nac-39" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="https://twitter.com/nac_39_kiitos" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nac_39_kiitos" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
@@ -234,10 +234,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
-    <link itemprop="mainEntityOfPage" href="https://github.com/nac-39/homepage/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/">
+    <link itemprop="mainEntityOfPage" href="https://nac-39.com/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/homepage/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="nac-39">
       <meta itemprop="description" content="This is nac-39s blog or notes.">
     </span>
@@ -275,7 +275,7 @@
         <h1 id="やりたいこと"><a href="#やりたいこと" class="headerlink" title="やりたいこと"></a>やりたいこと</h1><p>Tasksをパソコンのデスクトップ画面に表示したい</p>
 <h1 id="やったこと．"><a href="#やったこと．" class="headerlink" title="やったこと．"></a>やったこと．</h1><h3 id="PythonでTasks-APIを叩く"><a href="#PythonでTasks-APIを叩く" class="headerlink" title="PythonでTasks APIを叩く"></a>PythonでTasks APIを叩く</h3><p>API叩くのはよくわからないので，以下のリンクのquickstart.pyをコピペしてくる．<br><a target="_blank" rel="noopener" href="https://developers.google.com/tasks/quickstart/python">https://developers.google.com/tasks/quickstart/python</a></p>
 <p>しかし，quickstart.pyを実行したら，<code>credentials.json</code>がないと言われた.</p>
-<p><a href="https://github.com/googleworkspace/python-samples/issues/211">https://github.com/googleworkspace/python-samples/issues/211</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/googleworkspace/python-samples/issues/211">https://github.com/googleworkspace/python-samples/issues/211</a></p>
 <p>このissueに解決方法が書いてあった．要するにOAuthの認証情報をGoogle Cloud Platformで作って，それをjson形式でダウンロードしておかないといけなかったらしい．</p>
 <p>quickstart.pyを実行するとタスクリストの名前とidが出てくるので，それを以下のコードの<code>tasklist=&quot;task id&quot;</code>に入れたら，タスクの一覧がとってこれる．<br>この辺の詳細は<a target="_blank" rel="noopener" href="https://developers.google.com/resources/api-libraries/documentation/tasks/v1/python/latest/index.html">Google Tasks API PyDoc documentation</a>をみよう．</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Call the Tasks API</span></span><br><span class="line">    results = service.tasklists().<span class="built_in">list</span>(maxResults=<span class="number">10</span>).execute()</span><br><span class="line">    items = results.get(<span class="string">&#x27;items&#x27;</span>, [])</span><br><span class="line">    </span><br><span class="line">    task_list = service.tasks().<span class="built_in">list</span>(tasklist=<span class="string">&quot;task id&quot;</span>).execute()</span><br></pre></td></tr></table></figure>
@@ -337,7 +337,7 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/homepage/2021/10/17/%E3%83%A9%E3%82%BA%E3%83%91%E3%82%A4%E3%81%ABubuntu%20server%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B/" rel="prev" title="ラズパイにubuntu serverをダウンロードする">
+                <a href="/2021/10/17/%E3%83%A9%E3%82%BA%E3%83%91%E3%82%A4%E3%81%ABubuntu%20server%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B/" rel="prev" title="ラズパイにubuntu serverをダウンロードする">
                   <i class="fa fa-chevron-left"></i> ラズパイにubuntu serverをダウンロードする
                 </a>
             </div>
@@ -398,7 +398,7 @@
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-<script src="/homepage/js/utils.js"></script><script src="/homepage/js/motion.js"></script><script src="/homepage/js/schemes/muse.js"></script><script src="/homepage/js/next-boot.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
 
