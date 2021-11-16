@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"nac-39.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"}};
+  </script>
+<meta name="description" content="一番言いたいことclingのインストール先&#x2F;share&#x2F;Jupyter&#x2F;kernelじゃなくて，&#x2F;src&#x2F;tools&#x2F;cling&#x2F;tools&#x2F;Jupyter&#x2F;kernelだ！！！！！ 目的などJupyter labでC++を使いたい！！！！仕組みとしては，ClingというC++をインタプリタみたいに動かす環境をJupyterでも動くようにしてる感じ．先に断っておくと，急いで書いたので言葉足らず感が">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JupyterでC++を動かしたい">
+<meta property="og:url" content="https://nac-39.com/2021/11/17/Jupyter%E3%81%A7C-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%9F%E3%81%84/index.html">
+<meta property="og:site_name" content="nac-39">
+<meta property="og:description" content="一番言いたいことclingのインストール先&#x2F;share&#x2F;Jupyter&#x2F;kernelじゃなくて，&#x2F;src&#x2F;tools&#x2F;cling&#x2F;tools&#x2F;Jupyter&#x2F;kernelだ！！！！！ 目的などJupyter labでC++を使いたい！！！！仕組みとしては，ClingというC++をインタプリタみたいに動かす環境をJupyterでも動くようにしてる感じ．先に断っておくと，急いで書いたので言葉足らず感が">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2021-11-16T17:11:55.000Z">
+<meta property="article:modified_time" content="2021-11-16T17:17:34.794Z">
+<meta property="article:author" content="nac-39">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://nac-39.com/2021/11/17/Jupyter%E3%81%A7C-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%9F%E3%81%84/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'ja'
+  };
+</script>
+<title>JupyterでC++を動かしたい | nac-39</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションバーの切り替え" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">nac-39</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">IT'S TOO COLD!!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>ホーム</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>プロフィール</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>タグ</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリ</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          見出し
+        </li>
+        <li class="sidebar-nav-overview">
+          概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%95%AA%E8%A8%80%E3%81%84%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8"><span class="nav-number">1.</span> <span class="nav-text">一番言いたいこと</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E7%9A%84%E3%81%AA%E3%81%A9"><span class="nav-number">2.</span> <span class="nav-text">目的など</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">インストール方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E3%81%8B%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E3%81%9C%E3%81%B2%E6%95%99%E3%81%88%E3%81%A6%E3%81%BB%E3%81%97%E3%81%84%E3%81%93%E3%81%A8"><span class="nav-number">4.</span> <span class="nav-text">分かってないのでぜひ教えてほしいこと</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%A8%98%E4%BA%8B"><span class="nav-number">5.</span> <span class="nav-text">参考記事</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">nac-39</p>
+  <div class="site-description" itemprop="description">This is nac-39s blog or notes.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">ポスト</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">カテゴリ</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/nac-39" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nac-39" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/nac_39_kiitos" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nac_39_kiitos" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://nac-39.com/2021/11/17/Jupyter%E3%81%A7C-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%9F%E3%81%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="nac-39">
+      <meta itemprop="description" content="This is nac-39s blog or notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nac-39">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JupyterでC++を動かしたい
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+      
+
+      <time title="作成日：2021-11-17 02:11:55 / 修正日：02:17:34" itemprop="dateCreated datePublished" datetime="2021-11-17T02:11:55+09:00">2021-11-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="一番言いたいこと"><a href="#一番言いたいこと" class="headerlink" title="一番言いたいこと"></a>一番言いたいこと</h2><p><code>clingのインストール先/share/Jupyter/kernel</code>じゃなくて，<br><code>/src/tools/cling/tools/Jupyter/kernel</code><br>だ！！！！！</p>
+<h2 id="目的など"><a href="#目的など" class="headerlink" title="目的など"></a>目的など</h2><p>Jupyter labでC++を使いたい！！！！<br>仕組みとしては，ClingというC++をインタプリタみたいに動かす環境をJupyterでも動くようにしてる感じ．<br>先に断っておくと，急いで書いたので言葉足らず感があります．すみません．リンク先が詳しいので，ぜひ参照してください．</p>
+<h2 id="インストール方法"><a href="#インストール方法" class="headerlink" title="インストール方法"></a>インストール方法</h2><p>とりあえず自分がやった方法を示しておく．</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://root.cern/cling/cling_build_instructions/">このサイト</a>のManual buildを参考に，<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> http://root.cern/git/llvm.git src</span><br><span class="line"><span class="built_in">cd</span> src</span><br><span class="line">git checkout cling-patches</span><br><span class="line"><span class="built_in">cd</span> tools</span><br><span class="line">git <span class="built_in">clone</span> http://root.cern/git/cling.git</span><br><span class="line">git <span class="built_in">clone</span> http://root.cern/git/clang.git</span><br><span class="line"><span class="built_in">cd</span> clang</span><br><span class="line">git checkout cling-patches</span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure></li>
+<li>Cmakeを使ってbuildする．2時間近くかかったので，覚悟が必要．多分バイナリファイルをダウンロードしておけばこの工程いらない．CmakeがPCに入っていない人はCmakeをダウンロードする必要が…(バイナリファイルをダウンロードしろ！もしくは<code>brew install cling</code>で入れちゃえ)<br><code>/usr/local/bin/</code>配下に適当なファイル作ってそこを<code>[Install Path]</code>にした．<code>Release or Debug</code>は<code>Release</code>を選んだ．<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake -DCMAKE_INSTALL_PREFIX=[Install Path] -DCMAKE_BUILD_TYPE=[Build configuration, e.g. Release or Debug] ..\src</span><br><span class="line">cmake --build .</span><br><span class="line">cmake --build . --target install</span><br></pre></td></tr></table></figure></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/root-project/cling/blob/f84e601d3f5cfd06f4b557780ca62e68d2cfa473/tools/Jupyter/README.md">GitHubのここ</a>にあるように，パスを通してから諸々実行する．</li>
+</ol>
+<p><strong>ここで注意！</strong><br><code>clingのインストール先/share/Jupyter/kernel</code>じゃなくて，<br><code>どこか/src/tools/cling/tools/Jupyter/kernel</code>に<code>cd</code>する！（ちなみにcling-install-prefixはclingをインストールした場所のパスって意味で，任意で自分で変えるところだよ！prefixは接頭辞みたいな意味）<br>↓諸々実行するやつ．</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/cling-install-prefix/bin:$PATH</span><br><span class="line">cd /cling-install-prefix/share/cling/Jupyter/kernel</span><br><span class="line"></span><br><span class="line">pip install -e .</span><br><span class="line"># or: pip3 install -e .</span><br><span class="line"></span><br><span class="line"># register the kernelspec for C++17/C++1z/C++14/C++11:</span><br><span class="line"># the user can install whichever kernel(s) they</span><br><span class="line"># wish:</span><br><span class="line">jupyter-kernelspec install --user cling-cpp17</span><br><span class="line">jupyter-kernelspec install --user cling-cpp1z</span><br><span class="line">jupyter-kernelspec install --user cling-cpp14</span><br><span class="line">jupyter-kernelspec install --user cling-cpp11</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>これで<code>jupyter notebook</code>したらカーネルにC++が出現してる！はず！</p>
+<h2 id="分かってないのでぜひ教えてほしいこと"><a href="#分かってないのでぜひ教えてほしいこと" class="headerlink" title="分かってないのでぜひ教えてほしいこと"></a>分かってないのでぜひ教えてほしいこと</h2><ul>
+<li>Clingの実体 = <code>brew install cling</code>でインストールされるもの = buildしたらできるもの =&gt; バイナリファイル（とその他諸々）<br>って言う認識でOK？</li>
+<li>GitHubからクローンしてきた奴らは何？<code>jupyter-kernelspec install --user cling-cpp17</code>これはどう言う意味のコマンド？</li>
+<li>そもそもAnacondaでやった方が楽((((<a target="_blank" rel="noopener" href="https://buttai-k.hatenablog.com/entry/2020/12/05/220000_1">参考記事</a></li>
+<li>LLVMってなんですか！なんでCERNが作ってるんですか！</li>
+</ul>
+<h2 id="参考記事"><a href="#参考記事" class="headerlink" title="参考記事"></a>参考記事</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/sasaki77/items/f6253e1d6638fba0e744">JupyterにC++のノートのためのclingカーネルを追加する [Mac]</a><br>途中まではいっしょなんだけど，buildがうまくいかんかった</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/root-project/cling">GitHub: root-project/cling</a></li>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/mugwort_rc/items/b8087d1b6f9498b037d5">C++11/14/17インタプリタ環境 Jupyter-Cling</a><br>この記事の言う通り，バイナリダウンロードした方がいいよ，絶対！</li>
+<li><a target="_blank" rel="noopener" href="https://r9y9.github.io/blog/2017/12/21/jupyter-cxx/">Interactive C++: Jupyter上で対話的にC++を使う方法の紹介</a><br>四つのC++のインタプリタ環境についてまとめてある！</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>他の公開チャンネルへようこそ</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/nac_39_kiitos">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/15/%E3%83%90%E3%82%A4%E3%83%88%E3%81%AE%E6%9C%88%E7%B5%A6%E3%82%92GAS%E3%81%A7%E8%A8%88%E7%AE%97/" rel="prev" title="バイトの月給をGASで計算">
+                  <i class="fa fa-chevron-left"></i> バイトの月給をGASで計算
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nac-39</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"nac-39.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"}};
+  </script>
+<meta name="description" content="Googleカレンダーにバイト用のカレンダーを作成し，そのカレンダーの時間合計から月給を計算します．複数のバイト先に対応しています．コード１〜4を別々のファイルにします．デフォルトだと31日締めになっています．これをwebアプリとして公開してURLにアクセスすると，その度に計算をしなおします． コード１12345678910111213141516171819function cID()&amp;#123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="バイトの月給をGASで計算">
+<meta property="og:url" content="https://nac-39.com/2021/11/15/%E3%83%90%E3%82%A4%E3%83%88%E3%81%AE%E6%9C%88%E7%B5%A6%E3%82%92GAS%E3%81%A7%E8%A8%88%E7%AE%97/index.html">
+<meta property="og:site_name" content="nac-39">
+<meta property="og:description" content="Googleカレンダーにバイト用のカレンダーを作成し，そのカレンダーの時間合計から月給を計算します．複数のバイト先に対応しています．コード１〜4を別々のファイルにします．デフォルトだと31日締めになっています．これをwebアプリとして公開してURLにアクセスすると，その度に計算をしなおします． コード１12345678910111213141516171819function cID()&amp;#123">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2021-11-15T08:58:35.000Z">
+<meta property="article:modified_time" content="2021-11-16T17:11:33.814Z">
+<meta property="article:author" content="nac-39">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://nac-39.com/2021/11/15/%E3%83%90%E3%82%A4%E3%83%88%E3%81%AE%E6%9C%88%E7%B5%A6%E3%82%92GAS%E3%81%A7%E8%A8%88%E7%AE%97/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'ja'
+  };
+</script>
+<title>バイトの月給をGASで計算 | nac-39</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションバーの切り替え" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">nac-39</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">IT'S TOO COLD!!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>ホーム</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>プロフィール</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>タグ</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリ</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          見出し
+        </li>
+        <li class="sidebar-nav-overview">
+          概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%82%B3%E3%83%BC%E3%83%89%EF%BC%91"><span class="nav-number">1.</span> <span class="nav-text">コード１</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%82%B3%E3%83%BC%E3%83%89%EF%BC%92"><span class="nav-number">2.</span> <span class="nav-text">コード２</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%82%B3%E3%83%BC%E3%83%89%EF%BC%93"><span class="nav-number">3.</span> <span class="nav-text">コード３</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%82%B3%E3%83%BC%E3%83%89%EF%BC%94"><span class="nav-number">4.</span> <span class="nav-text">コード４</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">nac-39</p>
+  <div class="site-description" itemprop="description">This is nac-39s blog or notes.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">ポスト</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">カテゴリ</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/nac-39" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nac-39" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/nac_39_kiitos" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nac_39_kiitos" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://nac-39.com/2021/11/15/%E3%83%90%E3%82%A4%E3%83%88%E3%81%AE%E6%9C%88%E7%B5%A6%E3%82%92GAS%E3%81%A7%E8%A8%88%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="nac-39">
+      <meta itemprop="description" content="This is nac-39s blog or notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nac-39">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          バイトの月給をGASで計算
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2021-11-15 17:58:35" itemprop="dateCreated datePublished" datetime="2021-11-15T17:58:35+09:00">2021-11-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">編集日</span>
+        <time title="修正日：2021-11-17 02:11:33" itemprop="dateModified" datetime="2021-11-17T02:11:33+09:00">2021-11-17</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Googleカレンダーにバイト用のカレンダーを作成し，そのカレンダーの時間合計から月給を計算します．<br>複数のバイト先に対応しています．コード１〜4を別々のファイルにします．<br>デフォルトだと31日締めになっています．<br>これをwebアプリとして公開してURLにアクセスすると，その度に計算をしなおします．</p>
+<h3 id="コード１"><a href="#コード１" class="headerlink" title="コード１"></a>コード１</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function cID()&#123;</span><br><span class="line">  return &quot;hogehohgeohogehogheo@group.calendar.google.com&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function serchWord()&#123;</span><br><span class="line">  return [&quot;バイトA&quot;,&quot;バイトB&quot;]//何個でも増やせる</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function jikyu(a)&#123;</span><br><span class="line">  switch (a)&#123;</span><br><span class="line">    case &quot;バイトA&quot;:</span><br><span class="line">    return 10000000 //時給を入力</span><br><span class="line">    break;</span><br><span class="line"></span><br><span class="line">    case &quot;バイトB&quot;:</span><br><span class="line">    return 100000000</span><br><span class="line">    break;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="コード２"><a href="#コード２" class="headerlink" title="コード２"></a>コード２</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doGet</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> template = HtmlService.createTemplateFromFile(<span class="string">&#x27;index&#x27;</span>);</span><br><span class="line">  template.thisM = sumReturn()[<span class="number">0</span>];</span><br><span class="line">  template.lastM = sumReturn()[<span class="number">1</span>];</span><br><span class="line">  template.value1 = value()*<span class="number">100</span>;</span><br><span class="line">  <span class="keyword">var</span> html = HtmlService.createHtmlOutputFromFile(<span class="string">&#x27;index&#x27;</span>);</span><br><span class="line">  <span class="keyword">var</span> content = html.getContent().replace(<span class="regexp">/%value\(\)%/</span>, <span class="string">&#x27;&quot;&#x27;</span> + value() + <span class="string">&#x27;&quot;&#x27;</span>);</span><br><span class="line">  HtmlService.createHtmlOutput(content);</span><br><span class="line">  <span class="keyword">return</span> template.evaluate();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">value</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  CalendarApp.getDefaultCalendar();</span><br><span class="line">  <span class="keyword">const</span> calendarId = cID();</span><br><span class="line">  <span class="keyword">const</span> calendar = CalendarApp.getCalendarById(calendarId);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> today = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">  <span class="keyword">const</span> year = today.getFullYear();</span><br><span class="line">  <span class="keyword">const</span> month = today.getMonth();</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> st = <span class="keyword">new</span> <span class="built_in">Date</span>(year,month,<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">var</span> end = today;</span><br><span class="line">  <span class="keyword">var</span> events = calendar.getEvents(st,end);</span><br><span class="line">  <span class="keyword">var</span> untilToday = okaneKeisan(events);</span><br><span class="line"></span><br><span class="line">  end = <span class="keyword">new</span> <span class="built_in">Date</span>(year,month,<span class="number">31</span>)</span><br><span class="line">  st = <span class="keyword">new</span> <span class="built_in">Date</span>(year,month,<span class="number">1</span>);</span><br><span class="line">  events = calendar.getEvents(st,end);</span><br><span class="line">  <span class="keyword">var</span> untilMisoka = okaneKeisan(events);</span><br><span class="line">  <span class="keyword">return</span> untilToday/untilMisoka　<span class="comment">//今，今月の何割働いたかがわかる関数っぽい，HTMLに表示されてないけど</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="コード３"><a href="#コード３" class="headerlink" title="コード３"></a>コード３</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumReturn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//初期状態を作るために使う</span></span><br><span class="line">  CalendarApp.getDefaultCalendar();</span><br><span class="line">  <span class="keyword">const</span> calendarId = cID();</span><br><span class="line">  <span class="keyword">const</span> calendar = CalendarApp.getCalendarById(calendarId);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> date1 = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">  <span class="keyword">const</span> year = date1.getFullYear();</span><br><span class="line">  <span class="keyword">const</span> month = date1.getMonth();<span class="comment">//0~11までの値を返す，8月なら7が帰ってくる</span></span><br><span class="line">  <span class="keyword">const</span> day = date1.getDay();</span><br><span class="line"></span><br><span class="line">  <span class="comment">//先月分</span></span><br><span class="line">  <span class="keyword">var</span> st = <span class="keyword">new</span> <span class="built_in">Date</span>(year,month-<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">var</span> end = <span class="keyword">new</span> <span class="built_in">Date</span>(year,month-<span class="number">1</span>,<span class="number">31</span>);</span><br><span class="line">  <span class="keyword">var</span> events = calendar.getEvents(st,end);</span><br><span class="line">  <span class="keyword">var</span> sumOfLast = okaneKeisan(events);</span><br><span class="line">  <span class="comment">//今月分</span></span><br><span class="line">  st = <span class="keyword">new</span> <span class="built_in">Date</span>(year,month,<span class="number">1</span>);</span><br><span class="line">  end = <span class="keyword">new</span> <span class="built_in">Date</span>(year,month,<span class="number">31</span>);</span><br><span class="line">  events = calendar.getEvents(st,end);  </span><br><span class="line">  <span class="keyword">var</span> sumOfThis = okaneKeisan(events);</span><br><span class="line">  <span class="keyword">return</span> [sumOfThis,sumOfLast]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">okaneKeisan</span>(<span class="params">events</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> baito = serchWord();</span><br><span class="line">  <span class="keyword">var</span> kyuyo = [];</span><br><span class="line">  <span class="keyword">var</span> sum =<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;baito.length;i++)&#123;</span><br><span class="line">    <span class="keyword">var</span> allTime = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> targetCount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> baitosaki = baito[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; events.length; count++) &#123;</span><br><span class="line">      <span class="comment">// カレンダーのタイトルでの絞り込みはできないので</span></span><br><span class="line">      <span class="comment">// 全てのイベントのタイトルで比較する。</span></span><br><span class="line">      <span class="keyword">if</span>(events[count].getTitle().indexOf(baitosaki,) != -<span class="number">1</span>) &#123;</span><br><span class="line">        targetCount++;</span><br><span class="line">        <span class="keyword">var</span> event_start = events[count].getStartTime();<span class="comment">//基準時からのミリ秒が取得できる</span></span><br><span class="line">        <span class="keyword">var</span> event_end = events[count].getEndTime();</span><br><span class="line">        allTime += ((event_end - event_start) / <span class="number">1000</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    allTime /= <span class="number">3600</span>;</span><br><span class="line">    kyuyo[i] = allTime * jikyu(baitosaki);</span><br><span class="line">    sum += kyuyo[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="コード４"><a href="#コード４" class="headerlink" title="コード４"></a>コード４</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">base</span> <span class="attr">target</span>=<span class="string">&quot;_top&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;title hero is-link&quot;</span>&gt;</span>給与計算<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tile is-ancestor&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tile is-vertical&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tile box&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>今月の給与<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">p</span>&gt;</span>&lt;?=thisM?&gt;円<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tile box&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>先月の給与<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&lt;?=lastM?&gt;円<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> bar = <span class="built_in">document</span>.getElementbyId(<span class="string">&quot;bar&quot;</span>).value;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> per = <span class="built_in">document</span>.getElementbyId(<span class="string">&quot;per&quot;</span>).innerHTML.substr( <span class="number">4</span>, <span class="number">4</span> );</span></span><br><span class="line"><span class="javascript">  bar = per;</span></span><br><span class="line"><span class="javascript">  <span class="built_in">console</span>.log(per.innerHTML.substr( <span class="number">4</span>, <span class="number">4</span> ));</span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>他の公開チャンネルへようこそ</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/nac_39_kiitos">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/" rel="prev" title="Google Tasks api 叩いてpillowでデスクトップ画像生成">
+                  <i class="fa fa-chevron-left"></i> Google Tasks api 叩いてpillowでデスクトップ画像生成
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/17/Jupyter%E3%81%A7C-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%9F%E3%81%84/" rel="next" title="JupyterでC++を動かしたい">
+                  JupyterでC++を動かしたい <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nac-39</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
