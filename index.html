@@ -171,7 +171,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">ポスト</span>
         </a>
       </div>
@@ -221,6 +221,81 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://nac-39.com/2021/11/22/NUCT%E3%81%AE%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC%E3%82%92Trello%E3%81%AB%E3%81%86%E3%81%A4%E3%81%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="nac-39">
+      <meta itemprop="description" content="This is nac-39s blog or notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nac-39">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/22/NUCT%E3%81%AE%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC%E3%82%92Trello%E3%81%AB%E3%81%86%E3%81%A4%E3%81%99/" class="post-title-link" itemprop="url">NUCTのカレンダーをTrelloにうつす</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+      
+
+      <time title="作成日：2021-11-22 00:57:11 / 修正日：01:06:36" itemprop="dateCreated datePublished" datetime="2021-11-22T00:57:11+09:00">2021-11-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>前，GASでNUCTのカレンダーをGoogle Tasksに変換するというのをやったのですが，それのTrelloバージョンを作りました．なぜなら微積と線形から逃げたかったからです．現実逃避をするにはGASいじりは最適です．</p>
+<p>真面目な動機としては，Google Tasksだとファイルとの連携がURLからしかできなくて面倒だと思ったからです．例えば，レポートのタスクとwordファイルが一緒になってたら便利じゃないですか？Trelloなら，きこーアカウントのOneDrive上のファイルとタスクを紐付けることができます．</p>
+<h5 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h5><ol>
+<li>Google Spread Sheetを新しく作って，A1セルに最終更新と書きましょう．(なんか)</li>
+<li>上のタブの拡張機能＞Google App Scriptから新しいGASを作ります．</li>
+<li>下のコードを全てファイルを分けてコピペします．</li>
+<li>functions.gsに移動して，setup()を実行します．</li>
+<li>トリガーを設定します．実行する関数はupdate(),時間指定のトリガーにしましょう．間隔はなんでもいいけど，私は二時間にしてます．<br>あとはほっといたらtrelloに勝手にタスクが追加されてるはずです．</li>
+</ol>
+<p>何より，タスク管理ツールを使う以前に，タスクをやり切る心意気を持ちましょう．</p>
+<p>コードはこちら↓</p>
+<script src="https://gist.github.com/nac-39/e75048b950b4be91917a78d590e64065.js"></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
