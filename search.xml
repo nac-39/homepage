@@ -47,6 +47,50 @@
       </tags>
   </entry>
   <entry>
+    <title>NUCTのカレンダーをTrelloにうつす</title>
+    <url>/2021/11/22/NUCT%E3%81%AE%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC%E3%82%92Trello%E3%81%AB%E3%81%86%E3%81%A4%E3%81%99/</url>
+    <content><![CDATA[<p>前，GASでNUCTのカレンダーをGoogle Tasksに変換するというのをやったのですが，それのTrelloバージョンを作りました．なぜなら微積と線形から逃げたかったからです．現実逃避をするにはGASいじりは最適です．</p>
+<p>真面目な動機としては，Google Tasksだとファイルとの連携がURLからしかできなくて面倒だと思ったからです．例えば，レポートのタスクとwordファイルが一緒になってたら便利じゃないですか？Trelloなら，きこーアカウントのOneDrive上のファイルとタスクを紐付けることができます．</p>
+<h5 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h5><ol>
+<li>Google Spread Sheetを新しく作って，A1セルに最終更新と書きましょう．(なんか)</li>
+<li>上のタブの拡張機能＞Google App Scriptから新しいGASを作ります．</li>
+<li>下のコードを全てファイルを分けてコピペします．</li>
+<li>functions.gsに移動して，setup()を実行します．</li>
+<li>トリガーを設定します．実行する関数はupdate(),時間指定のトリガーにしましょう．間隔はなんでもいいけど，私は二時間にしてます．<br>あとはほっといたらtrelloに勝手にタスクが追加されてるはずです．</li>
+</ol>
+<p>何より，タスク管理ツールを使う以前に，タスクをやり切る心意気を持ちましょう．</p>
+<p>コードはこちら↓</p>
+<script src="https://gist.github.com/nac-39/e75048b950b4be91917a78d590e64065.js"></script>]]></content>
+  </entry>
+  <entry>
+    <title>JupyterでC++を動かしたい</title>
+    <url>/2021/11/17/Jupyter%E3%81%A7C-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%9F%E3%81%84/</url>
+    <content><![CDATA[<h2 id="一番言いたいこと"><a href="#一番言いたいこと" class="headerlink" title="一番言いたいこと"></a>一番言いたいこと</h2><p><code>clingのインストール先/share/Jupyter/kernel</code>じゃなくて，<br><code>/src/tools/cling/tools/Jupyter/kernel</code><br>だ！！！！！</p>
+<h2 id="目的など"><a href="#目的など" class="headerlink" title="目的など"></a>目的など</h2><p>Jupyter labでC++を使いたい！！！！<br>仕組みとしては，ClingというC++をインタプリタみたいに動かす環境をJupyterでも動くようにしてる感じ．<br>先に断っておくと，急いで書いたので言葉足らず感があります．すみません．リンク先が詳しいので，ぜひ参照してください．</p>
+<h2 id="インストール方法"><a href="#インストール方法" class="headerlink" title="インストール方法"></a>インストール方法</h2><p>とりあえず自分がやった方法を示しておく．</p>
+<ol>
+<li><a href="https://root.cern/cling/cling_build_instructions/">このサイト</a>のManual buildを参考に，<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> http://root.cern/git/llvm.git src</span><br><span class="line"><span class="built_in">cd</span> src</span><br><span class="line">git checkout cling-patches</span><br><span class="line"><span class="built_in">cd</span> tools</span><br><span class="line">git <span class="built_in">clone</span> http://root.cern/git/cling.git</span><br><span class="line">git <span class="built_in">clone</span> http://root.cern/git/clang.git</span><br><span class="line"><span class="built_in">cd</span> clang</span><br><span class="line">git checkout cling-patches</span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure></li>
+<li>Cmakeを使ってbuildする．2時間近くかかったので，覚悟が必要．多分バイナリファイルをダウンロードしておけばこの工程いらない．CmakeがPCに入っていない人はCmakeをダウンロードする必要が…(バイナリファイルをダウンロードしろ！もしくは<code>brew install cling</code>で入れちゃえ)<br><code>/usr/local/bin/</code>配下に適当なファイル作ってそこを<code>[Install Path]</code>にした．<code>Release or Debug</code>は<code>Release</code>を選んだ．<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake -DCMAKE_INSTALL_PREFIX=[Install Path] -DCMAKE_BUILD_TYPE=[Build configuration, e.g. Release or Debug] ..\src</span><br><span class="line">cmake --build .</span><br><span class="line">cmake --build . --target install</span><br></pre></td></tr></table></figure></li>
+<li><a href="https://github.com/root-project/cling/blob/f84e601d3f5cfd06f4b557780ca62e68d2cfa473/tools/Jupyter/README.md">GitHubのここ</a>にあるように，パスを通してから諸々実行する．</li>
+</ol>
+<p><strong>ここで注意！</strong><br><code>clingのインストール先/share/Jupyter/kernel</code>じゃなくて，<br><code>どこか/src/tools/cling/tools/Jupyter/kernel</code>に<code>cd</code>する！（ちなみにcling-install-prefixはclingをインストールした場所のパスって意味で，任意で自分で変えるところだよ！prefixは接頭辞みたいな意味）<br>↓諸々実行するやつ．</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export PATH=/cling-install-prefix/bin:$PATH</span><br><span class="line">cd /cling-install-prefix/share/cling/Jupyter/kernel</span><br><span class="line"></span><br><span class="line">pip install -e .</span><br><span class="line"># or: pip3 install -e .</span><br><span class="line"></span><br><span class="line"># register the kernelspec for C++17/C++1z/C++14/C++11:</span><br><span class="line"># the user can install whichever kernel(s) they</span><br><span class="line"># wish:</span><br><span class="line">jupyter-kernelspec install --user cling-cpp17</span><br><span class="line">jupyter-kernelspec install --user cling-cpp1z</span><br><span class="line">jupyter-kernelspec install --user cling-cpp14</span><br><span class="line">jupyter-kernelspec install --user cling-cpp11</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>これで<code>jupyter notebook</code>したらカーネルにC++が出現してる！はず！</p>
+<h2 id="分かってないのでぜひ教えてほしいこと"><a href="#分かってないのでぜひ教えてほしいこと" class="headerlink" title="分かってないのでぜひ教えてほしいこと"></a>分かってないのでぜひ教えてほしいこと</h2><ul>
+<li>Clingの実体 = <code>brew install cling</code>でインストールされるもの = buildしたらできるもの =&gt; バイナリファイル（とその他諸々）<br>って言う認識でOK？</li>
+<li>GitHubからクローンしてきた奴らは何？<code>jupyter-kernelspec install --user cling-cpp17</code>これはどう言う意味のコマンド？</li>
+<li>そもそもAnacondaでやった方が楽((((<a href="https://buttai-k.hatenablog.com/entry/2020/12/05/220000_1">参考記事</a></li>
+<li>LLVMってなんですか！なんでCERNが作ってるんですか！</li>
+</ul>
+<h2 id="参考記事"><a href="#参考記事" class="headerlink" title="参考記事"></a>参考記事</h2><ul>
+<li><a href="https://qiita.com/sasaki77/items/f6253e1d6638fba0e744">JupyterにC++のノートのためのclingカーネルを追加する [Mac]</a><br>途中まではいっしょなんだけど，buildがうまくいかんかった</li>
+<li><a href="https://github.com/root-project/cling">GitHub: root-project/cling</a></li>
+<li><a href="https://qiita.com/mugwort_rc/items/b8087d1b6f9498b037d5">C++11/14/17インタプリタ環境 Jupyter-Cling</a><br>この記事の言う通り，バイナリダウンロードした方がいいよ，絶対！</li>
+<li><a href="https://r9y9.github.io/blog/2017/12/21/jupyter-cxx/">Interactive C++: Jupyter上で対話的にC++を使う方法の紹介</a><br>四つのC++のインタプリタ環境についてまとめてある！</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>Google Tasks api 叩いてpillowでデスクトップ画像生成</title>
     <url>/2021/10/21/Google-Tasks-api-%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90/</url>
     <content><![CDATA[<h1 id="やりたいこと"><a href="#やりたいこと" class="headerlink" title="やりたいこと"></a>やりたいこと</h1><p>Tasksをパソコンのデスクトップ画面に表示したい</p>
@@ -85,49 +129,6 @@
 <p><code>while True:</code>がないと一回限りで終わってしまう．</p>
 <h3 id="これをいい感じに組み合わせると完成！！！！！！！！！"><a href="#これをいい感じに組み合わせると完成！！！！！！！！！" class="headerlink" title="これをいい感じに組み合わせると完成！！！！！！！！！"></a>これをいい感じに組み合わせると完成！！！！！！！！！</h3><p>動けばいいやのクソコードなので公開はしないかな<br>タスク管理ツールは作る気力があるのにタスクをやる気が起きません…………</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>JupyterでC++を動かしたい</title>
-    <url>/2021/11/17/Jupyter%E3%81%A7C-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%9F%E3%81%84/</url>
-    <content><![CDATA[<h2 id="一番言いたいこと"><a href="#一番言いたいこと" class="headerlink" title="一番言いたいこと"></a>一番言いたいこと</h2><p><code>clingのインストール先/share/Jupyter/kernel</code>じゃなくて，<br><code>/src/tools/cling/tools/Jupyter/kernel</code><br>だ！！！！！</p>
-<h2 id="目的など"><a href="#目的など" class="headerlink" title="目的など"></a>目的など</h2><p>Jupyter labでC++を使いたい！！！！<br>仕組みとしては，ClingというC++をインタプリタみたいに動かす環境をJupyterでも動くようにしてる感じ．<br>先に断っておくと，急いで書いたので言葉足らず感があります．すみません．リンク先が詳しいので，ぜひ参照してください．</p>
-<h2 id="インストール方法"><a href="#インストール方法" class="headerlink" title="インストール方法"></a>インストール方法</h2><p>とりあえず自分がやった方法を示しておく．</p>
-<ol>
-<li><a href="https://root.cern/cling/cling_build_instructions/">このサイト</a>のManual buildを参考に，<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> http://root.cern/git/llvm.git src</span><br><span class="line"><span class="built_in">cd</span> src</span><br><span class="line">git checkout cling-patches</span><br><span class="line"><span class="built_in">cd</span> tools</span><br><span class="line">git <span class="built_in">clone</span> http://root.cern/git/cling.git</span><br><span class="line">git <span class="built_in">clone</span> http://root.cern/git/clang.git</span><br><span class="line"><span class="built_in">cd</span> clang</span><br><span class="line">git checkout cling-patches</span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure></li>
-<li>Cmakeを使ってbuildする．2時間近くかかったので，覚悟が必要．多分バイナリファイルをダウンロードしておけばこの工程いらない．CmakeがPCに入っていない人はCmakeをダウンロードする必要が…(バイナリファイルをダウンロードしろ！もしくは<code>brew install cling</code>で入れちゃえ)<br><code>/usr/local/bin/</code>配下に適当なファイル作ってそこを<code>[Install Path]</code>にした．<code>Release or Debug</code>は<code>Release</code>を選んだ．<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake -DCMAKE_INSTALL_PREFIX=[Install Path] -DCMAKE_BUILD_TYPE=[Build configuration, e.g. Release or Debug] ..\src</span><br><span class="line">cmake --build .</span><br><span class="line">cmake --build . --target install</span><br></pre></td></tr></table></figure></li>
-<li><a href="https://github.com/root-project/cling/blob/f84e601d3f5cfd06f4b557780ca62e68d2cfa473/tools/Jupyter/README.md">GitHubのここ</a>にあるように，パスを通してから諸々実行する．</li>
-</ol>
-<p><strong>ここで注意！</strong><br><code>clingのインストール先/share/Jupyter/kernel</code>じゃなくて，<br><code>どこか/src/tools/cling/tools/Jupyter/kernel</code>に<code>cd</code>する！（ちなみにcling-install-prefixはclingをインストールした場所のパスって意味で，任意で自分で変えるところだよ！prefixは接頭辞みたいな意味）<br>↓諸々実行するやつ．</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export PATH=/cling-install-prefix/bin:$PATH</span><br><span class="line">cd /cling-install-prefix/share/cling/Jupyter/kernel</span><br><span class="line"></span><br><span class="line">pip install -e .</span><br><span class="line"># or: pip3 install -e .</span><br><span class="line"></span><br><span class="line"># register the kernelspec for C++17/C++1z/C++14/C++11:</span><br><span class="line"># the user can install whichever kernel(s) they</span><br><span class="line"># wish:</span><br><span class="line">jupyter-kernelspec install --user cling-cpp17</span><br><span class="line">jupyter-kernelspec install --user cling-cpp1z</span><br><span class="line">jupyter-kernelspec install --user cling-cpp14</span><br><span class="line">jupyter-kernelspec install --user cling-cpp11</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>これで<code>jupyter notebook</code>したらカーネルにC++が出現してる！はず！</p>
-<h2 id="分かってないのでぜひ教えてほしいこと"><a href="#分かってないのでぜひ教えてほしいこと" class="headerlink" title="分かってないのでぜひ教えてほしいこと"></a>分かってないのでぜひ教えてほしいこと</h2><ul>
-<li>Clingの実体 = <code>brew install cling</code>でインストールされるもの = buildしたらできるもの =&gt; バイナリファイル（とその他諸々）<br>って言う認識でOK？</li>
-<li>GitHubからクローンしてきた奴らは何？<code>jupyter-kernelspec install --user cling-cpp17</code>これはどう言う意味のコマンド？</li>
-<li>そもそもAnacondaでやった方が楽((((<a href="https://buttai-k.hatenablog.com/entry/2020/12/05/220000_1">参考記事</a></li>
-<li>LLVMってなんですか！なんでCERNが作ってるんですか！</li>
-</ul>
-<h2 id="参考記事"><a href="#参考記事" class="headerlink" title="参考記事"></a>参考記事</h2><ul>
-<li><a href="https://qiita.com/sasaki77/items/f6253e1d6638fba0e744">JupyterにC++のノートのためのclingカーネルを追加する [Mac]</a><br>途中まではいっしょなんだけど，buildがうまくいかんかった</li>
-<li><a href="https://github.com/root-project/cling">GitHub: root-project/cling</a></li>
-<li><a href="https://qiita.com/mugwort_rc/items/b8087d1b6f9498b037d5">C++11/14/17インタプリタ環境 Jupyter-Cling</a><br>この記事の言う通り，バイナリダウンロードした方がいいよ，絶対！</li>
-<li><a href="https://r9y9.github.io/blog/2017/12/21/jupyter-cxx/">Interactive C++: Jupyter上で対話的にC++を使う方法の紹介</a><br>四つのC++のインタプリタ環境についてまとめてある！</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>ツヨツヨについて書く</title>
-    <url>/2021/12/14/%E3%83%84%E3%83%A8%E3%83%84%E3%83%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%9B%B8%E3%81%8F/</url>
-    <content><![CDATA[<p>私のツヨツヨは虚勢なので，いつか消えます．私は怠惰で消えない努力をしていないからです．<br>そもそも情報学部で真面目に勉強していれば，四年後にはほぼ確実に情報系ツヨツヨになれるはずなんです．今やっていることは目に見えてツヨツヨには見えないです．線形とか微積とか，プログラミングの授業とか．それでもそれらをちゃんと勉強して，それなりの成績をとっておけば，後々その基礎を使ってさらにツヨツヨに進化できるカリキュラムが組まれているはずです．今，大してツヨツヨそうに見えなくても授業を真面目に受けている人が１番のツヨツヨです．</p>
-<p>ちなみに，虚勢でツヨツヨに見せかけることは結構楽です．Pythonを一通り勉強すればなんでもできます．スクレイピングもできるし(BeautifulSoup)，Webページも作れるし(Flask, Django, Stleamlilt, Bottle…etc.)，画像加工もできるし(Pillow, OpenCV…etc.)，機械学習も(Scikit learn, tensorflow, keras?)，なんだってできます．Pythonは大量に先人が作ったパッケージを自由に利用することができます．大概自分が思いつけることは先人が思いついています．それを自分の環境に合わせて（例えば名大生向けに）改良したり，二つの先人が作ったパッケージを組み合わせて，さも自分が作ったかのように公開してしまえば（もちろんライセンスは守ってね），あたかも自分がツヨツヨかのように見せかけられます．何かを極めようとすればもちろん時間はかかるし面倒ですが，ちょっと先人の遺産を使うぐらいなら全然いけます．</p>
-<p>Pythonの他にはJavaScriptもこの用途に向いています．一通り勉強しちゃえば，某イーラーニングのなんかをなんかするなんかを書く方法は普通にわかったりします．<br>付け足すと，こういうツヨツヨ錬金術が使えないのが競プロだと思ってます．少なくとも錬金術が使えるようになるより，競プロができるようになる方が練習（と数学系の能力）が必要だと思います．<br>これを読んで，え，それをツヨツヨというんだよ，と思った方は，騙されています．<br>私はちょっと不親切な書き方でこの文章を書いています．”スクレイピング”, “パッケージ”，こういった情報系ワードをなんの説明もなく文章に混ぜ込むことでツヨツヨ感を演出しているだけです．スクレイピングはWebページの文章とか画像とかを自動でプログラムに集めさせることです．例えば，あるブログの本文を10年分コピペしたいと思っても，クッソ面倒でしょう．それを自動でやってくれるのもスクレイピングです．パッケージは，先人が書いてくれたプログラムの集まりのことで，お道具箱みたいなもんです．例えば，画像処理するお道具箱には，新しい真っ白の画像を作る道具とか，画像にぼかしを入れる道具とかが入っていて，簡単に使うことができます．自分でその道具を作ったら一週間とか一ヶ月とかかかってしまって，作りたいものが永遠に作れないけど，先人の道具を借りることでその部分が秒で作れます．そうすると，その道具が無料で大量に公開されている凄さがわかると思います．東急ハンズで商品が持って行き放題になってるみたいな感じです．プログラミング界隈やばいでしょ．ちなみに，かっこ内に英単語？が羅列してあったのは全部有名パッケージの名前です．<br>あと，”Pythonを一通り”っていう普通にやると一ヶ月ぐらいかかることをさらっと書いているのもずるいとこです．</p>
-<p>なんだかんだこんな文章を書いている間にも課題の提出期限が刻々と迫ってきています．虚勢を張るのは楽しいですが，やっぱり課題やんないといけないのでやってきます．．．．．．(午前３時)<br>（いったいこの文章を誰に向かって書いているのだろうか．．．まあ，誰に読まれてもいいけど誰も読まないと思って書いてます）</p>
-]]></content>
-      <categories>
-        <category>coding</category>
-      </categories>
-      <tags>
-        <tag>coding</tag>
-      </tags>
   </entry>
   <entry>
     <title>バイトの月給をGASで計算</title>
@@ -194,22 +195,6 @@
       <tags>
         <tag>coding</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>NUCTのカレンダーをTrelloにうつす</title>
-    <url>/2021/11/22/NUCT%E3%81%AE%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC%E3%82%92Trello%E3%81%AB%E3%81%86%E3%81%A4%E3%81%99/</url>
-    <content><![CDATA[<p>前，GASでNUCTのカレンダーをGoogle Tasksに変換するというのをやったのですが，それのTrelloバージョンを作りました．なぜなら微積と線形から逃げたかったからです．現実逃避をするにはGASいじりは最適です．</p>
-<p>真面目な動機としては，Google Tasksだとファイルとの連携がURLからしかできなくて面倒だと思ったからです．例えば，レポートのタスクとwordファイルが一緒になってたら便利じゃないですか？Trelloなら，きこーアカウントのOneDrive上のファイルとタスクを紐付けることができます．</p>
-<h5 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h5><ol>
-<li>Google Spread Sheetを新しく作って，A1セルに最終更新と書きましょう．(なんか)</li>
-<li>上のタブの拡張機能＞Google App Scriptから新しいGASを作ります．</li>
-<li>下のコードを全てファイルを分けてコピペします．</li>
-<li>functions.gsに移動して，setup()を実行します．</li>
-<li>トリガーを設定します．実行する関数はupdate(),時間指定のトリガーにしましょう．間隔はなんでもいいけど，私は二時間にしてます．<br>あとはほっといたらtrelloに勝手にタスクが追加されてるはずです．</li>
-</ol>
-<p>何より，タスク管理ツールを使う以前に，タスクをやり切る心意気を持ちましょう．</p>
-<p>コードはこちら↓</p>
-<script src="https://gist.github.com/nac-39/e75048b950b4be91917a78d590e64065.js"></script>]]></content>
   </entry>
   <entry>
     <title>ラズパイにubuntu serverをダウンロードする</title>
