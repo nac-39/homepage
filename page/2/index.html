@@ -23,36 +23,30 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"nac-39.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"}};
   </script>
-<meta name="description" content="手順 NUCTからGoogleカレンダーにエクスポートする コードをGoogleSpreadSheetのエディタにコピペする コードを実行する  1.NUCT→Googleカレンダーにエクスポート NUCT&gt;スケジュール&gt;公開（プライベート）&gt; httpsから始まるリンクをコピー Googleカレンダー &gt; 他のカレンダーの横の＋ &gt; URLで追加 &gt; URLを">
-<meta property="og:type" content="article">
-<meta property="og:title" content="GASでNUCTのスケジュールをタスクに変換する">
-<meta property="og:url" content="https://nac-39.com/2021/08/10/GAS%E3%81%A7NUCT%E3%81%AE%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E3%82%BF%E3%82%B9%E3%82%AF%E3%81%AB%E5%A4%89%E6%8F%9B%E3%81%99%E3%82%8B/index.html">
+<meta name="description" content="This is nac-39s blog or notes.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="nac-39">
+<meta property="og:url" content="https://nac-39.com/page/2/index.html">
 <meta property="og:site_name" content="nac-39">
-<meta property="og:description" content="手順 NUCTからGoogleカレンダーにエクスポートする コードをGoogleSpreadSheetのエディタにコピペする コードを実行する  1.NUCT→Googleカレンダーにエクスポート NUCT&gt;スケジュール&gt;公開（プライベート）&gt; httpsから始まるリンクをコピー Googleカレンダー &gt; 他のカレンダーの横の＋ &gt; URLで追加 &gt; URLを">
+<meta property="og:description" content="This is nac-39s blog or notes.">
 <meta property="og:locale" content="ja_JP">
-<meta property="article:published_time" content="2021-08-10T05:40:56.000Z">
-<meta property="article:modified_time" content="2021-08-10T16:25:12.758Z">
 <meta property="article:author" content="nac-39">
-<meta property="article:tag" content="GAS">
-<meta property="article:tag" content="Coding">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="NUCT">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://nac-39.com/2021/08/10/GAS%E3%81%A7NUCT%E3%81%AE%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E3%82%BF%E3%82%B9%E3%82%AF%E3%81%AB%E5%A4%89%E6%8F%9B%E3%81%99%E3%82%8B/">
+<link rel="canonical" href="https://nac-39.com/page/2/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
-    isPost : true,
+    isHome : true,
+    isPost : false,
     lang   : 'ja'
   };
 </script>
-<title>GASでNUCTのスケジュールをタスクに変換する | nac-39</title>
+<title>nac-39</title>
   
 
 
@@ -151,7 +145,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           見出し
@@ -164,7 +158,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%8B%E9%A0%86"><span class="nav-number">1.</span> <span class="nav-text">手順</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-NUCT%E2%86%92Google%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC%E3%81%AB%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88"><span class="nav-number">2.</span> <span class="nav-text">1.NUCT→Googleカレンダーにエクスポート</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92GoogleSpreadSheet%E3%81%AE%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF%E3%81%AB%E3%82%B3%E3%83%94%E3%83%9A%E3%81%99%E3%82%8B"><span class="nav-number">3.</span> <span class="nav-text">2.コードをGoogleSpreadSheetのエディタにコピペする</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%82%B3%E3%83%BC%E3%83%89%EF%BC%91%EF%BC%9A%E5%88%9D%E6%9C%9F%E7%8A%B6%E6%85%8B%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E4%BD%BF%E3%81%86"><span class="nav-number">3.0.1.</span> <span class="nav-text">コード１：初期状態を作るために使う</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%82%B3%E3%83%BC%E3%83%89%EF%BC%92%EF%BC%9A%E3%82%BF%E3%82%B9%E3%82%AF%E3%81%84%E3%81%98%E3%82%8B%E9%96%A2%E9%80%A3%E3%81%A7%E3%81%99%E3%80%82"><span class="nav-number">3.0.2.</span> <span class="nav-text">コード２：タスクいじる関連です。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%82%B3%E3%83%BC%E3%83%89%EF%BC%93%EF%BC%9A%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E4%BD%BF%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%E6%94%B9%E5%96%84%E3%81%AE%E4%BD%99%E5%9C%B0%E3%81%82%E3%82%8A%E3%80%82"><span class="nav-number">3.0.3.</span> <span class="nav-text">コード３：更新するために使います。改善の余地あり。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%82%B3%E3%83%BC%E3%83%89%EF%BC%94-ID%E3%82%92%E7%99%BB%E9%8C%B2%E3%81%99%E3%82%8B%E3%81%AE%E3%81%AB%E4%BD%BF%E3%81%84%E3%81%BE%E3%81%99%E3%80%82"><span class="nav-number">3.0.4.</span> <span class="nav-text">コード４:IDを登録するのに使います。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B"><span class="nav-number">4.</span> <span class="nav-text">実行する</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -227,17 +220,16 @@
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner index posts-expand">
 
-
-  
+    
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://nac-39.com/2021/08/10/GAS%E3%81%A7NUCT%E3%81%AE%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E3%82%BF%E3%82%B9%E3%82%AF%E3%81%AB%E5%A4%89%E6%8F%9B%E3%81%99%E3%82%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -250,9 +242,9 @@
       <meta itemprop="name" content="nac-39">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          GASでNUCTのスケジュールをタスクに変換する
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/10/GAS%E3%81%A7NUCT%E3%81%AE%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E3%82%BF%E3%82%B9%E3%82%AF%E3%81%AB%E5%A4%89%E6%8F%9B%E3%81%99%E3%82%8B/" class="post-title-link" itemprop="url">GASでNUCTのスケジュールをタスクに変換する</a>
+        </h2>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -291,7 +283,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h1><ol>
+          <h1 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h1><ol>
 <li>NUCTからGoogleカレンダーにエクスポートする</li>
 <li>コードをGoogleSpreadSheetのエディタにコピペする</li>
 <li>コードを実行する</li>
@@ -324,6 +316,7 @@
 <li>更新したい時はスクリプト3をからupdateを選択、実行する。</li>
 </ol>
 
+      
     </div>
 
     
@@ -331,41 +324,8 @@
     
 
     <footer class="post-footer">
-          <div class="followme">
-  <span>他の公開チャンネルへようこそ</span>
-
-  <div class="social-list">
-
-      <div class="social-item">
-        <a target="_blank" class="social-link" href="https://twitter.com/nac_39_kiitos">
-          <span class="icon">
-            <i class="fab fa-twitter"></i>
-          </span>
-
-          <span class="label">Twitter</span>
-        </a>
-      </div>
-  </div>
-</div>
-
-          <div class="post-tags">
-              <a href="/tags/GAS/" rel="tag"># GAS</a>
-              <a href="/tags/Coding/" rel="tag"># Coding</a>
-              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-              <a href="/tags/NUCT/" rel="tag"># NUCT</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-            </div>
-            <div class="post-nav-item">
-                <a href="/2021/08/15/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%AE%E9%81%8D%E6%AD%B4/" rel="next" title="プログラミングの遍歴">
-                  プログラミングの遍歴 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        <div class="post-eof"></div>
+      
     </footer>
   </article>
 </div>
@@ -373,7 +333,9 @@
 
 
 
-
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="前のページ"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 <script>
