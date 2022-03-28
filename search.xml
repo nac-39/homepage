@@ -1,32 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>nuctのカレンダーをmicrosoft ToDoに自動追加する（GUIのみでできる！）</title>
-    <url>/2022/01/29/auto-add-nuct-calendar-to-microsoft-todo/</url>
-    <content><![CDATA[<h1 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h1><h2 id="1-NUCTのカレンダーからリンクを取得する"><a href="#1-NUCTのカレンダーからリンクを取得する" class="headerlink" title="1. NUCTのカレンダーからリンクを取得する"></a>1. NUCTのカレンダーからリンクを取得する</h2><ol>
-<li>ホームのカレンダーから，公開（プライベート）</li>
-<li>個人用にこのカレンダーにリンクを生成する，の下側のリンクをコピーする</li>
-</ol>
-<h2 id="2-Microsoft-Outlookにカレンダーを追加する"><a href="#2-Microsoft-Outlookにカレンダーを追加する" class="headerlink" title="2. Microsoft Outlookにカレンダーを追加する"></a>2. Microsoft Outlookにカレンダーを追加する</h2><ol>
-<li><a href="https://outlook.office.com/calendar/addcalendar">https://outlook.office.com/calendar/addcalendar</a> にアクセスする（サインインしてなかったら，サインインが求められます）</li>
-<li>Webから定期受信を選び，先程のURLをコピペする</li>
-<li>諸々の設定をして保存</li>
-</ol>
-<h2 id="3-Microsoft-To-Doにリストを追加する"><a href="#3-Microsoft-To-Doにリストを追加する" class="headerlink" title="3. Microsoft To-Doにリストを追加する"></a>3. Microsoft To-Doにリストを追加する</h2><p>(注意:MicrosoftにはTo-DoとPlannerというサービスがあって，これらは別のものです．)</p>
+    <title>Mac勢おすすめのアプリ</title>
+    <url>/2022/03/29/best-apps-for-mac-user/</url>
+    <content><![CDATA[<h1 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h1><p>とてつもなくアフィリエイトブログのようなタイトルの記事になっていますが，違います．この記事ではひたすらに私がインストールしてよかったと思うMac向けアプリケーションをカテゴリ別に紹介していきたいと思います．上にあるものほど優先度が高くなっていますので，下の方はすっ飛ばしていただいて構いません．</p>
+<h1 id="普段の授業用"><a href="#普段の授業用" class="headerlink" title="普段の授業用"></a>普段の授業用</h1><p>まずは普段大学の授業で使うアプリケーションです．</p>
+<h2 id="Microsoft-Word-Excel-Powerpoint-Teams（必須）"><a href="#Microsoft-Word-Excel-Powerpoint-Teams（必須）" class="headerlink" title="Microsoft Word, Excel, Powerpoint, Teams（必須）"></a>Microsoft Word, Excel, Powerpoint, Teams（必須）</h2><p>普段のレポートやプレゼン，実験の計算，オンライン授業の受講に必須になってくるアプリケーションです．<br>大学から機構アカウントをもらったと思いますが，そのライセンスでダウンロードできます．<br>詳しくはこちらを参照してください→ <a href="https://icts.nagoya-u.ac.jp/ja/services/ms365complicense/">https://icts.nagoya-u.ac.jp/ja/services/ms365complicense/</a><br>※ちなみに，機構アカウントで<strong>Minecraft Education Edition</strong>を使うことができます．（これも上記のページに書いてあります）</p>
+<h2 id="OneDrive-必須"><a href="#OneDrive-必須" class="headerlink" title="OneDrive(必須)"></a>OneDrive(必須)</h2><p>機構アカウントにOneDriveのストレージが5TBもらえるので，これを使わない手はないです．スマホにもOneDriveアプリを入れましょう．</p>
+<h2 id="zoom（必須）"><a href="#zoom（必須）" class="headerlink" title="zoom（必須）"></a>zoom（必須）</h2><p>オンライン授業でどこかしらで必ず使います．学校のアカウントでサインアップすると無料枠の40分制限がなくなるはずです．<br>ほかにもwebexをつかう授業が一つだけありましたが，ほとんどTeamsかZoomで事足りると思います．必要になったらでいいです．</p>
+<h2 id="Spark（推奨）"><a href="#Spark（推奨）" class="headerlink" title="Spark（推奨）"></a>Spark（推奨）</h2><p>メールクライアントのアプリケーションです．複数のメールアドレスを一つのメールボックスで受信することができて便利です．<br>gmail, 機構アカウントのメールなどを一括で管理することができます．Outlookほどはメールの装飾機能がないかもしれませんが，ほとんど使うことはないので大丈夫です．<br><a href="https://sparkmailapp.com/ja">https://sparkmailapp.com/ja</a></p>
+<h2 id="Google-Chrome-推奨"><a href="#Google-Chrome-推奨" class="headerlink" title="Google Chrome(推奨)"></a>Google Chrome(推奨)</h2><p>ウェブブラウザです．さまざまな拡張機能が入れられるので，SafariではなくChromeを使うことをお勧めします．<br>Chromeを使ってできることを紹介します．</p>
 <ol>
-<li><a href="https://to-do.office.com/tasks/today">https://to-do.office.com/tasks/today</a>　にアクセスする．</li>
-<li>「新しいリスト」から作成</li>
+<li>拡張機能</li>
 </ol>
-<h2 id="4-Microsoft-Power-Automateの設定をする"><a href="#4-Microsoft-Power-Automateの設定をする" class="headerlink" title="4. Microsoft Power Automateの設定をする"></a>4. Microsoft Power Automateの設定をする</h2><ol>
-<li><a href="https://powerautomate.microsoft.com/ja-jp/">https://powerautomate.microsoft.com/ja-jp/</a> にアクセス,　サインインする．</li>
-<li></li>
-<li>Outlookのトリガー，「When a new event is created」を選択</li>
-<li>予定表IDを設定．</li>
-<li>Microsoft To-Doのアクション，「To Doを追加する」を追加．</li>
-<li>To Doリスト，タイトル，期日などを設定する．タイトル以下は動的なコンテンツからカレンダーの情報を取得して入れる．<br><img src="../images/automate1.png" alt="一例"></li>
-<li>保存する</li>
+<ul>
+<li>DeepL(beta版): 選択範囲を翻訳できます．Google翻訳よりも精度が高いです．</li>
+<li>Google翻訳: 選択範囲を翻訳できます．</li>
+<li>Awesome Screenshot App: 画面録画を拡張機能から行い，そのまま公開して共有用のURLを取得できます．</li>
+<li>Desktop app for Google Tasks: カンバン方式でGoogle Tasksを管理できます．カンバン方式が好きな人にはお勧め．</li>
+<li>Grammarly for Chrome: NUCTで英文を書いて出すタイプの課題の時に便利です．</li>
+<li>Mouse Dictionary: カーソルの下の英単語の辞書が爆速で出てきます．PDFにも使えるので便利です．</li>
+</ul>
+<ol start="2">
+<li>自分で作った拡張機能</li>
 </ol>
+<ul>
+<li>NUCTに自動ログインする拡張機能を作ることができます．<br><a href="https://twitter.com/qastad/status/1502278487801237508?s=20&amp;t=fXyaYqG5_LjUaLGj6AQJ2g">https://twitter.com/qastad/status/1502278487801237508?s=20&amp;t=fXyaYqG5_LjUaLGj6AQJ2g</a><br>すでに作られた人がいるのでこれを使うなり，改造するなりするといいと思います．<br>多要素認証のシード値は一つしか作れないので注意してください．（新しいシード値を生成すると古いものが使えなくなる．）</li>
+</ul>
+<ol start="3">
+<li>デベロッパーツール</li>
+</ol>
+<ul>
+<li>F12キー（Macの人はFnキーを押しながら）を押すと呼び出せます．Webページのソースコードをみることができたり，javascriptというプログラミング言語が書けるとページの表示を操作したりできます．</li>
+</ul>
+<ol start="4">
+<li>ショートカットを作成</li>
+</ol>
+<ul>
+<li>macのDockにアプリのようにショートカットを作成することができます．<br>ブラウザの右上の…（縦）からその他のツール＞ショートカットを作成で作ることができます．NUCTのショートカットを作ってDockに登録しておくと便利です．</li>
+</ul>
+<h2 id="Visual-Studio-Code（プログラミングがある人は推奨，それ以外はどっちでも）"><a href="#Visual-Studio-Code（プログラミングがある人は推奨，それ以外はどっちでも）" class="headerlink" title="Visual Studio Code（プログラミングがある人は推奨，それ以外はどっちでも）"></a>Visual Studio Code（プログラミングがある人は推奨，それ以外はどっちでも）</h2><p>コードを編集する時にとっっっっても便利なアプリケーションです．これが便利な点はひとまず2点あって，一つは豊富すぎる拡張機能，二つ目はコードに自動で色がつくことです（語り尽くせないのであとは略）．PythonやC言語，HTMLなどの言語を授業で使う人はぜひダウンロードしましょう．</p>
+<h2 id="Trello-どっちでも"><a href="#Trello-どっちでも" class="headerlink" title="Trello(どっちでも)"></a>Trello(どっちでも)</h2><p>カンバン形式でタスクを管理するツールです．タスクの管理ツールは正直なんでもいいと思うのですが，Trelloを使うのであればもう一つPomelloというアプリをお勧めしたいです．<a href="https://pomelloapp.com/">https://pomelloapp.com/</a> これはTrelloと連動したポモドーロタイマーです．ポモドーロテクニックは25分集中→5分休憩を繰り返す集中の方法で，これが好きな人にはとてもお勧めです．<br>また，ほとんどの授業でNUCTで課題が出されるのですが，これを自動的にTrelloのToDoに追加することができます（APIがあるツールならなんでもできますが）．これはこのサイトの昔の記事を参照してください．</p>
+<h1 id="日常で使いそうなアプリ"><a href="#日常で使いそうなアプリ" class="headerlink" title="日常で使いそうなアプリ"></a>日常で使いそうなアプリ</h1><p>続いて，授業では使わないけど日常的に便利そうなアプリを紹介します．</p>
+<h2 id="お絵描き系"><a href="#お絵描き系" class="headerlink" title="お絵描き系"></a>お絵描き系</h2><p>唐突に画像編集したり，イラストを編集したりしたくなることがあるかもしれません．そんな時に使えるアプリケーションです．</p>
+<ul>
+<li>Skitch: スクショに文字や矢印を入れる程度</li>
+<li>FireAlpacaなど: まあまあガッツリ画像編集したり，イラストを書いたりしたい時．（ビットマップの画像）</li>
+<li>InkSkape: 線が綺麗なイラスト（ベクター画像）<h2 id="ツール系"><a href="#ツール系" class="headerlink" title="ツール系"></a>ツール系</h2></li>
+<li>Clipy: クリップモードの履歴が残るアプリです．何十件か前のコピペまで遡れるし，よく使う単語はスニペットも登録することができるので便利です．Windowsには標準搭載されている機能らしいです………</li>
+<li>ShiftIt: 画面分割できるアプリです．1/4サイズもできて便利です．有料のMagnetというアプリもありますが，個人的には無料のこっちで十分だと思います．</li>
+<li>RunCat: CPUの使用率によってツールバーにいる猫の走る速度が変化するアプリです．猫が可愛いのでお勧めです．</li>
+<li>Karabiner Elements: キーボードのキーマップを変えられるソフトです．個人的にはctrl+ijklで矢印キーになる設定が便利です．また，JIS配列のキーボードとUS配列のキーボードを併用したい人にお勧めです．</li>
+<li>Obsidian: マークダウンという形式で文章が書けるツールです．マークダウンのメモエディタならこれをお勧めしたいです．形式の指定されていない簡単なレポートなら，Obsidianで書いてPDFに出力すると楽だと思います．</li>
+<li>Slack: サークルや授業によっては使います．スタンプ作るの楽しいですよ．</li>
+<li>OBS: YouTubeなどの配信者向けのアプリですが，仮想カメラの機能がzoomやTeamsなどで便利です．画面共有が一人しかできない時にOBSを使って自分のカメラ画像をパソコンの画面共有にすることができます．また，iPhoneの画面を配信することができるので，iPhoneの拡大鏡アプリの画面をOBSでうつすことで簡易的なWebカメラにすることができます．</li>
+<li>Docker Desktop: 開発する時にとっっっっても便利です．パソコンの中にパソコンの環境をいくつも作れます．webアプリなどを開発してみたい人はぜひ入れてみてください．</li>
+<li>Davinchi Resolve: 無料でMacでも使える動画編集ツールです．使ったことないのでよくわからないです…</li>
+<li>XCode: MacOS, iOSアプリ開発がしたい人は入れましょう！</li>
+<li>Blender: 3Dモデルが作りたい人はぜひ入れましょう！</li>
+<li>Mathpix: 画面上のフォントの文字/手書きの文字をTeXの形式に変換してくれるOCRアプリです．</li>
+</ul>
+<h1 id="番外編-iPad"><a href="#番外編-iPad" class="headerlink" title="番外編: iPad"></a>番外編: iPad</h1><p>iPadには<strong>GoodNotes5</strong>だけは絶対に入れることをお勧めします！！！！！（もちろんApple Pencilかそれと同じようなペンも）<br>GoodNotes5のバックアップでPDFが選べるので，保存先をOneDriveにしておくとスムーズに課題が出せていいですよ．</p>
+<h1 id="終わりに"><a href="#終わりに" class="headerlink" title="終わりに"></a>終わりに</h1><p>ひとまず，最低限必要なOffice系のアプリだけダウンロードして，あとは必要に応じてダウンロードしていくのが一番いいと思います．自分が面倒だと思うことは大抵誰かも面倒だと思っているものなので，それが解決できるアプリは意外と存在しています．面倒なことを見つけたらアプリを探してみるといいと思います．<br>読んでくださってありがとうございました．<br><strong>Macはいいぞ！！！！！！！！！！</strong></p>
 ]]></content>
+      <categories>
+        <category>mac</category>
+      </categories>
+      <tags>
+        <tag>mac</tag>
+      </tags>
   </entry>
   <entry>
     <title>キーボード買った</title>
@@ -55,6 +97,34 @@
         <tag>keyboard</tag>
         <tag>cherry mx</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>nuctのカレンダーをmicrosoft ToDoに自動追加する（GUIのみでできる！）</title>
+    <url>/2022/01/29/auto-add-nuct-calendar-to-microsoft-todo/</url>
+    <content><![CDATA[<h1 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h1><h2 id="1-NUCTのカレンダーからリンクを取得する"><a href="#1-NUCTのカレンダーからリンクを取得する" class="headerlink" title="1. NUCTのカレンダーからリンクを取得する"></a>1. NUCTのカレンダーからリンクを取得する</h2><ol>
+<li>ホームのカレンダーから，公開（プライベート）</li>
+<li>個人用にこのカレンダーにリンクを生成する，の下側のリンクをコピーする</li>
+</ol>
+<h2 id="2-Microsoft-Outlookにカレンダーを追加する"><a href="#2-Microsoft-Outlookにカレンダーを追加する" class="headerlink" title="2. Microsoft Outlookにカレンダーを追加する"></a>2. Microsoft Outlookにカレンダーを追加する</h2><ol>
+<li><a href="https://outlook.office.com/calendar/addcalendar">https://outlook.office.com/calendar/addcalendar</a> にアクセスする（サインインしてなかったら，サインインが求められます）</li>
+<li>Webから定期受信を選び，先程のURLをコピペする</li>
+<li>諸々の設定をして保存</li>
+</ol>
+<h2 id="3-Microsoft-To-Doにリストを追加する"><a href="#3-Microsoft-To-Doにリストを追加する" class="headerlink" title="3. Microsoft To-Doにリストを追加する"></a>3. Microsoft To-Doにリストを追加する</h2><p>(注意:MicrosoftにはTo-DoとPlannerというサービスがあって，これらは別のものです．)</p>
+<ol>
+<li><a href="https://to-do.office.com/tasks/today">https://to-do.office.com/tasks/today</a>　にアクセスする．</li>
+<li>「新しいリスト」から作成</li>
+</ol>
+<h2 id="4-Microsoft-Power-Automateの設定をする"><a href="#4-Microsoft-Power-Automateの設定をする" class="headerlink" title="4. Microsoft Power Automateの設定をする"></a>4. Microsoft Power Automateの設定をする</h2><ol>
+<li><a href="https://powerautomate.microsoft.com/ja-jp/">https://powerautomate.microsoft.com/ja-jp/</a> にアクセス,　サインインする．</li>
+<li></li>
+<li>Outlookのトリガー，「When a new event is created」を選択</li>
+<li>予定表IDを設定．</li>
+<li>Microsoft To-Doのアクション，「To Doを追加する」を追加．</li>
+<li>To Doリスト，タイトル，期日などを設定する．タイトル以下は動的なコンテンツからカレンダーの情報を取得して入れる．<br><img src="../images/automate1.png" alt="一例"></li>
+<li>保存する</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>バイトの月給をGASで計算</title>
@@ -130,73 +200,105 @@
       </tags>
   </entry>
   <entry>
-    <title>Mac勢おすすめのアプリ</title>
-    <url>/2022/03/29/best-apps-for-mac-user/</url>
-    <content><![CDATA[<h1 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h1><p>とてつもなくアフィリエイトブログのようなタイトルの記事になっていますが，違います．この記事ではひたすらに私がインストールしてよかったと思うMac向けアプリケーションをカテゴリ別に紹介していきたいと思います．上にあるものほど優先度が高くなっていますので，下の方はすっ飛ばしていただいて構いません．</p>
-<h1 id="普段の授業用"><a href="#普段の授業用" class="headerlink" title="普段の授業用"></a>普段の授業用</h1><p>まずは普段大学の授業で使うアプリケーションです．</p>
-<h2 id="Microsoft-Word-Excel-Powerpoint-Teams（必須）"><a href="#Microsoft-Word-Excel-Powerpoint-Teams（必須）" class="headerlink" title="Microsoft Word, Excel, Powerpoint, Teams（必須）"></a>Microsoft Word, Excel, Powerpoint, Teams（必須）</h2><p>普段のレポートやプレゼン，実験の計算，オンライン授業の受講に必須になってくるアプリケーションです．<br>大学から機構アカウントをもらったと思いますが，そのライセンスでダウンロードできます．<br>詳しくはこちらを参照してください→ <a href="https://icts.nagoya-u.ac.jp/ja/services/ms365complicense/">https://icts.nagoya-u.ac.jp/ja/services/ms365complicense/</a><br>※ちなみに，機構アカウントで<strong>Minecraft Education Edition</strong>を使うことができます．（これも上記のページに書いてあります）</p>
-<h2 id="OneDrive-必須"><a href="#OneDrive-必須" class="headerlink" title="OneDrive(必須)"></a>OneDrive(必須)</h2><p>機構アカウントにOneDriveのストレージが5TBもらえるので，これを使わない手はないです．スマホにもOneDriveアプリを入れましょう．</p>
-<h2 id="zoom（必須）"><a href="#zoom（必須）" class="headerlink" title="zoom（必須）"></a>zoom（必須）</h2><p>オンライン授業でどこかしらで必ず使います．学校のアカウントでサインアップすると無料枠の40分制限がなくなるはずです．<br>ほかにもwebexをつかう授業が一つだけありましたが，ほとんどTeamsかZoomで事足りると思います．必要になったらでいいです．</p>
-<h2 id="Spark（推奨）"><a href="#Spark（推奨）" class="headerlink" title="Spark（推奨）"></a>Spark（推奨）</h2><p>メールクライアントのアプリケーションです．複数のメールアドレスを一つのメールボックスで受信することができて便利です．<br>gmail, 機構アカウントのメールなどを一括で管理することができます．Outlookほどはメールの装飾機能がないかもしれませんが，ほとんど使うことはないので大丈夫です．<br><a href="https://sparkmailapp.com/ja">https://sparkmailapp.com/ja</a></p>
-<h2 id="Google-Chrome-推奨"><a href="#Google-Chrome-推奨" class="headerlink" title="Google Chrome(推奨)"></a>Google Chrome(推奨)</h2><p>ウェブブラウザです．さまざまな拡張機能が入れられるので，SafariではなくChromeを使うことをお勧めします．<br>Chromeを使ってできることを紹介します．</p>
-<ol>
-<li>拡張機能</li>
+    <title>NUCTのカレンダーをTrelloにうつす</title>
+    <url>/2021/11/22/nuct-calendar-to-trello/</url>
+    <content><![CDATA[<p>前，GASでNUCTのカレンダーをGoogle Tasksに変換するというのをやったのですが，それのTrelloバージョンを作りました．なぜなら微積と線形から逃げたかったからです．現実逃避をするにはGASいじりは最適です．</p>
+<p>真面目な動機としては，Google Tasksだとファイルとの連携がURLからしかできなくて面倒だと思ったからです．例えば，レポートのタスクとwordファイルが一緒になってたら便利じゃないですか？Trelloなら，きこーアカウントのOneDrive上のファイルとタスクを紐付けることができます．</p>
+<h5 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h5><ol>
+<li>Google Spread Sheetを新しく作って，A1セルに最終更新と書きましょう．(なんか)</li>
+<li>上のタブの拡張機能＞Google App Scriptから新しいGASを作ります．</li>
+<li>下のコードを全てファイルを分けてコピペします．</li>
+<li>functions.gsに移動して，setup()を実行します．</li>
+<li>トリガーを設定します．実行する関数はupdate(),時間指定のトリガーにしましょう．間隔はなんでもいいけど，私は二時間にしてます．<br>あとはほっといたらtrelloに勝手にタスクが追加されてるはずです．</li>
 </ol>
+<p>何より，タスク管理ツールを使う以前に，タスクをやり切る心意気を持ちましょう．</p>
+<p>コードはこちら↓</p>
+<script src="https://gist.github.com/nac-39/e75048b950b4be91917a78d590e64065.js"></script>]]></content>
+  </entry>
+  <entry>
+    <title>Google Tasks api 叩いてpillowでデスクトップ画像生成</title>
+    <url>/2021/10/21/google-tasks-api-generate-image/</url>
+    <content><![CDATA[<h1 id="やりたいこと"><a href="#やりたいこと" class="headerlink" title="やりたいこと"></a>やりたいこと</h1><p>Tasksをパソコンのデスクトップ画面に表示したい</p>
+<h1 id="やったこと．"><a href="#やったこと．" class="headerlink" title="やったこと．"></a>やったこと．</h1><h3 id="PythonでTasks-APIを叩く"><a href="#PythonでTasks-APIを叩く" class="headerlink" title="PythonでTasks APIを叩く"></a>PythonでTasks APIを叩く</h3><p>API叩くのはよくわからないので，以下のリンクのquickstart.pyをコピペしてくる．<br><a href="https://developers.google.com/tasks/quickstart/python">https://developers.google.com/tasks/quickstart/python</a></p>
+<p>しかし，quickstart.pyを実行したら，<code>credentials.json</code>がないと言われた.</p>
+<p><a href="https://github.com/googleworkspace/python-samples/issues/211">https://github.com/googleworkspace/python-samples/issues/211</a></p>
+<p>このissueに解決方法が書いてあった．要するにOAuthの認証情報をGoogle Cloud Platformで作って，それをjson形式でダウンロードしておかないといけなかったらしい．</p>
+<p>quickstart.pyを実行するとタスクリストの名前とidが出てくるので，それを以下のコードの<code>tasklist=&quot;task id&quot;</code>に入れたら，タスクの一覧がとってこれる．<br>この辺の詳細は<a href="https://developers.google.com/resources/api-libraries/documentation/tasks/v1/python/latest/index.html">Google Tasks API PyDoc documentation</a>をみよう．</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Call the Tasks API</span></span><br><span class="line">    results = service.tasklists().<span class="built_in">list</span>(maxResults=<span class="number">10</span>).execute()</span><br><span class="line">    items = results.get(<span class="string">&#x27;items&#x27;</span>, [])</span><br><span class="line">    </span><br><span class="line">    task_list = service.tasks().<span class="built_in">list</span>(tasklist=<span class="string">&quot;task id&quot;</span>).execute()</span><br></pre></td></tr></table></figure>
+
+<h3 id="pillowで画像を生成する"><a href="#pillowで画像を生成する" class="headerlink" title="pillowで画像を生成する"></a>pillowで画像を生成する</h3><p>コード貼っとくので，適当に改良して使って（このコード自体八割コピペ）</p>
+<p>ちょっと解説</p>
 <ul>
-<li>DeepL(beta版): 選択範囲を翻訳できます．Google翻訳よりも精度が高いです．</li>
-<li>Google翻訳: 選択範囲を翻訳できます．</li>
-<li>Awesome Screenshot App: 画面録画を拡張機能から行い，そのまま公開して共有用のURLを取得できます．</li>
-<li>Desktop app for Google Tasks: カンバン方式でGoogle Tasksを管理できます．カンバン方式が好きな人にはお勧め．</li>
-<li>Grammarly for Chrome: NUCTで英文を書いて出すタイプの課題の時に便利です．</li>
-<li>Mouse Dictionary: カーソルの下の英単語の辞書が爆速で出てきます．PDFにも使えるので便利です．</li>
+<li><code>img = Image.new(mode, size color=(0,0,0))</code>で新しく単一色の画像を生成してる．</li>
+<li>フォントのパスはデフォルトで入ってるのは<code>/System/Library/Fonts/hogehoge.ttc</code>だけど，自分で追加したやつは<code>/Users/ユーザー名/Library/hogehoge.ttf</code>になる．</li>
+<li>フォントは文字ごとに高さが違うらしいので，文字の高さを基準に描画しない方がいい</li>
+<li><code>draw.text((x,y), 文字, font=フォント, fill=(R,G,B))</code>で文字を描画する．</li>
+<li>色の指定にはカラーピッカーで検索すると便利．</li>
+<li><code>strftime</code>の引数は<a href="https://note.nkmk.me/python-datetime-usage/#_1">ここ</a>を参照．</li>
 </ul>
-<ol start="2">
-<li>自分で作った拡張機能</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createImage</span>(<span class="params">items</span>):</span> <span class="comment">#items = [[タイトル,締切日時],[タイトル,締切日時]...]</span></span><br><span class="line">    <span class="comment">#img = Image.open(&#x27;bg.png&#x27;).copy() # 入力ファイルを指定</span></span><br><span class="line">    img = Image.new(<span class="string">&quot;RGB&quot;</span>, (<span class="number">2500</span>,<span class="number">1600</span>), color=(<span class="number">22</span>, <span class="number">26</span>, <span class="number">59</span>))</span><br><span class="line">    imagesize = img.size        <span class="comment"># img.size[0]は幅、img.size[1]は高さを表す</span></span><br><span class="line">    draw = ImageDraw.Draw(img)  <span class="comment"># ImageDrawオブジェクトを作成</span></span><br><span class="line"></span><br><span class="line">    font1 = ImageFont.truetype(<span class="string">&quot;/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc&quot;</span>, <span class="number">64</span>)  <span class="comment"># フォントを指定、64はサイズでピクセル単位</span></span><br><span class="line">    font2 = ImageFont.truetype(<span class="string">&quot;/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc&quot;</span>, <span class="number">48</span>)  <span class="comment"># フォントを指定、64はサイズでピクセル単位</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> text, due <span class="keyword">in</span> items:</span><br><span class="line">        size1 = font1.getsize(text)</span><br><span class="line">        size2 = font2.getsize(text)</span><br><span class="line">        tate = <span class="number">131</span> <span class="comment">#dueとtitle合わせた高さ，適当に決めた．</span></span><br><span class="line">        draw.text((<span class="number">10</span>, <span class="number">80</span> + count * tate), due, font=font2, fill=(<span class="number">174</span>, <span class="number">196</span>, <span class="number">230</span>))</span><br><span class="line">        draw.text((<span class="number">64</span>, <span class="number">80</span> + count * tate+ size2[<span class="number">1</span>] +<span class="number">10</span>), text, font=font1, fill=<span class="string">&#x27;#FFF&#x27;</span>)</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> count &gt; <span class="number">10</span>:<span class="comment">#10個だけを表示する．</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="comment">#画像の生成日時も入れる．</span></span><br><span class="line">    now = datetime.datetime.now().strftime(<span class="string">&quot;%b %d %H:%M&quot;</span>)</span><br><span class="line">    draw.text((<span class="number">10</span>,imagesize[<span class="number">1</span>]-<span class="number">48</span>),now,font=font2,fill=(<span class="number">145</span>,<span class="number">145</span>,<span class="number">145</span>))</span><br><span class="line">    <span class="comment"># ファイルを保存</span></span><br><span class="line">    img.save(<span class="string">&#x27;new_bg.png&#x27;</span>, <span class="string">&#x27;PNG&#x27;</span>, quality=<span class="number">100</span>, optimize=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="コマンドで壁紙を設定できるようにする．"><a href="#コマンドで壁紙を設定できるようにする．" class="headerlink" title="コマンドで壁紙を設定できるようにする．"></a>コマンドで壁紙を設定できるようにする．</h3><ul>
+<li><code>wallpaper</code>っていうコマンドをhomebrewでインストールして使った．他にもOSの壁紙が保存してあるディレクトリに画像を直接追加する方法もあるみたい．</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install wallpaper</span><br><span class="line">wallpaper <span class="built_in">set</span> ./hogehoge.png</span><br></pre></td></tr></table></figure>
+
+<p>これでhogehoge.pngが今いるデスクトップの壁紙になった．また，パソコンを立ち上げた時のログイン画面の壁紙もこれになる．</p>
+<p>シェルのコマンドをPythonから使うために，<code>subprocess</code>モジュールを使う．<br>詳しくはググって欲しい．試行錯誤の末，これならうまく行った．</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">subprocess.run([<span class="string">&quot;wallpaper set 生成した画像への絶対パス&quot;</span>],shell=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="定期的に実行する．"><a href="#定期的に実行する．" class="headerlink" title="定期的に実行する．"></a>定期的に実行する．</h3><p>定期的に実行するためには，<code>schedule</code>モジュールを使う．</p>
+<p>scheduleの基本の型はこんなかんじ</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> schedule</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">job</span>():</span></span><br><span class="line">    <span class="comment">#一回の動作でやること</span></span><br><span class="line">    hogehoge()</span><br><span class="line"><span class="comment">#1時間毎のjob実行を登録</span></span><br><span class="line">schedule.every(<span class="number">1</span>).hour.do(job)</span><br><span class="line"><span class="comment">#hour-&gt;minuteとかに変えられる</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    schedule.run_pending()</span><br><span class="line">    time.sleep(<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>while True:</code>がないと一回限りで終わってしまう．</p>
+<h3 id="これをいい感じに組み合わせると完成！！！！！！！！！"><a href="#これをいい感じに組み合わせると完成！！！！！！！！！" class="headerlink" title="これをいい感じに組み合わせると完成！！！！！！！！！"></a>これをいい感じに組み合わせると完成！！！！！！！！！</h3><p>動けばいいやのクソコードなので公開はしないかな<br>タスク管理ツールは作る気力があるのにタスクをやる気が起きません…………</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>GASでNUCTのスケジュールをタスクに変換する</title>
+    <url>/2021/08/10/nuct-schedule-to-gtasks-with-gas/</url>
+    <content><![CDATA[<h1 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h1><ol>
+<li>NUCTからGoogleカレンダーにエクスポートする</li>
+<li>コードをGoogleSpreadSheetのエディタにコピペする</li>
+<li>コードを実行する</li>
 </ol>
-<ul>
-<li>NUCTに自動ログインする拡張機能を作ることができます．<br><a href="https://twitter.com/qastad/status/1502278487801237508?s=20&amp;t=fXyaYqG5_LjUaLGj6AQJ2g">https://twitter.com/qastad/status/1502278487801237508?s=20&amp;t=fXyaYqG5_LjUaLGj6AQJ2g</a><br>すでに作られた人がいるのでこれを使うなり，改造するなりするといいと思います．<br>多要素認証のシード値は一つしか作れないので注意してください．（新しいシード値を生成すると古いものが使えなくなる．）</li>
-</ul>
-<ol start="3">
-<li>デベロッパーツール</li>
+<h1 id="1-NUCT→Googleカレンダーにエクスポート"><a href="#1-NUCT→Googleカレンダーにエクスポート" class="headerlink" title="1.NUCT→Googleカレンダーにエクスポート"></a>1.NUCT→Googleカレンダーにエクスポート</h1><ol>
+<li>NUCT&gt;スケジュール&gt;公開（プライベート）&gt; httpsから始まるリンクをコピー</li>
+<li>Googleカレンダー &gt; 他のカレンダーの横の＋ &gt; URLで追加 &gt; URLをペースト</li>
 </ol>
-<ul>
-<li>F12キー（Macの人はFnキーを押しながら）を押すと呼び出せます．Webページのソースコードをみることができたり，javascriptというプログラミング言語が書けるとページの表示を操作したりできます．</li>
-</ul>
-<ol start="4">
-<li>ショートカットを作成</li>
+<h1 id="2-コードをGoogleSpreadSheetのエディタにコピペする"><a href="#2-コードをGoogleSpreadSheetのエディタにコピペする" class="headerlink" title="2.コードをGoogleSpreadSheetのエディタにコピペする"></a>2.コードをGoogleSpreadSheetのエディタにコピペする</h1><ol>
+<li>スプレッドシートを新規作成&gt;ツール&gt;スクリプトエディタ</li>
+<li>サービス &gt; Tasks APIを選択、追加</li>
+<li>ファイルの＋から新しいスクリプトを3つ追加 &gt; スクリプトの名前を上から1,2,3,4にする</li>
+<li>下記のコード1<del>4をGAS上のスクリプト1</del>4にコピペ</li>
 </ol>
-<ul>
-<li>macのDockにアプリのようにショートカットを作成することができます．<br>ブラウザの右上の…（縦）からその他のツール＞ショートカットを作成で作ることができます．NUCTのショートカットを作ってDockに登録しておくと便利です．</li>
-</ul>
-<h2 id="Visual-Studio-Code（プログラミングがある人は推奨，それ以外はどっちでも）"><a href="#Visual-Studio-Code（プログラミングがある人は推奨，それ以外はどっちでも）" class="headerlink" title="Visual Studio Code（プログラミングがある人は推奨，それ以外はどっちでも）"></a>Visual Studio Code（プログラミングがある人は推奨，それ以外はどっちでも）</h2><p>コードを編集する時にとっっっっても便利なアプリケーションです．これが便利な点はひとまず2点あって，一つは豊富すぎる拡張機能，二つ目はコードに自動で色がつくことです（語り尽くせないのであとは略）．PythonやC言語，HTMLなどの言語を授業で使う人はぜひダウンロードしましょう．</p>
-<h2 id="Trello-どっちでも"><a href="#Trello-どっちでも" class="headerlink" title="Trello(どっちでも)"></a>Trello(どっちでも)</h2><p>カンバン形式でタスクを管理するツールです．タスクの管理ツールは正直なんでもいいと思うのですが，Trelloを使うのであればもう一つPomelloというアプリをお勧めしたいです．<a href="https://pomelloapp.com/">https://pomelloapp.com/</a> これはTrelloと連動したポモドーロタイマーです．ポモドーロテクニックは25分集中→5分休憩を繰り返す集中の方法で，これが好きな人にはとてもお勧めです．<br>また，ほとんどの授業でNUCTで課題が出されるのですが，これを自動的にTrelloのToDoに追加することができます（APIがあるツールならなんでもできますが）．これはこのサイトの昔の記事を参照してください．</p>
-<h1 id="日常で使いそうなアプリ"><a href="#日常で使いそうなアプリ" class="headerlink" title="日常で使いそうなアプリ"></a>日常で使いそうなアプリ</h1><p>続いて，授業では使わないけど日常的に便利そうなアプリを紹介します．</p>
-<h2 id="お絵描き系"><a href="#お絵描き系" class="headerlink" title="お絵描き系"></a>お絵描き系</h2><p>唐突に画像編集したり，イラストを編集したりしたくなることがあるかもしれません．そんな時に使えるアプリケーションです．</p>
-<ul>
-<li>Skitch: スクショに文字や矢印を入れる程度</li>
-<li>FireAlpacaなど: まあまあガッツリ画像編集したり，イラストを書いたりしたい時．（ビットマップの画像）</li>
-<li>InkSkape: 線が綺麗なイラスト（ベクター画像）<h2 id="ツール系"><a href="#ツール系" class="headerlink" title="ツール系"></a>ツール系</h2></li>
-<li>Clipy: クリップモードの履歴が残るアプリです．何十件か前のコピペまで遡れるし，よく使う単語はスニペットも登録することができるので便利です．Windowsには標準搭載されている機能らしいです………</li>
-<li>ShiftIt: 画面分割できるアプリです．1/4サイズもできて便利です．有料のMagnetというアプリもありますが，個人的には無料のこっちで十分だと思います．</li>
-<li>RunCat: CPUの使用率によってツールバーにいる猫の走る速度が変化するアプリです．猫が可愛いのでお勧めです．</li>
-<li>Karabiner Elements: キーボードのキーマップを変えられるソフトです．個人的にはctrl+ijklで矢印キーになる設定が便利です．また，JIS配列のキーボードとUS配列のキーボードを併用したい人にお勧めです．</li>
-<li>Obsidian: マークダウンという形式で文章が書けるツールです．マークダウンのメモエディタならこれをお勧めしたいです．形式の指定されていない簡単なレポートなら，Obsidianで書いてPDFに出力すると楽だと思います．</li>
-<li>Slack: サークルや授業によっては使います．スタンプ作るの楽しいですよ．</li>
-<li>OBS: YouTubeなどの配信者向けのアプリですが，仮想カメラの機能がzoomやTeamsなどで便利です．画面共有が一人しかできない時にOBSを使って自分のカメラ画像をパソコンの画面共有にすることができます．また，iPhoneの画面を配信することができるので，iPhoneの拡大鏡アプリの画面をOBSでうつすことで簡易的なWebカメラにすることができます．</li>
-<li>Docker Desktop: 開発する時にとっっっっても便利です．パソコンの中にパソコンの環境をいくつも作れます．webアプリなどを開発してみたい人はぜひ入れてみてください．</li>
-<li>Davinchi Resolve: 無料でMacでも使える動画編集ツールです．使ったことないのでよくわからないです…</li>
-<li>XCode: MacOS, iOSアプリ開発がしたい人は入れましょう！</li>
-<li>Blender: 3Dモデルが作りたい人はぜひ入れましょう！</li>
-<li>Mathpix: 画面上のフォントの文字/手書きの文字をTeXの形式に変換してくれるOCRアプリです．</li>
-</ul>
-<h1 id="番外編-iPad"><a href="#番外編-iPad" class="headerlink" title="番外編: iPad"></a>番外編: iPad</h1><p>iPadには<strong>GoodNotes5</strong>だけは絶対に入れることをお勧めします！！！！！（もちろんApple Pencilかそれと同じようなペンも）<br>GoodNotes5のバックアップでPDFが選べるので，保存先をOneDriveにしておくとスムーズに課題が出せていいですよ．</p>
-<h1 id="終わりに"><a href="#終わりに" class="headerlink" title="終わりに"></a>終わりに</h1><p>ひとまず，最低限必要なOffice系のアプリだけダウンロードして，あとは必要に応じてダウンロードしていくのが一番いいと思います．自分が面倒だと思うことは大抵誰かも面倒だと思っているものなので，それが解決できるアプリは意外と存在しています．面倒なことを見つけたらアプリを探してみるといいと思います．<br>読んでくださってありがとうございました．<br><strong>Macはいいぞ！！！！！！！！！！</strong></p>
+<h3 id="コード１：初期状態を作るために使う"><a href="#コード１：初期状態を作るために使う" class="headerlink" title="コード１：初期状態を作るために使う"></a>コード１：初期状態を作るために使う</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function henkan(today) &#123;</span><br><span class="line">                  //Tue Apr 13 2021 19:00:00 GMT+0900(Japan Standard Time)となっている日時をRFC3339方式（2021-04-13T19:00:00_00.000+0900)に変換</span><br><span class="line">                  timex = Utilities.formatDate(today,&quot;JST&quot;, &quot;HH:mm:ss&quot;)</span><br><span class="line">                  datex = Utilities.formatDate(today,&quot;JST&quot;, &quot;yyyy-MM-dd&quot;);</span><br><span class="line">                  hiduke = datex + &quot;T&quot; + timex + &quot;.000+09:00&quot; ;</span><br><span class="line">                  return(hiduke);</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                function Getnow() &#123;</span><br><span class="line">                  var d = new Date();</span><br><span class="line">                  var y = d.getFullYear();</span><br><span class="line">                  var mon = d.getMonth() + 1;</span><br><span class="line">                  var d2 = d.getDate();</span><br><span class="line">                  var h = d.getHours();</span><br><span class="line">                  var min = d.getMinutes();</span><br><span class="line">                  var s = d.getSeconds();</span><br><span class="line">                  var now = y+&quot;/&quot;+mon+&quot;/&quot;+d2+&quot; &quot;+h+&quot;:&quot;+min+&quot;:&quot;+s;</span><br><span class="line">                  return now;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                function setup() &#123;</span><br><span class="line">                  //初期状態を作るために使う</span><br><span class="line">                  CalendarApp.getDefaultCalendar();</span><br><span class="line">                  const calendarId = cID();</span><br><span class="line">                  const calendar = CalendarApp.getCalendarById(calendarId);</span><br><span class="line">                  const taskListId = tID();</span><br><span class="line">                </span><br><span class="line">                  const startdate = new Date(&#x27;2021/5/9&#x27;);//カレンダーのイベントを読み込み始める日付</span><br><span class="line">                  const enddate = new Date(&#x27;2029/12/31&#x27;);</span><br><span class="line">                  const events = calendar.getEvents(startdate,enddate);</span><br><span class="line">                </span><br><span class="line">                  for(const event of events)&#123;</span><br><span class="line">                    let titleEvent = event.getTitle();</span><br><span class="line">                    let description = event.getDescription();</span><br><span class="line">                    let shimekiri = henkan(event.getEndTime());</span><br><span class="line">                  </span><br><span class="line">                    var task = &#123;</span><br><span class="line">                        title: titleEvent, //  タイトル</span><br><span class="line">                        notes: description, // メモ</span><br><span class="line">                        due: shimekiri // 締切日。日付のフォーマットはRFC3339に準拠</span><br><span class="line">                      &#125;;</span><br><span class="line">                      task = Tasks.Tasks.insert(task, taskListId);</span><br><span class="line">                      Logger.log(&quot;新しいタスクのID：&quot; + task.id);</span><br><span class="line">                    </span><br><span class="line">                  &#125;</span><br><span class="line">                  const sheet = SpreadsheetApp.getActiveSheet();</span><br><span class="line">                  const cell = sheet.getRange(sheet.getLastRow()+1,1);</span><br><span class="line">                  cell.setValue(Getnow());</span><br><span class="line">                  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="コード２：タスクいじる関連です。"><a href="#コード２：タスクいじる関連です。" class="headerlink" title="コード２：タスクいじる関連です。"></a>コード２：タスクいじる関連です。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function getTaskLists() &#123;</span><br><span class="line">              var taskLists = Tasks.Tasklists.list().getItems();</span><br><span class="line">              if (!taskLists) &#123;</span><br><span class="line">                return [];</span><br><span class="line">              &#125;</span><br><span class="line">              return taskLists.map(function(taskList) &#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                  id: taskList.getId(),</span><br><span class="line">                  name: taskList.getTitle()</span><br><span class="line">                &#125;;</span><br><span class="line">              &#125;);</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            function viewAllList()&#123;</span><br><span class="line">              var myTaskLists = getTaskLists();</span><br><span class="line">              let i =0;</span><br><span class="line">              for(const j of myTaskLists)&#123;</span><br><span class="line">              Logger.log( myTaskLists[i].id);</span><br><span class="line">              Logger.log( myTaskLists[i].name);</span><br><span class="line">              i++;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            function callListTasks()&#123;</span><br><span class="line">              const myTaskListId = listTaskLists();</span><br><span class="line">              listTasks(myTaskListId);</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            function listTaskLists() &#123;</span><br><span class="line">              //タスクリストのidと名前を返す</span><br><span class="line">              let taskLists = Tasks.Tasklists.list();</span><br><span class="line">              if (taskLists.items) &#123;</span><br><span class="line">                let peach = [[],[]];</span><br><span class="line">                Logger.log(taskLists.items.length);</span><br><span class="line">                for (let i = 0; i &lt; taskLists.items.length; i++) &#123;</span><br><span class="line">                  let taskList = taskLists.items[i];                  </span><br><span class="line">                  peach[i] = [taskList.id,taskList.title];</span><br><span class="line">                &#125;</span><br><span class="line">                return peach;</span><br><span class="line">              &#125; else &#123;</span><br><span class="line">                Logger.log(&#x27;Sorry, No task lists found.&#x27;);</span><br><span class="line">                return &quot;none&quot;;</span><br><span class="line">              &#125;</span><br><span class="line">              </span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            function listTasks(taskListId) &#123;</span><br><span class="line">              //あるタスクリストの中のタスクの一覧を返す</span><br><span class="line">              let tasks = Tasks.Tasks.list(taskListId);</span><br><span class="line">              if (tasks.items) &#123;</span><br><span class="line">                console.log(tasks.items.length);</span><br><span class="line">                let taskReturn = [];</span><br><span class="line">                for (let i = 0; i &lt; tasks.items.length; i++) &#123;</span><br><span class="line">                  let task = tasks.items[i];</span><br><span class="line">                  taskReturn[i] = task.title;</span><br><span class="line">                &#125;</span><br><span class="line">                return taskReturn;</span><br><span class="line">              &#125; else &#123;</span><br><span class="line">                Logger.log(&#x27;Sorry, No tasks found.&#x27;);</span><br><span class="line">                return &quot;none&quot;;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            function view()&#123;</span><br><span class="line">              array = listTaskLists();</span><br><span class="line">              let j=0;</span><br><span class="line">              for(i of array)&#123;</span><br><span class="line">              Logger.log(listTasks(array[j][0]));</span><br><span class="line">              j++;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            function viewAllListInSheet()&#123;</span><br><span class="line">              const sheet = SpreadsheetApp.getActiveSheet();</span><br><span class="line">              var myTaskLists = getTaskLists();              </span><br><span class="line">              let i =0;</span><br><span class="line">              for(const j of myTaskLists)&#123;</span><br><span class="line">                let cell = sheet.getRange(i+1,6);</span><br><span class="line">                cell.setValue( myTaskLists[i].id);</span><br><span class="line">                cell = sheet.getRange(i+1,7);</span><br><span class="line">                cell.setValue( myTaskLists[i].name);</span><br><span class="line">                i++;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          </span><br></pre></td></tr></table></figure>
+
+<h3 id="コード３：更新するために使います。改善の余地あり。"><a href="#コード３：更新するために使います。改善の余地あり。" class="headerlink" title="コード３：更新するために使います。改善の余地あり。"></a>コード３：更新するために使います。改善の余地あり。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function update() &#123;</span><br><span class="line">             CalendarApp.getDefaultCalendar();</span><br><span class="line">             const sheet = SpreadsheetApp.getActiveSheet();</span><br><span class="line">             const calendarId = cID();</span><br><span class="line">             const calendar = CalendarApp.getCalendarById(calendarId);</span><br><span class="line">             const taskListId = tID();</span><br><span class="line">             </span><br><span class="line">             const startdate = new Date(&#x27;2021/5/1&#x27;);</span><br><span class="line">             const enddate = new Date(&#x27;2030/12/31&#x27;);</span><br><span class="line">             const events = calendar.getEvents(startdate,enddate);</span><br><span class="line">             const cell = sheet.getRange(sheet.getLastRow(),1);</span><br><span class="line">             let lastUpdate = new Date(cell.getValue());</span><br><span class="line">             lastUpdate = lastUpdate.getTime();</span><br><span class="line">             </span><br><span class="line">             for(const event of events)&#123;</span><br><span class="line">              console.log(event.getTitle()  + &quot;:&quot; +event.getDateCreated())</span><br><span class="line">              let whenNewEvent = event.getDateCreated().getTime();</span><br><span class="line">              //この判定方法やめた方がいいんかな</span><br><span class="line">              //ある予定が作成された日時と最終更新日時を比べて、追加するようにしている</span><br><span class="line">              </span><br><span class="line">              let bool = lastUpdate &lt; whenNewEvent; </span><br><span class="line">              </span><br><span class="line">              if(bool == true)&#123;</span><br><span class="line">                let titleEvent = event.getTitle();</span><br><span class="line">                let description = event.getDescription();</span><br><span class="line">                let shimekiri = henkan(event.getEndTime());</span><br><span class="line">                </span><br><span class="line">                 var task = &#123;</span><br><span class="line">                   title: titleEvent, //  タイトル</span><br><span class="line">                   notes: description + &quot;from update script&quot;, // いらんかったら消してね</span><br><span class="line">                   due: shimekiri // 締切日。日付のフォーマットはRFC3339に準拠</span><br><span class="line">                 &#125;;</span><br><span class="line">            </span><br><span class="line">                //コンソールに書き出す</span><br><span class="line">                task = Tasks.Tasks.insert(task, taskListId);</span><br><span class="line">                Logger.log(&quot;新しいタスクのID：&quot; + task.id);</span><br><span class="line">                </span><br><span class="line">                //スプレッドシートに更新日時を書き足す</span><br><span class="line">                const cell = sheet.getRange(sheet.getLastRow()+1,sheet.getLastColumn());</span><br><span class="line">                cell.setValue(Getnow());</span><br><span class="line">              &#125;</span><br><span class="line">             &#125;</span><br><span class="line">             </span><br><span class="line">            &#125;   </span><br></pre></td></tr></table></figure>
+
+<h3 id="コード４-IDを登録するのに使います。"><a href="#コード４-IDを登録するのに使います。" class="headerlink" title="コード４:IDを登録するのに使います。"></a>コード４:IDを登録するのに使います。</h3><p>※IDはカレンダーやタスクのリスト一つ一つに割り振られています。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function tID() &#123;</span><br><span class="line">         const sheet = SpreadsheetApp.getActiveSheet();</span><br><span class="line">         let cell = sheet.getRange(&#x27;B1&#x27;);</span><br><span class="line">         let tID = cell.getValue();</span><br><span class="line">         return tID;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       function cID() &#123;</span><br><span class="line">         const sheet = SpreadsheetApp.getActiveSheet();</span><br><span class="line">         let cell = sheet.getRange(&#x27;B2&#x27;);</span><br><span class="line">         let cID = cell.getValue();</span><br><span class="line">         return cID;</span><br><span class="line">         </span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="実行する"><a href="#実行する" class="headerlink" title="実行する"></a>実行する</h1><ol>
+<li>カレンダーIDを調べる。googleカレンダ &gt; オーバーフローメニュー &gt; 設定 &gt; カレンダーを結合 &gt; カレンダーID</li>
+<li>カレンダーIDをスプレッドシートのB2にペースト</li>
+<li>スクリプト2を開き、viewAllListInSheetを選択、実行する。</li>
+<li>スプレッドシートにタスクID一覧が表示されるので、選んでB1にペースト</li>
+<li>スクリプト1を開く。setupを選択、実行する。</li>
+<li>更新したい時はスクリプト3をからupdateを選択、実行する。</li>
+</ol>
 ]]></content>
       <categories>
-        <category>mac</category>
+        <category>Coding</category>
       </categories>
       <tags>
-        <tag>mac</tag>
+        <tag>GAS</tag>
+        <tag>Coding</tag>
+        <tag>JavaScript</tag>
+        <tag>NUCT</tag>
       </tags>
   </entry>
   <entry>
@@ -352,46 +454,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Google Tasks api 叩いてpillowでデスクトップ画像生成</title>
-    <url>/2021/10/21/google-tasks-api-generate-image/</url>
-    <content><![CDATA[<h1 id="やりたいこと"><a href="#やりたいこと" class="headerlink" title="やりたいこと"></a>やりたいこと</h1><p>Tasksをパソコンのデスクトップ画面に表示したい</p>
-<h1 id="やったこと．"><a href="#やったこと．" class="headerlink" title="やったこと．"></a>やったこと．</h1><h3 id="PythonでTasks-APIを叩く"><a href="#PythonでTasks-APIを叩く" class="headerlink" title="PythonでTasks APIを叩く"></a>PythonでTasks APIを叩く</h3><p>API叩くのはよくわからないので，以下のリンクのquickstart.pyをコピペしてくる．<br><a href="https://developers.google.com/tasks/quickstart/python">https://developers.google.com/tasks/quickstart/python</a></p>
-<p>しかし，quickstart.pyを実行したら，<code>credentials.json</code>がないと言われた.</p>
-<p><a href="https://github.com/googleworkspace/python-samples/issues/211">https://github.com/googleworkspace/python-samples/issues/211</a></p>
-<p>このissueに解決方法が書いてあった．要するにOAuthの認証情報をGoogle Cloud Platformで作って，それをjson形式でダウンロードしておかないといけなかったらしい．</p>
-<p>quickstart.pyを実行するとタスクリストの名前とidが出てくるので，それを以下のコードの<code>tasklist=&quot;task id&quot;</code>に入れたら，タスクの一覧がとってこれる．<br>この辺の詳細は<a href="https://developers.google.com/resources/api-libraries/documentation/tasks/v1/python/latest/index.html">Google Tasks API PyDoc documentation</a>をみよう．</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Call the Tasks API</span></span><br><span class="line">    results = service.tasklists().<span class="built_in">list</span>(maxResults=<span class="number">10</span>).execute()</span><br><span class="line">    items = results.get(<span class="string">&#x27;items&#x27;</span>, [])</span><br><span class="line">    </span><br><span class="line">    task_list = service.tasks().<span class="built_in">list</span>(tasklist=<span class="string">&quot;task id&quot;</span>).execute()</span><br></pre></td></tr></table></figure>
-
-<h3 id="pillowで画像を生成する"><a href="#pillowで画像を生成する" class="headerlink" title="pillowで画像を生成する"></a>pillowで画像を生成する</h3><p>コード貼っとくので，適当に改良して使って（このコード自体八割コピペ）</p>
-<p>ちょっと解説</p>
-<ul>
-<li><code>img = Image.new(mode, size color=(0,0,0))</code>で新しく単一色の画像を生成してる．</li>
-<li>フォントのパスはデフォルトで入ってるのは<code>/System/Library/Fonts/hogehoge.ttc</code>だけど，自分で追加したやつは<code>/Users/ユーザー名/Library/hogehoge.ttf</code>になる．</li>
-<li>フォントは文字ごとに高さが違うらしいので，文字の高さを基準に描画しない方がいい</li>
-<li><code>draw.text((x,y), 文字, font=フォント, fill=(R,G,B))</code>で文字を描画する．</li>
-<li>色の指定にはカラーピッカーで検索すると便利．</li>
-<li><code>strftime</code>の引数は<a href="https://note.nkmk.me/python-datetime-usage/#_1">ここ</a>を参照．</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createImage</span>(<span class="params">items</span>):</span> <span class="comment">#items = [[タイトル,締切日時],[タイトル,締切日時]...]</span></span><br><span class="line">    <span class="comment">#img = Image.open(&#x27;bg.png&#x27;).copy() # 入力ファイルを指定</span></span><br><span class="line">    img = Image.new(<span class="string">&quot;RGB&quot;</span>, (<span class="number">2500</span>,<span class="number">1600</span>), color=(<span class="number">22</span>, <span class="number">26</span>, <span class="number">59</span>))</span><br><span class="line">    imagesize = img.size        <span class="comment"># img.size[0]は幅、img.size[1]は高さを表す</span></span><br><span class="line">    draw = ImageDraw.Draw(img)  <span class="comment"># ImageDrawオブジェクトを作成</span></span><br><span class="line"></span><br><span class="line">    font1 = ImageFont.truetype(<span class="string">&quot;/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc&quot;</span>, <span class="number">64</span>)  <span class="comment"># フォントを指定、64はサイズでピクセル単位</span></span><br><span class="line">    font2 = ImageFont.truetype(<span class="string">&quot;/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc&quot;</span>, <span class="number">48</span>)  <span class="comment"># フォントを指定、64はサイズでピクセル単位</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> text, due <span class="keyword">in</span> items:</span><br><span class="line">        size1 = font1.getsize(text)</span><br><span class="line">        size2 = font2.getsize(text)</span><br><span class="line">        tate = <span class="number">131</span> <span class="comment">#dueとtitle合わせた高さ，適当に決めた．</span></span><br><span class="line">        draw.text((<span class="number">10</span>, <span class="number">80</span> + count * tate), due, font=font2, fill=(<span class="number">174</span>, <span class="number">196</span>, <span class="number">230</span>))</span><br><span class="line">        draw.text((<span class="number">64</span>, <span class="number">80</span> + count * tate+ size2[<span class="number">1</span>] +<span class="number">10</span>), text, font=font1, fill=<span class="string">&#x27;#FFF&#x27;</span>)</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> count &gt; <span class="number">10</span>:<span class="comment">#10個だけを表示する．</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="comment">#画像の生成日時も入れる．</span></span><br><span class="line">    now = datetime.datetime.now().strftime(<span class="string">&quot;%b %d %H:%M&quot;</span>)</span><br><span class="line">    draw.text((<span class="number">10</span>,imagesize[<span class="number">1</span>]-<span class="number">48</span>),now,font=font2,fill=(<span class="number">145</span>,<span class="number">145</span>,<span class="number">145</span>))</span><br><span class="line">    <span class="comment"># ファイルを保存</span></span><br><span class="line">    img.save(<span class="string">&#x27;new_bg.png&#x27;</span>, <span class="string">&#x27;PNG&#x27;</span>, quality=<span class="number">100</span>, optimize=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="コマンドで壁紙を設定できるようにする．"><a href="#コマンドで壁紙を設定できるようにする．" class="headerlink" title="コマンドで壁紙を設定できるようにする．"></a>コマンドで壁紙を設定できるようにする．</h3><ul>
-<li><code>wallpaper</code>っていうコマンドをhomebrewでインストールして使った．他にもOSの壁紙が保存してあるディレクトリに画像を直接追加する方法もあるみたい．</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install wallpaper</span><br><span class="line">wallpaper <span class="built_in">set</span> ./hogehoge.png</span><br></pre></td></tr></table></figure>
-
-<p>これでhogehoge.pngが今いるデスクトップの壁紙になった．また，パソコンを立ち上げた時のログイン画面の壁紙もこれになる．</p>
-<p>シェルのコマンドをPythonから使うために，<code>subprocess</code>モジュールを使う．<br>詳しくはググって欲しい．試行錯誤の末，これならうまく行った．</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">subprocess.run([<span class="string">&quot;wallpaper set 生成した画像への絶対パス&quot;</span>],shell=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="定期的に実行する．"><a href="#定期的に実行する．" class="headerlink" title="定期的に実行する．"></a>定期的に実行する．</h3><p>定期的に実行するためには，<code>schedule</code>モジュールを使う．</p>
-<p>scheduleの基本の型はこんなかんじ</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> schedule</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">job</span>():</span></span><br><span class="line">    <span class="comment">#一回の動作でやること</span></span><br><span class="line">    hogehoge()</span><br><span class="line"><span class="comment">#1時間毎のjob実行を登録</span></span><br><span class="line">schedule.every(<span class="number">1</span>).hour.do(job)</span><br><span class="line"><span class="comment">#hour-&gt;minuteとかに変えられる</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    schedule.run_pending()</span><br><span class="line">    time.sleep(<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
-
-<p><code>while True:</code>がないと一回限りで終わってしまう．</p>
-<h3 id="これをいい感じに組み合わせると完成！！！！！！！！！"><a href="#これをいい感じに組み合わせると完成！！！！！！！！！" class="headerlink" title="これをいい感じに組み合わせると完成！！！！！！！！！"></a>これをいい感じに組み合わせると完成！！！！！！！！！</h3><p>動けばいいやのクソコードなので公開はしないかな<br>タスク管理ツールは作る気力があるのにタスクをやる気が起きません…………</p>
-]]></content>
-  </entry>
-  <entry>
     <title>プログラミングの遍歴</title>
     <url>/2021/08/15/history-of-coding/</url>
     <content><![CDATA[<h2 id="初めに"><a href="#初めに" class="headerlink" title="初めに"></a>初めに</h2><p>今回は私がどんなプログラミングの経験があるかを語っていこうと思います．キーワードは飽きっぽい，とりあえずやってみよ，うっかり借りて（買って）しまった，です．</p>
@@ -474,6 +536,20 @@
 ]]></content>
   </entry>
   <entry>
+    <title>工学とは何か</title>
+    <url>/2021/10/03/what-is-engineering/</url>
+    <content><![CDATA[<p>「工学とはどういう学問だと思いますか」<br>高校3年の3月，後期に出願していた工業系の大学の面接練習でこう聞かれた．その質問を発したのは工学部を卒業した物理の先生だった．</p>
+<p>私は答えやすい質問が来たと思い，喜び勇んで手をあげて，以下のように答えた．<br>「工学は人間の生活を便利にするために，理論を元にして実際に活用できる形で，ものを作っていく学問だと思います」</p>
+<p>回答し終わったらちょうど，面接練習の終了時刻が来てしまった．<br>そしてその物理の先生は口早に言った．<br>「工学は人間の生活を便利にするための学問ですか．それもそうですが，それだけではありません．もっと深い意味があります．考えてみてください．」</p>
+<p>そのあとは面接全体にアドバイスをもらったりして，その会は終わってしまった．</p>
+<p>未だに工学とは何か，という質問の回答の糸口もよくわからなくてモヤモヤしている．</p>
+<p>（朧げな記憶を元に書いてるので事実と違うかもしれないし，ディティールが伝わりづらくてすみません）</p>
+]]></content>
+      <categories>
+        <category>thoughts</category>
+      </categories>
+  </entry>
+  <entry>
     <title>M1Macを買おうか迷っている新入生へ</title>
     <url>/2022/03/05/m1Mac-for-freshmen/</url>
     <content><![CDATA[<h1 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h1><p>M1 Macは普段の大学生活で使う分には何も困らないです．起動爆速，サクサクで良いです．Office系は普通に使えます．（学部/学科で指定がある場合はそれに従うべき．工学部とか？）<br>Apple製品との連携も魅力だとよく言われます．ただ，大学からもらえるクラウドストレージはOneDrive 1TBなので，基本的に文章の同期はそこで行うことになり，Apple製品の連携(=iCloudで同期)の魅力はあまり感じないかもしれません．<br>ただし，生協のMacは買う前にほかの選択肢も考えてみてください．Apple Storeで買ったら去年はギフトカードでいくらか返ってきたりしました．Macを買って貰ったギフトカードでiPadを買うのも手かもしれません．ひとまずAppleの学生・教職員用のページを一回調べてみてください．</p>
@@ -501,81 +577,5 @@
 <li><a href="https://wa3.i-3-i.info/word16015.html">「分かりそう」で「分からない」でも「分かった」気になれるIT用語辞典:アーキテクチャ</a></li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>NUCTのカレンダーをTrelloにうつす</title>
-    <url>/2021/11/22/nuct-calendar-to-trello/</url>
-    <content><![CDATA[<p>前，GASでNUCTのカレンダーをGoogle Tasksに変換するというのをやったのですが，それのTrelloバージョンを作りました．なぜなら微積と線形から逃げたかったからです．現実逃避をするにはGASいじりは最適です．</p>
-<p>真面目な動機としては，Google Tasksだとファイルとの連携がURLからしかできなくて面倒だと思ったからです．例えば，レポートのタスクとwordファイルが一緒になってたら便利じゃないですか？Trelloなら，きこーアカウントのOneDrive上のファイルとタスクを紐付けることができます．</p>
-<h5 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h5><ol>
-<li>Google Spread Sheetを新しく作って，A1セルに最終更新と書きましょう．(なんか)</li>
-<li>上のタブの拡張機能＞Google App Scriptから新しいGASを作ります．</li>
-<li>下のコードを全てファイルを分けてコピペします．</li>
-<li>functions.gsに移動して，setup()を実行します．</li>
-<li>トリガーを設定します．実行する関数はupdate(),時間指定のトリガーにしましょう．間隔はなんでもいいけど，私は二時間にしてます．<br>あとはほっといたらtrelloに勝手にタスクが追加されてるはずです．</li>
-</ol>
-<p>何より，タスク管理ツールを使う以前に，タスクをやり切る心意気を持ちましょう．</p>
-<p>コードはこちら↓</p>
-<script src="https://gist.github.com/nac-39/e75048b950b4be91917a78d590e64065.js"></script>]]></content>
-  </entry>
-  <entry>
-    <title>工学とは何か</title>
-    <url>/2021/10/03/what-is-engineering/</url>
-    <content><![CDATA[<p>「工学とはどういう学問だと思いますか」<br>高校3年の3月，後期に出願していた工業系の大学の面接練習でこう聞かれた．その質問を発したのは工学部を卒業した物理の先生だった．</p>
-<p>私は答えやすい質問が来たと思い，喜び勇んで手をあげて，以下のように答えた．<br>「工学は人間の生活を便利にするために，理論を元にして実際に活用できる形で，ものを作っていく学問だと思います」</p>
-<p>回答し終わったらちょうど，面接練習の終了時刻が来てしまった．<br>そしてその物理の先生は口早に言った．<br>「工学は人間の生活を便利にするための学問ですか．それもそうですが，それだけではありません．もっと深い意味があります．考えてみてください．」</p>
-<p>そのあとは面接全体にアドバイスをもらったりして，その会は終わってしまった．</p>
-<p>未だに工学とは何か，という質問の回答の糸口もよくわからなくてモヤモヤしている．</p>
-<p>（朧げな記憶を元に書いてるので事実と違うかもしれないし，ディティールが伝わりづらくてすみません）</p>
-]]></content>
-      <categories>
-        <category>thoughts</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>GASでNUCTのスケジュールをタスクに変換する</title>
-    <url>/2021/08/10/nuct-schedule-to-gtasks-with-gas/</url>
-    <content><![CDATA[<h1 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h1><ol>
-<li>NUCTからGoogleカレンダーにエクスポートする</li>
-<li>コードをGoogleSpreadSheetのエディタにコピペする</li>
-<li>コードを実行する</li>
-</ol>
-<h1 id="1-NUCT→Googleカレンダーにエクスポート"><a href="#1-NUCT→Googleカレンダーにエクスポート" class="headerlink" title="1.NUCT→Googleカレンダーにエクスポート"></a>1.NUCT→Googleカレンダーにエクスポート</h1><ol>
-<li>NUCT&gt;スケジュール&gt;公開（プライベート）&gt; httpsから始まるリンクをコピー</li>
-<li>Googleカレンダー &gt; 他のカレンダーの横の＋ &gt; URLで追加 &gt; URLをペースト</li>
-</ol>
-<h1 id="2-コードをGoogleSpreadSheetのエディタにコピペする"><a href="#2-コードをGoogleSpreadSheetのエディタにコピペする" class="headerlink" title="2.コードをGoogleSpreadSheetのエディタにコピペする"></a>2.コードをGoogleSpreadSheetのエディタにコピペする</h1><ol>
-<li>スプレッドシートを新規作成&gt;ツール&gt;スクリプトエディタ</li>
-<li>サービス &gt; Tasks APIを選択、追加</li>
-<li>ファイルの＋から新しいスクリプトを3つ追加 &gt; スクリプトの名前を上から1,2,3,4にする</li>
-<li>下記のコード1<del>4をGAS上のスクリプト1</del>4にコピペ</li>
-</ol>
-<h3 id="コード１：初期状態を作るために使う"><a href="#コード１：初期状態を作るために使う" class="headerlink" title="コード１：初期状態を作るために使う"></a>コード１：初期状態を作るために使う</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function henkan(today) &#123;</span><br><span class="line">                  //Tue Apr 13 2021 19:00:00 GMT+0900(Japan Standard Time)となっている日時をRFC3339方式（2021-04-13T19:00:00_00.000+0900)に変換</span><br><span class="line">                  timex = Utilities.formatDate(today,&quot;JST&quot;, &quot;HH:mm:ss&quot;)</span><br><span class="line">                  datex = Utilities.formatDate(today,&quot;JST&quot;, &quot;yyyy-MM-dd&quot;);</span><br><span class="line">                  hiduke = datex + &quot;T&quot; + timex + &quot;.000+09:00&quot; ;</span><br><span class="line">                  return(hiduke);</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                function Getnow() &#123;</span><br><span class="line">                  var d = new Date();</span><br><span class="line">                  var y = d.getFullYear();</span><br><span class="line">                  var mon = d.getMonth() + 1;</span><br><span class="line">                  var d2 = d.getDate();</span><br><span class="line">                  var h = d.getHours();</span><br><span class="line">                  var min = d.getMinutes();</span><br><span class="line">                  var s = d.getSeconds();</span><br><span class="line">                  var now = y+&quot;/&quot;+mon+&quot;/&quot;+d2+&quot; &quot;+h+&quot;:&quot;+min+&quot;:&quot;+s;</span><br><span class="line">                  return now;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                function setup() &#123;</span><br><span class="line">                  //初期状態を作るために使う</span><br><span class="line">                  CalendarApp.getDefaultCalendar();</span><br><span class="line">                  const calendarId = cID();</span><br><span class="line">                  const calendar = CalendarApp.getCalendarById(calendarId);</span><br><span class="line">                  const taskListId = tID();</span><br><span class="line">                </span><br><span class="line">                  const startdate = new Date(&#x27;2021/5/9&#x27;);//カレンダーのイベントを読み込み始める日付</span><br><span class="line">                  const enddate = new Date(&#x27;2029/12/31&#x27;);</span><br><span class="line">                  const events = calendar.getEvents(startdate,enddate);</span><br><span class="line">                </span><br><span class="line">                  for(const event of events)&#123;</span><br><span class="line">                    let titleEvent = event.getTitle();</span><br><span class="line">                    let description = event.getDescription();</span><br><span class="line">                    let shimekiri = henkan(event.getEndTime());</span><br><span class="line">                  </span><br><span class="line">                    var task = &#123;</span><br><span class="line">                        title: titleEvent, //  タイトル</span><br><span class="line">                        notes: description, // メモ</span><br><span class="line">                        due: shimekiri // 締切日。日付のフォーマットはRFC3339に準拠</span><br><span class="line">                      &#125;;</span><br><span class="line">                      task = Tasks.Tasks.insert(task, taskListId);</span><br><span class="line">                      Logger.log(&quot;新しいタスクのID：&quot; + task.id);</span><br><span class="line">                    </span><br><span class="line">                  &#125;</span><br><span class="line">                  const sheet = SpreadsheetApp.getActiveSheet();</span><br><span class="line">                  const cell = sheet.getRange(sheet.getLastRow()+1,1);</span><br><span class="line">                  cell.setValue(Getnow());</span><br><span class="line">                  &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="コード２：タスクいじる関連です。"><a href="#コード２：タスクいじる関連です。" class="headerlink" title="コード２：タスクいじる関連です。"></a>コード２：タスクいじる関連です。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function getTaskLists() &#123;</span><br><span class="line">              var taskLists = Tasks.Tasklists.list().getItems();</span><br><span class="line">              if (!taskLists) &#123;</span><br><span class="line">                return [];</span><br><span class="line">              &#125;</span><br><span class="line">              return taskLists.map(function(taskList) &#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                  id: taskList.getId(),</span><br><span class="line">                  name: taskList.getTitle()</span><br><span class="line">                &#125;;</span><br><span class="line">              &#125;);</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            function viewAllList()&#123;</span><br><span class="line">              var myTaskLists = getTaskLists();</span><br><span class="line">              let i =0;</span><br><span class="line">              for(const j of myTaskLists)&#123;</span><br><span class="line">              Logger.log( myTaskLists[i].id);</span><br><span class="line">              Logger.log( myTaskLists[i].name);</span><br><span class="line">              i++;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            function callListTasks()&#123;</span><br><span class="line">              const myTaskListId = listTaskLists();</span><br><span class="line">              listTasks(myTaskListId);</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            function listTaskLists() &#123;</span><br><span class="line">              //タスクリストのidと名前を返す</span><br><span class="line">              let taskLists = Tasks.Tasklists.list();</span><br><span class="line">              if (taskLists.items) &#123;</span><br><span class="line">                let peach = [[],[]];</span><br><span class="line">                Logger.log(taskLists.items.length);</span><br><span class="line">                for (let i = 0; i &lt; taskLists.items.length; i++) &#123;</span><br><span class="line">                  let taskList = taskLists.items[i];                  </span><br><span class="line">                  peach[i] = [taskList.id,taskList.title];</span><br><span class="line">                &#125;</span><br><span class="line">                return peach;</span><br><span class="line">              &#125; else &#123;</span><br><span class="line">                Logger.log(&#x27;Sorry, No task lists found.&#x27;);</span><br><span class="line">                return &quot;none&quot;;</span><br><span class="line">              &#125;</span><br><span class="line">              </span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            function listTasks(taskListId) &#123;</span><br><span class="line">              //あるタスクリストの中のタスクの一覧を返す</span><br><span class="line">              let tasks = Tasks.Tasks.list(taskListId);</span><br><span class="line">              if (tasks.items) &#123;</span><br><span class="line">                console.log(tasks.items.length);</span><br><span class="line">                let taskReturn = [];</span><br><span class="line">                for (let i = 0; i &lt; tasks.items.length; i++) &#123;</span><br><span class="line">                  let task = tasks.items[i];</span><br><span class="line">                  taskReturn[i] = task.title;</span><br><span class="line">                &#125;</span><br><span class="line">                return taskReturn;</span><br><span class="line">              &#125; else &#123;</span><br><span class="line">                Logger.log(&#x27;Sorry, No tasks found.&#x27;);</span><br><span class="line">                return &quot;none&quot;;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            function view()&#123;</span><br><span class="line">              array = listTaskLists();</span><br><span class="line">              let j=0;</span><br><span class="line">              for(i of array)&#123;</span><br><span class="line">              Logger.log(listTasks(array[j][0]));</span><br><span class="line">              j++;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            function viewAllListInSheet()&#123;</span><br><span class="line">              const sheet = SpreadsheetApp.getActiveSheet();</span><br><span class="line">              var myTaskLists = getTaskLists();              </span><br><span class="line">              let i =0;</span><br><span class="line">              for(const j of myTaskLists)&#123;</span><br><span class="line">                let cell = sheet.getRange(i+1,6);</span><br><span class="line">                cell.setValue( myTaskLists[i].id);</span><br><span class="line">                cell = sheet.getRange(i+1,7);</span><br><span class="line">                cell.setValue( myTaskLists[i].name);</span><br><span class="line">                i++;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          </span><br></pre></td></tr></table></figure>
-
-<h3 id="コード３：更新するために使います。改善の余地あり。"><a href="#コード３：更新するために使います。改善の余地あり。" class="headerlink" title="コード３：更新するために使います。改善の余地あり。"></a>コード３：更新するために使います。改善の余地あり。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function update() &#123;</span><br><span class="line">             CalendarApp.getDefaultCalendar();</span><br><span class="line">             const sheet = SpreadsheetApp.getActiveSheet();</span><br><span class="line">             const calendarId = cID();</span><br><span class="line">             const calendar = CalendarApp.getCalendarById(calendarId);</span><br><span class="line">             const taskListId = tID();</span><br><span class="line">             </span><br><span class="line">             const startdate = new Date(&#x27;2021/5/1&#x27;);</span><br><span class="line">             const enddate = new Date(&#x27;2030/12/31&#x27;);</span><br><span class="line">             const events = calendar.getEvents(startdate,enddate);</span><br><span class="line">             const cell = sheet.getRange(sheet.getLastRow(),1);</span><br><span class="line">             let lastUpdate = new Date(cell.getValue());</span><br><span class="line">             lastUpdate = lastUpdate.getTime();</span><br><span class="line">             </span><br><span class="line">             for(const event of events)&#123;</span><br><span class="line">              console.log(event.getTitle()  + &quot;:&quot; +event.getDateCreated())</span><br><span class="line">              let whenNewEvent = event.getDateCreated().getTime();</span><br><span class="line">              //この判定方法やめた方がいいんかな</span><br><span class="line">              //ある予定が作成された日時と最終更新日時を比べて、追加するようにしている</span><br><span class="line">              </span><br><span class="line">              let bool = lastUpdate &lt; whenNewEvent; </span><br><span class="line">              </span><br><span class="line">              if(bool == true)&#123;</span><br><span class="line">                let titleEvent = event.getTitle();</span><br><span class="line">                let description = event.getDescription();</span><br><span class="line">                let shimekiri = henkan(event.getEndTime());</span><br><span class="line">                </span><br><span class="line">                 var task = &#123;</span><br><span class="line">                   title: titleEvent, //  タイトル</span><br><span class="line">                   notes: description + &quot;from update script&quot;, // いらんかったら消してね</span><br><span class="line">                   due: shimekiri // 締切日。日付のフォーマットはRFC3339に準拠</span><br><span class="line">                 &#125;;</span><br><span class="line">            </span><br><span class="line">                //コンソールに書き出す</span><br><span class="line">                task = Tasks.Tasks.insert(task, taskListId);</span><br><span class="line">                Logger.log(&quot;新しいタスクのID：&quot; + task.id);</span><br><span class="line">                </span><br><span class="line">                //スプレッドシートに更新日時を書き足す</span><br><span class="line">                const cell = sheet.getRange(sheet.getLastRow()+1,sheet.getLastColumn());</span><br><span class="line">                cell.setValue(Getnow());</span><br><span class="line">              &#125;</span><br><span class="line">             &#125;</span><br><span class="line">             </span><br><span class="line">            &#125;   </span><br></pre></td></tr></table></figure>
-
-<h3 id="コード４-IDを登録するのに使います。"><a href="#コード４-IDを登録するのに使います。" class="headerlink" title="コード４:IDを登録するのに使います。"></a>コード４:IDを登録するのに使います。</h3><p>※IDはカレンダーやタスクのリスト一つ一つに割り振られています。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function tID() &#123;</span><br><span class="line">         const sheet = SpreadsheetApp.getActiveSheet();</span><br><span class="line">         let cell = sheet.getRange(&#x27;B1&#x27;);</span><br><span class="line">         let tID = cell.getValue();</span><br><span class="line">         return tID;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       function cID() &#123;</span><br><span class="line">         const sheet = SpreadsheetApp.getActiveSheet();</span><br><span class="line">         let cell = sheet.getRange(&#x27;B2&#x27;);</span><br><span class="line">         let cID = cell.getValue();</span><br><span class="line">         return cID;</span><br><span class="line">         </span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="実行する"><a href="#実行する" class="headerlink" title="実行する"></a>実行する</h1><ol>
-<li>カレンダーIDを調べる。googleカレンダ &gt; オーバーフローメニュー &gt; 設定 &gt; カレンダーを結合 &gt; カレンダーID</li>
-<li>カレンダーIDをスプレッドシートのB2にペースト</li>
-<li>スクリプト2を開き、viewAllListInSheetを選択、実行する。</li>
-<li>スプレッドシートにタスクID一覧が表示されるので、選んでB1にペースト</li>
-<li>スクリプト1を開く。setupを選択、実行する。</li>
-<li>更新したい時はスクリプト3をからupdateを選択、実行する。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Coding</category>
-      </categories>
-      <tags>
-        <tag>GAS</tag>
-        <tag>Coding</tag>
-        <tag>JavaScript</tag>
-        <tag>NUCT</tag>
-      </tags>
   </entry>
 </search>
