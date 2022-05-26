@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"nac-39.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"}};
+  </script>
+<meta name="description" content="この記事では，授業用のリソースがぐちゃぐちゃになってしまうことを防止するための方策を書きます．工夫は以下の二点です．  ファイルの構造 ファイルの移動  ファイルの構造 まず，講義資料をおくファイルを作ります．これはOneDriveに作ると便利です．デスクトップにエイリアス（orシンボリックリンク）を作っておくといいでしょう．名前は「00_講義資料」にすると，ファイルが名前順にソートされたときに見">
+<meta property="og:type" content="article">
+<meta property="og:title" content="授業のリソースの整理法">
+<meta property="og:url" content="https://nac-39.com/2022/05/25/organizing-files-for-school/index.html">
+<meta property="og:site_name" content="nac-39">
+<meta property="og:description" content="この記事では，授業用のリソースがぐちゃぐちゃになってしまうことを防止するための方策を書きます．工夫は以下の二点です．  ファイルの構造 ファイルの移動  ファイルの構造 まず，講義資料をおくファイルを作ります．これはOneDriveに作ると便利です．デスクトップにエイリアス（orシンボリックリンク）を作っておくといいでしょう．名前は「00_講義資料」にすると，ファイルが名前順にソートされたときに見">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2022-05-24T18:17:15.000Z">
+<meta property="article:modified_time" content="2022-05-26T02:08:10.398Z">
+<meta property="article:author" content="nac-39">
+<meta property="article:tag" content="tips">
+<meta property="article:tag" content="study">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://nac-39.com/2022/05/25/organizing-files-for-school/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'ja'
+  };
+</script>
+<title>授業のリソースの整理法 | nac-39</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションバーの切り替え" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">nac-39</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Hello World!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>ホーム</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>プロフィール</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>タグ</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリ</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          見出し
+        </li>
+        <li class="sidebar-nav-overview">
+          概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%A7%8B%E9%80%A0"><span class="nav-number">1.</span> <span class="nav-text">ファイルの構造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A7%BB%E5%8B%95"><span class="nav-number">2.</span> <span class="nav-text">ファイルの移動</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%82%E3%82%8F%E3%82%8A%E3%81%AB"><span class="nav-number">3.</span> <span class="nav-text">終わりに</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">nac-39</p>
+  <div class="site-description" itemprop="description">This is nac-39s blog or notes.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">ポスト</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">カテゴリ</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/nac-39" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nac-39" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/nac_39_kiitos" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nac_39_kiitos" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://nac-39.com/2022/05/25/organizing-files-for-school/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="nac-39">
+      <meta itemprop="description" content="This is nac-39s blog or notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nac-39">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          授業のリソースの整理法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2022-05-25 03:17:15" itemprop="dateCreated datePublished" datetime="2022-05-25T03:17:15+09:00">2022-05-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">編集日</span>
+        <time title="修正日：2022-05-26 11:08:10" itemprop="dateModified" datetime="2022-05-26T11:08:10+09:00">2022-05-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tips/" itemprop="url" rel="index"><span itemprop="name">tips</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>この記事では，授業用のリソースがぐちゃぐちゃになってしまうことを防止するための方策を書きます．<br>工夫は以下の二点です．</p>
+<ol>
+<li>ファイルの構造</li>
+<li>ファイルの移動</li>
+</ol>
+<h2 id="ファイルの構造"><a href="#ファイルの構造" class="headerlink" title="ファイルの構造"></a>ファイルの構造</h2><ol>
+<li>まず，講義資料をおくファイルを作ります．これはOneDriveに作ると便利です．デスクトップにエイリアス（orシンボリックリンク）を作っておくといいでしょう．名前は「00_講義資料」にすると，ファイルが名前順にソートされたときに見つけやすいです．</li>
+<li>次に，「00_講義資料」の中に今学期の授業のファイルを作ります．命名規則は，例えば一年の秋学期の木曜二限の授業であれば「2_42-ロシア語４」などにします．「(学期)_(曜日の数字)(時限の数字)-(講義名)」です．</li>
+<li>「その他」，「アーカイブ」を作成します．</li>
+</ol>
+<p>最終的なファイル構成は例えばこうなります．</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">./00_講義資料</span><br><span class="line">├── 3_12-心の科学</span><br><span class="line">├── 3_13-離散数学及び演習</span><br><span class="line">├── 3_22-情報と国際社会</span><br><span class="line">├── 3_23-情報創造</span><br><span class="line">├── 3_31-データマイニング入門</span><br><span class="line">├── 3_32-複雑系科学の基礎</span><br><span class="line">├── 3_33-クリエイティブ・ネットワーキング</span><br><span class="line">├── 3_41-複素関数論</span><br><span class="line">├── 3_42-科学・技術の哲学</span><br><span class="line">├── 3_52-表彰芸術論</span><br><span class="line">├── 3_53-英語上級</span><br><span class="line">├── 過去問</span><br><span class="line">├── 課題その他</span><br><span class="line">└── アーカイブ</span><br><span class="line"></span><br><span class="line">15 directories, 0 files</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>続いて，各授業ごとのファイル構成ですが，これは授業ごとに異なっていていいでしょう．<br>例えば，担当の先生が几帳面でファイルの名前に規則性がある時はこのようにしています．<br>授業資料と課題は分けたほうがいいと思います．</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── 2022-1.pdf</span><br><span class="line">├── 2022-2.pdf</span><br><span class="line">├── 2022-3.pdf</span><br><span class="line">├── 2022-4.pdf</span><br><span class="line">├── 2022-5.pdf</span><br><span class="line">├── 2022-6.pdf</span><br><span class="line">├── 2022-7.pdf</span><br><span class="line">└── hw_repo</span><br></pre></td></tr></table></figure>
+
+<p>授業資料のファイル名に規則性がない時や授業ごとのリソースがファイルにまとめられて配信されている時などは，このようにしています．</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── 01</span><br><span class="line">├── 02</span><br><span class="line">├── 03</span><br><span class="line">├── 04</span><br><span class="line">└── 05</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="ファイルの移動"><a href="#ファイルの移動" class="headerlink" title="ファイルの移動"></a>ファイルの移動</h2><p>ファイルの移動については単純で，全ての授業が終わったらアーカイブに移動させます．<br>アーカイブのディレクトリ構造はこのようにしています．</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./00_講義資料/アーカイブ</span><br><span class="line">├── 1-春学期</span><br><span class="line">├── 1-秋学期</span><br><span class="line">└── 情報学部開講科目</span><br><span class="line"></span><br><span class="line">3 directories, 0 files</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>それぞれのファイルの中は例えばこのようになっています．</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">./00_講義資料/アーカイブ/情報学部開講科目</span><br><span class="line">├── 1_1-感じる情報学</span><br><span class="line">├── 1_1-情報の挑戦者・開拓者たち</span><br><span class="line">├── 1_1-情報セキュリティとリテラシー</span><br><span class="line">├── 1_2-インフォマティクス１</span><br><span class="line">├── 1_2-インフォマティクス２</span><br><span class="line">├── 2_12-プログラミング1</span><br><span class="line">├── 2_12-プログラミング2</span><br><span class="line">├── 2_53-インフォマティクス4</span><br><span class="line">└── 2_54-インフォマティクス3</span><br><span class="line"></span><br><span class="line">9 directories, 0 files</span><br></pre></td></tr></table></figure>
+
+<h2 id="終わりに"><a href="#終わりに" class="headerlink" title="終わりに"></a>終わりに</h2><p>みんなもう既に当たり前にやっていることかもしれませんが，なんとなく記事にしてみました．私の大学のOneDriveは５TBも容量があるので，思う存分活用していきたいと思っています．</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>他の公開チャンネルへようこそ</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/nac_39_kiitos">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/tips/" rel="tag"># tips</a>
+              <a href="/tags/study/" rel="tag"># study</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/29/best-apps-for-mac-users/" rel="prev" title="Mac勢おすすめのアプリ">
+                  <i class="fa fa-chevron-left"></i> Mac勢おすすめのアプリ
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nac-39</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
