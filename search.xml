@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>nuctのカレンダーをmicrosoft ToDoに自動追加する（GUIのみでできる！）</title>
-    <url>/2022/01/29/auto-add-nuct-calendar-to-microsoft-todo/</url>
-    <content><![CDATA[<h1 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h1><h2 id="1-NUCTのカレンダーからリンクを取得する"><a href="#1-NUCTのカレンダーからリンクを取得する" class="headerlink" title="1. NUCTのカレンダーからリンクを取得する"></a>1. NUCTのカレンダーからリンクを取得する</h2><ol>
-<li>ホームのカレンダーから，公開（プライベート）</li>
-<li>個人用にこのカレンダーにリンクを生成する，の下側のリンクをコピーする</li>
-</ol>
-<h2 id="2-Microsoft-Outlookにカレンダーを追加する"><a href="#2-Microsoft-Outlookにカレンダーを追加する" class="headerlink" title="2. Microsoft Outlookにカレンダーを追加する"></a>2. Microsoft Outlookにカレンダーを追加する</h2><ol>
-<li><a href="https://outlook.office.com/calendar/addcalendar">https://outlook.office.com/calendar/addcalendar</a> にアクセスする（サインインしてなかったら，サインインが求められます）</li>
-<li>Webから定期受信を選び，先程のURLをコピペする</li>
-<li>諸々の設定をして保存</li>
-</ol>
-<h2 id="3-Microsoft-To-Doにリストを追加する"><a href="#3-Microsoft-To-Doにリストを追加する" class="headerlink" title="3. Microsoft To-Doにリストを追加する"></a>3. Microsoft To-Doにリストを追加する</h2><p>(注意:MicrosoftにはTo-DoとPlannerというサービスがあって，これらは別のものです．)</p>
-<ol>
-<li><a href="https://to-do.office.com/tasks/today">https://to-do.office.com/tasks/today</a>　にアクセスする．</li>
-<li>「新しいリスト」から作成</li>
-</ol>
-<h2 id="4-Microsoft-Power-Automateの設定をする"><a href="#4-Microsoft-Power-Automateの設定をする" class="headerlink" title="4. Microsoft Power Automateの設定をする"></a>4. Microsoft Power Automateの設定をする</h2><ol>
-<li><a href="https://powerautomate.microsoft.com/ja-jp/">https://powerautomate.microsoft.com/ja-jp/</a> にアクセス,　サインインする．</li>
-<li></li>
-<li>Outlookのトリガー，「When a new event is created」を選択</li>
-<li>予定表IDを設定．</li>
-<li>Microsoft To-Doのアクション，「To Doを追加する」を追加．</li>
-<li>To Doリスト，タイトル，期日などを設定する．タイトル以下は動的なコンテンツからカレンダーの情報を取得して入れる．<br><img src="/images/automate1.png" alt="一例"></li>
-<li>保存する</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>Mac勢おすすめのアプリ</title>
     <url>/2022/03/29/best-apps-for-mac-users/</url>
     <content><![CDATA[<h1 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h1><p>とてつもなくアフィリエイトブログのようなタイトルの記事になっていますが，違います．この記事ではひたすらに私がインストールしてよかったと思うMac向けアプリケーションをカテゴリ別に紹介していきたいと思います．上にあるものほど優先度が高くなっていますので，下の方はすっ飛ばしていただいて構いません．</p>
@@ -97,6 +69,34 @@
       <tags>
         <tag>mac</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>nuctのカレンダーをmicrosoft ToDoに自動追加する（GUIのみでできる！）</title>
+    <url>/2022/01/29/auto-add-nuct-calendar-to-microsoft-todo/</url>
+    <content><![CDATA[<h1 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h1><h2 id="1-NUCTのカレンダーからリンクを取得する"><a href="#1-NUCTのカレンダーからリンクを取得する" class="headerlink" title="1. NUCTのカレンダーからリンクを取得する"></a>1. NUCTのカレンダーからリンクを取得する</h2><ol>
+<li>ホームのカレンダーから，公開（プライベート）</li>
+<li>個人用にこのカレンダーにリンクを生成する，の下側のリンクをコピーする</li>
+</ol>
+<h2 id="2-Microsoft-Outlookにカレンダーを追加する"><a href="#2-Microsoft-Outlookにカレンダーを追加する" class="headerlink" title="2. Microsoft Outlookにカレンダーを追加する"></a>2. Microsoft Outlookにカレンダーを追加する</h2><ol>
+<li><a href="https://outlook.office.com/calendar/addcalendar">https://outlook.office.com/calendar/addcalendar</a> にアクセスする（サインインしてなかったら，サインインが求められます）</li>
+<li>Webから定期受信を選び，先程のURLをコピペする</li>
+<li>諸々の設定をして保存</li>
+</ol>
+<h2 id="3-Microsoft-To-Doにリストを追加する"><a href="#3-Microsoft-To-Doにリストを追加する" class="headerlink" title="3. Microsoft To-Doにリストを追加する"></a>3. Microsoft To-Doにリストを追加する</h2><p>(注意:MicrosoftにはTo-DoとPlannerというサービスがあって，これらは別のものです．)</p>
+<ol>
+<li><a href="https://to-do.office.com/tasks/today">https://to-do.office.com/tasks/today</a>　にアクセスする．</li>
+<li>「新しいリスト」から作成</li>
+</ol>
+<h2 id="4-Microsoft-Power-Automateの設定をする"><a href="#4-Microsoft-Power-Automateの設定をする" class="headerlink" title="4. Microsoft Power Automateの設定をする"></a>4. Microsoft Power Automateの設定をする</h2><ol>
+<li><a href="https://powerautomate.microsoft.com/ja-jp/">https://powerautomate.microsoft.com/ja-jp/</a> にアクセス,　サインインする．</li>
+<li></li>
+<li>Outlookのトリガー，「When a new event is created」を選択</li>
+<li>予定表IDを設定．</li>
+<li>Microsoft To-Doのアクション，「To Doを追加する」を追加．</li>
+<li>To Doリスト，タイトル，期日などを設定する．タイトル以下は動的なコンテンツからカレンダーの情報を取得して入れる．<br><img src="/images/automate1.png" alt="一例"></li>
+<li>保存する</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>キーボード買った</title>
@@ -392,6 +392,34 @@
 ]]></content>
   </entry>
   <entry>
+    <title>JupyterでC++を動かしたい</title>
+    <url>/2021/11/17/jupyter-cpp/</url>
+    <content><![CDATA[<h2 id="一番言いたいこと"><a href="#一番言いたいこと" class="headerlink" title="一番言いたいこと"></a>一番言いたいこと</h2><p><code>clingのインストール先/share/Jupyter/kernel</code>じゃなくて，<br><code>/src/tools/cling/tools/Jupyter/kernel</code><br>だ！！！！！</p>
+<h2 id="目的など"><a href="#目的など" class="headerlink" title="目的など"></a>目的など</h2><p>Jupyter labでC++を使いたい！！！！<br>仕組みとしては，ClingというC++をインタプリタみたいに動かす環境をJupyterでも動くようにしてる感じ．<br>先に断っておくと，急いで書いたので言葉足らず感があります．すみません．リンク先が詳しいので，ぜひ参照してください．</p>
+<h2 id="インストール方法"><a href="#インストール方法" class="headerlink" title="インストール方法"></a>インストール方法</h2><p>とりあえず自分がやった方法を示しておく．</p>
+<ol>
+<li><a href="https://root.cern/cling/cling_build_instructions/">このサイト</a>のManual buildを参考に，<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> http://root.cern/git/llvm.git src</span><br><span class="line"><span class="built_in">cd</span> src</span><br><span class="line">git checkout cling-patches</span><br><span class="line"><span class="built_in">cd</span> tools</span><br><span class="line">git <span class="built_in">clone</span> http://root.cern/git/cling.git</span><br><span class="line">git <span class="built_in">clone</span> http://root.cern/git/clang.git</span><br><span class="line"><span class="built_in">cd</span> clang</span><br><span class="line">git checkout cling-patches</span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure></li>
+<li>Cmakeを使ってbuildする．2時間近くかかったので，覚悟が必要．多分バイナリファイルをダウンロードしておけばこの工程いらない．CmakeがPCに入っていない人はCmakeをダウンロードする必要が…(バイナリファイルをダウンロードしろ！もしくは<code>brew install cling</code>で入れちゃえ)<br><code>/usr/local/bin/</code>配下に適当なファイル作ってそこを<code>[Install Path]</code>にした．<code>Release or Debug</code>は<code>Release</code>を選んだ．<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake -DCMAKE_INSTALL_PREFIX=[Install Path] -DCMAKE_BUILD_TYPE=[Build configuration, e.g. Release or Debug] ..\src</span><br><span class="line">cmake --build .</span><br><span class="line">cmake --build . --target install</span><br></pre></td></tr></table></figure></li>
+<li><a href="https://github.com/root-project/cling/blob/f84e601d3f5cfd06f4b557780ca62e68d2cfa473/tools/Jupyter/README.md">GitHubのここ</a>にあるように，パスを通してから諸々実行する．</li>
+</ol>
+<p><strong>ここで注意！</strong><br><code>clingのインストール先/share/Jupyter/kernel</code>じゃなくて，<br><code>どこか/src/tools/cling/tools/Jupyter/kernel</code>に<code>cd</code>する！（ちなみにcling-install-prefixはclingをインストールした場所のパスって意味で，任意で自分で変えるところだよ！prefixは接頭辞みたいな意味）<br>↓諸々実行するやつ．</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export PATH=/cling-install-prefix/bin:$PATH</span><br><span class="line">cd /cling-install-prefix/share/cling/Jupyter/kernel</span><br><span class="line"></span><br><span class="line">pip install -e .</span><br><span class="line"># or: pip3 install -e .</span><br><span class="line"></span><br><span class="line"># register the kernelspec for C++17/C++1z/C++14/C++11:</span><br><span class="line"># the user can install whichever kernel(s) they</span><br><span class="line"># wish:</span><br><span class="line">jupyter-kernelspec install --user cling-cpp17</span><br><span class="line">jupyter-kernelspec install --user cling-cpp1z</span><br><span class="line">jupyter-kernelspec install --user cling-cpp14</span><br><span class="line">jupyter-kernelspec install --user cling-cpp11</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>これで<code>jupyter notebook</code>したらカーネルにC++が出現してる！はず！</p>
+<h2 id="分かってないのでぜひ教えてほしいこと"><a href="#分かってないのでぜひ教えてほしいこと" class="headerlink" title="分かってないのでぜひ教えてほしいこと"></a>分かってないのでぜひ教えてほしいこと</h2><ul>
+<li>Clingの実体 = <code>brew install cling</code>でインストールされるもの = buildしたらできるもの =&gt; バイナリファイル（とその他諸々）<br>って言う認識でOK？</li>
+<li>GitHubからクローンしてきた奴らは何？<code>jupyter-kernelspec install --user cling-cpp17</code>これはどう言う意味のコマンド？</li>
+<li>そもそもAnacondaでやった方が楽((((<a href="https://buttai-k.hatenablog.com/entry/2020/12/05/220000_1">参考記事</a></li>
+<li>LLVMってなんですか！なんでCERNが作ってるんですか！</li>
+</ul>
+<h2 id="参考記事"><a href="#参考記事" class="headerlink" title="参考記事"></a>参考記事</h2><ul>
+<li><a href="https://qiita.com/sasaki77/items/f6253e1d6638fba0e744">JupyterにC++のノートのためのclingカーネルを追加する [Mac]</a><br>途中まではいっしょなんだけど，buildがうまくいかんかった</li>
+<li><a href="https://github.com/root-project/cling">GitHub: root-project/cling</a></li>
+<li><a href="https://qiita.com/mugwort_rc/items/b8087d1b6f9498b037d5">C++11/14/17インタプリタ環境 Jupyter-Cling</a><br>この記事の言う通り，バイナリダウンロードした方がいいよ，絶対！</li>
+<li><a href="https://r9y9.github.io/blog/2017/12/21/jupyter-cxx/">Interactive C++: Jupyter上で対話的にC++を使う方法の紹介</a><br>四つのC++のインタプリタ環境についてまとめてある！</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>プログラミングの遍歴</title>
     <url>/2021/08/15/history-of-coding/</url>
     <content><![CDATA[<h2 id="初めに"><a href="#初めに" class="headerlink" title="初めに"></a>初めに</h2><p>今回は私がどんなプログラミングの経験があるかを語っていこうと思います．キーワードは飽きっぽい，とりあえずやってみよ，うっかり借りて（買って）しまった，です．</p>
@@ -444,34 +472,6 @@
       <tags>
         <tag>coding</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>JupyterでC++を動かしたい</title>
-    <url>/2021/11/17/jupyter-cpp/</url>
-    <content><![CDATA[<h2 id="一番言いたいこと"><a href="#一番言いたいこと" class="headerlink" title="一番言いたいこと"></a>一番言いたいこと</h2><p><code>clingのインストール先/share/Jupyter/kernel</code>じゃなくて，<br><code>/src/tools/cling/tools/Jupyter/kernel</code><br>だ！！！！！</p>
-<h2 id="目的など"><a href="#目的など" class="headerlink" title="目的など"></a>目的など</h2><p>Jupyter labでC++を使いたい！！！！<br>仕組みとしては，ClingというC++をインタプリタみたいに動かす環境をJupyterでも動くようにしてる感じ．<br>先に断っておくと，急いで書いたので言葉足らず感があります．すみません．リンク先が詳しいので，ぜひ参照してください．</p>
-<h2 id="インストール方法"><a href="#インストール方法" class="headerlink" title="インストール方法"></a>インストール方法</h2><p>とりあえず自分がやった方法を示しておく．</p>
-<ol>
-<li><a href="https://root.cern/cling/cling_build_instructions/">このサイト</a>のManual buildを参考に，<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> http://root.cern/git/llvm.git src</span><br><span class="line"><span class="built_in">cd</span> src</span><br><span class="line">git checkout cling-patches</span><br><span class="line"><span class="built_in">cd</span> tools</span><br><span class="line">git <span class="built_in">clone</span> http://root.cern/git/cling.git</span><br><span class="line">git <span class="built_in">clone</span> http://root.cern/git/clang.git</span><br><span class="line"><span class="built_in">cd</span> clang</span><br><span class="line">git checkout cling-patches</span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure></li>
-<li>Cmakeを使ってbuildする．2時間近くかかったので，覚悟が必要．多分バイナリファイルをダウンロードしておけばこの工程いらない．CmakeがPCに入っていない人はCmakeをダウンロードする必要が…(バイナリファイルをダウンロードしろ！もしくは<code>brew install cling</code>で入れちゃえ)<br><code>/usr/local/bin/</code>配下に適当なファイル作ってそこを<code>[Install Path]</code>にした．<code>Release or Debug</code>は<code>Release</code>を選んだ．<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake -DCMAKE_INSTALL_PREFIX=[Install Path] -DCMAKE_BUILD_TYPE=[Build configuration, e.g. Release or Debug] ..\src</span><br><span class="line">cmake --build .</span><br><span class="line">cmake --build . --target install</span><br></pre></td></tr></table></figure></li>
-<li><a href="https://github.com/root-project/cling/blob/f84e601d3f5cfd06f4b557780ca62e68d2cfa473/tools/Jupyter/README.md">GitHubのここ</a>にあるように，パスを通してから諸々実行する．</li>
-</ol>
-<p><strong>ここで注意！</strong><br><code>clingのインストール先/share/Jupyter/kernel</code>じゃなくて，<br><code>どこか/src/tools/cling/tools/Jupyter/kernel</code>に<code>cd</code>する！（ちなみにcling-install-prefixはclingをインストールした場所のパスって意味で，任意で自分で変えるところだよ！prefixは接頭辞みたいな意味）<br>↓諸々実行するやつ．</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export PATH=/cling-install-prefix/bin:$PATH</span><br><span class="line">cd /cling-install-prefix/share/cling/Jupyter/kernel</span><br><span class="line"></span><br><span class="line">pip install -e .</span><br><span class="line"># or: pip3 install -e .</span><br><span class="line"></span><br><span class="line"># register the kernelspec for C++17/C++1z/C++14/C++11:</span><br><span class="line"># the user can install whichever kernel(s) they</span><br><span class="line"># wish:</span><br><span class="line">jupyter-kernelspec install --user cling-cpp17</span><br><span class="line">jupyter-kernelspec install --user cling-cpp1z</span><br><span class="line">jupyter-kernelspec install --user cling-cpp14</span><br><span class="line">jupyter-kernelspec install --user cling-cpp11</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>これで<code>jupyter notebook</code>したらカーネルにC++が出現してる！はず！</p>
-<h2 id="分かってないのでぜひ教えてほしいこと"><a href="#分かってないのでぜひ教えてほしいこと" class="headerlink" title="分かってないのでぜひ教えてほしいこと"></a>分かってないのでぜひ教えてほしいこと</h2><ul>
-<li>Clingの実体 = <code>brew install cling</code>でインストールされるもの = buildしたらできるもの =&gt; バイナリファイル（とその他諸々）<br>って言う認識でOK？</li>
-<li>GitHubからクローンしてきた奴らは何？<code>jupyter-kernelspec install --user cling-cpp17</code>これはどう言う意味のコマンド？</li>
-<li>そもそもAnacondaでやった方が楽((((<a href="https://buttai-k.hatenablog.com/entry/2020/12/05/220000_1">参考記事</a></li>
-<li>LLVMってなんですか！なんでCERNが作ってるんですか！</li>
-</ul>
-<h2 id="参考記事"><a href="#参考記事" class="headerlink" title="参考記事"></a>参考記事</h2><ul>
-<li><a href="https://qiita.com/sasaki77/items/f6253e1d6638fba0e744">JupyterにC++のノートのためのclingカーネルを追加する [Mac]</a><br>途中まではいっしょなんだけど，buildがうまくいかんかった</li>
-<li><a href="https://github.com/root-project/cling">GitHub: root-project/cling</a></li>
-<li><a href="https://qiita.com/mugwort_rc/items/b8087d1b6f9498b037d5">C++11/14/17インタプリタ環境 Jupyter-Cling</a><br>この記事の言う通り，バイナリダウンロードした方がいいよ，絶対！</li>
-<li><a href="https://r9y9.github.io/blog/2017/12/21/jupyter-cxx/">Interactive C++: Jupyter上で対話的にC++を使う方法の紹介</a><br>四つのC++のインタプリタ環境についてまとめてある！</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>M1Macを買おうか迷っている新入生へ</title>
