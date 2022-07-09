@@ -2,7 +2,7 @@
 title: GASでNUCTのスケジュールをタスクに変換する
 date: 2021-08-10 14:40:56
 tags: ["GAS","Coding", "JavaScript", "NUCT"]
-categories: Coding
+categories: NUCT
 ---
 
 # 手順

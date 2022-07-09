@@ -1,8 +1,8 @@
 ---
 title: NUCTのカレンダーをTrelloにうつす
 date: 2021-11-22 00:57:11
-tags:
-categories:
+tags: NUCT
+categories: NUCT
 ---
 
 前，GASでNUCTのカレンダーをGoogle Tasksに変換するというのをやったのですが，それのTrelloバージョンを作りました．なぜなら微積と線形から逃げたかったからです．現実逃避をするにはGASいじりは最適です．
