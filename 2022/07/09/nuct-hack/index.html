@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"nac-39.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"}};
+  </script>
+<meta name="description" content="はじめにこの記事では私が知り得た，名大の学習支援システムであるNUCTをハックするための情報をまとめます．APIは名大生しか叩くことができませんが，それ以外情報はGoogle先生を駆使すれば誰でも辿り着ける情報です． 1. そもそもNUCTとは．実は，NUCTは名大の人が0から作ったサービスではありません．実はオープンソースのSakaiというプロジェクトを元にして作られています． その証拠に，NU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NUCTハック">
+<meta property="og:url" content="https://nac-39.com/2022/07/09/nuct-hack/index.html">
+<meta property="og:site_name" content="nac-39">
+<meta property="og:description" content="はじめにこの記事では私が知り得た，名大の学習支援システムであるNUCTをハックするための情報をまとめます．APIは名大生しか叩くことができませんが，それ以外情報はGoogle先生を駆使すれば誰でも辿り着ける情報です． 1. そもそもNUCTとは．実は，NUCTは名大の人が0から作ったサービスではありません．実はオープンソースのSakaiというプロジェクトを元にして作られています． その証拠に，NU">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://nac-39.com/images/nuct-powerd-by-sakai.png">
+<meta property="article:published_time" content="2022-07-09T08:15:19.000Z">
+<meta property="article:modified_time" content="2022-07-09T11:39:33.878Z">
+<meta property="article:author" content="nac-39">
+<meta property="article:tag" content="coding">
+<meta property="article:tag" content="NUCT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nac-39.com/images/nuct-powerd-by-sakai.png">
+
+
+<link rel="canonical" href="https://nac-39.com/2022/07/09/nuct-hack/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'ja'
+  };
+</script>
+<title>NUCTハック | nac-39</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BF18SGZTJ"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7BF18SGZTJ');
+      }
+    </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションバーの切り替え" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">nac-39</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Hello World!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>ホーム</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>プロフィール</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>タグ</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリ</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          見出し
+        </li>
+        <li class="sidebar-nav-overview">
+          概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><span class="nav-number">1.</span> <span class="nav-text">はじめに</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82NUCT%E3%81%A8%E3%81%AF%EF%BC%8E"><span class="nav-number">2.</span> <span class="nav-text">1. そもそもNUCTとは．</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Sakai%E3%81%AEAPI"><span class="nav-number">3.</span> <span class="nav-text">2. SakaiのAPI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Confortable-Sakai"><span class="nav-number">4.</span> <span class="nav-text">3. Confortable Sakai</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E3%81%9D%E3%81%AE%E4%BB%96%E3%83%8F%E3%83%83%E3%82%AF"><span class="nav-number">5.</span> <span class="nav-text">4. その他ハック</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%82%E3%82%8F%E3%82%8A%E3%81%AB"><span class="nav-number">6.</span> <span class="nav-text">終わりに</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">nac-39</p>
+  <div class="site-description" itemprop="description">This is nac-39s blog or notes.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">ポスト</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">カテゴリ</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/nac-39" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nac-39" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/nac_39_kiitos" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nac_39_kiitos" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://nac-39.com/2022/07/09/nuct-hack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="nac-39">
+      <meta itemprop="description" content="This is nac-39s blog or notes.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nac-39">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NUCTハック
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+      
+
+      <time title="作成日：2022-07-09 17:15:19 / 修正日：20:39:33" itemprop="dateCreated datePublished" datetime="2022-07-09T17:15:19+09:00">2022-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NUCT/" itemprop="url" rel="index"><span itemprop="name">NUCT</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h1><p>この記事では私が知り得た，名大の学習支援システムである<a target="_blank" rel="noopener" href="https://ct.nagoya-u.ac.jp/portal">NUCT</a>をハックするための情報をまとめます．APIは名大生しか叩くことができませんが，それ以外情報はGoogle先生を駆使すれば誰でも辿り着ける情報です．</p>
+<h1 id="1-そもそもNUCTとは．"><a href="#1-そもそもNUCTとは．" class="headerlink" title="1. そもそもNUCTとは．"></a>1. そもそもNUCTとは．</h1><p>実は，NUCTは名大の人が0から作ったサービスではありません．実はオープンソースのSakaiというプロジェクトを元にして作られています．</p>
+<p>その証拠に，NUCTを開いて，一番下までスクロールしてみてください．<br><img src="/images/nuct-powerd-by-sakai.png" alt="nuctにpowerd-by-sakaiと書いてある"><br>このように<a target="_blank" rel="noopener" href="https://www.sakailms.org/">Powerd by Sakai</a>と書いてあります．SakaiはオープンソースのLMS(学習管理システム: Learning Management System)です．オープンソースなので，だれでも<a target="_blank" rel="noopener" href="http://source.sakaiproject.org/release/22.0/">こちら</a>からダウンロードして自由に使うことができますし，ソースコードは<a target="_blank" rel="noopener" href="https://github.com/sakaiproject/sakai">こちら</a>に公開されています．</p>
+<p>ということは，NUCTではSakaiが提供するツールが使えるということではないでしょうか？</p>
+<details>
+<summary>コラム：NUCTをさらに詳しく知る</summary>
+
+<p>NUCTは2010年度から<a target="_blank" rel="noopener" href="https://www.hosei.ac.jp/application/files/5315/7656/1949/JaSakaiConf5_ohta.pdf">(出典)</a>提供されており，Sakaiを元にして名大独自のアレンジを加えたシステムとなっています．独自のアレンジの例としては，NUCTの情報と連携した動画配信サービスがあるそうです<a target="_blank" rel="noopener" href="https://www.hosei.ac.jp/application/files/9815/7655/7741/JaSakai2015_nagoya-u.pdf">(出典)</a>)．また，2020年のCOVID-19の一斉休校の際はNUCTによるDXにさまざまな工夫がされていたようです<a target="_blank" rel="noopener" href="https://www.nii.ac.jp/event/upload/20210326-06_Mori.pdf">(資料pdf)</a>, <a target="_blank" rel="noopener" href="https://media.itc.nagoya-u.ac.jp/nuct_how_to_use_2020/">(当時作られたであろう教員向けサイト)</a>．</p>
+</details>
+
+
+<h1 id="2-SakaiのAPI"><a href="#2-SakaiのAPI" class="headerlink" title="2. SakaiのAPI"></a>2. SakaiのAPI</h1><p>SakaiにはAPIのエンドポイントがあります．ブラウザから簡単に確認することができます．NUCTにログインした状態で <a target="_blank" rel="noopener" href="https://ct.nagoya-u.ac.jp/direct/describe">https://ct.nagoya-u.ac.jp/direct/describe</a> にアクセスしてみましょう．するとAPIの使い方一覧が出てきます．</p>
+<p>有用そうなエンドポイントを貼っておきます．(末尾の.jsonを.xmlに変えるとxmlで取得できます)</p>
+<ol>
+<li><p>NUCTの講義サイトのID等がわかるjson<br><a target="_blank" rel="noopener" href="https://ct.nagoya-u.ac.jp/direct/site.json">https://ct.nagoya-u.ac.jp/direct/site.json</a><br>※説明にもあるようにクエリパラメータを付けることができます．0がallを意味します．<br><a target="_blank" rel="noopener" href="https://ct.nagoya-u.ac.jp/direct/site.json?_limit=0">https://ct.nagoya-u.ac.jp/direct/site.json?_limit=0</a></p>
+</li>
+<li><p>課題の一覧のjson<br><a target="_blank" rel="noopener" href="https://ct.nagoya-u.ac.jp/direct/assignment/my.json">https://ct.nagoya-u.ac.jp/direct/assignment/my.json</a></p>
+</li>
+<li><p>カレンダーの情報のjson<br><a target="_blank" rel="noopener" href="https://ct.nagoya-u.ac.jp/direct/calendar/my.json">https://ct.nagoya-u.ac.jp/direct/calendar/my.json</a></p>
+</li>
+<li><p>ある授業のリソースの一覧のjson<br><a target="_blank" rel="noopener" href="https://ct.nagoya-u.ac.jp/direct/content/site/%7Bsite_id%7D.json">https://ct.nagoya-u.ac.jp/direct/content/site/{site_id}.json</a></p>
+</li>
+</ol>
+<p>これらのエンドポイントからデータを取得するためにはNUCTにログイン済みである必要がある（＝アクセスするときにCookieを送らないといけない）ため，cookieを手に入れる工夫は必要ですが，これだけ情報があれば色々なことに使えそうですね．</p>
+<p>さらに詳しいAPIの情報はこちらの<a target="_blank" rel="noopener" href="https://sakaiproject.atlassian.net/wiki/spaces/CONF/overview?mode=global">sakaiのwiki</a>も見てみるといいかもしれません．</p>
+<h1 id="3-Confortable-Sakai"><a href="#3-Confortable-Sakai" class="headerlink" title="3. Confortable Sakai"></a>3. Confortable Sakai</h1><p>前述のSakaiのAPIを用いた神Chrome拡張として，<a target="_blank" rel="noopener" href="https://github.com/kyoto-u/comfortable-sakai">Comfortable Sakai</a>があります．<br>Chromeに導入する場合は<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/comfortable-sakai/dljchadmceknaijmdmnaaodjkkidhakh?hl=ja&authuser=0">こちら</a>から．<br>Comfortable Sakaiとは：</p>
+<blockquote>
+<p>NUCTのベースとなっているSakaiというシステムに適用可能なブラウザ拡張機能が，京都大学の武田和樹さん（工学部電気電子工学科4回生【2022年度時点】）を中心とした有志により作成・公開されています．</p>
+</blockquote>
+<p>↑NUCTの公式の<a target="_blank" rel="noopener" href="https://media.itc.nagoya-u.ac.jp/nuct_faq/faq_ComfortableSakai.html">このページ</a>より引用．</p>
+<p>実は，京都大学でもSakaiを元にしたPandAというLMSが使われており，Comfortable Sakaiは元々PandA用の拡張機能として開発されたそうです<a target="_blank" rel="noopener" href="https://cpanda.das82.com/">(Comfortable PandA公式ページ)</a>,<a target="_blank" rel="noopener" href="https://www.highedu.kyoto-u.ac.jp/connect/topics/comfortable_panda01.php">(開発者へのインタビュー)</a>,<a target="_blank" rel="noopener" href="https://note.com/das08/n/n09e1606f5277">(Comfortable PandAをリリースした話)</a>．</p>
+<p>PandAのAPIを使っている方は他にもいらっしゃいました．多すぎん…？笑<br>(GitHubの検索窓で「panda kyoto-u」とかでコードを調べるとごろごろ出てくる)</p>
+<details><summary>詳細</summary>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://kmconner.net/posts/2019/12/23-panda-console/">京大の学習支援システムをハックする</a><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/KMConner/PandaConsole">PandA上のリソースを一括ダウンロード</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/santamn/PandorA">記事を参考にして作られたGo製の授業資料ダウンロードアプリ</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/face0u0/clipanda">clipanda</a>PandAのcliツール</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tinaxd/PandAroid/tree/0cb4fd4048af85e46661233ea9072a66d94165d7">PandAroid</a>Android上からPandAの課題を確認するアプリ</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/huji333/natori-bot/blob/b20d4ca95de1e8eada2947295299239333f85840/SlackbotModules/Assignments.py">Slack BotにPandA上の課題を通知してもらってるっぽい</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/das08/ComfortablePandA-iOS">Comfortable PandAのiOS移植</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/OkanoShinri/PandA-Mix-Plus">PandA-Mix-Plus</a>授業のタブを時間割のように表示するアドオン</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kenbun/ku_panda_app">京都大学課題確認アプリ</a></li>
+</ul>
+<p>コード見る限り，京大は多要素認証がなく，idとパスワードだけのcas認証でログインしているように見えました．わからないけど．</p>
+<p>同様に，名大でもAPIを使っている人がいないか探してみましたが，あまりいませんでした…<br>多要素認証になる前のNUCTで使えるコードを書いている方はいらっしゃいました：<a target="_blank" rel="noopener" href="https://github.com/nu50218/go-nagoyau">https://github.com/nu50218/go-nagoyau</a></p>
+</details>
+
+<h1 id="4-その他ハック"><a href="#4-その他ハック" class="headerlink" title="4. その他ハック"></a>4. その他ハック</h1><ol>
+<li><p>多要素認証自動化<br><a target="_blank" rel="noopener" href="https://github.com/obashun22/auto-mfa-cas-login">https://github.com/obashun22/auto-mfa-cas-login</a><br>こちらのChrome拡張を用いれば多要素認証を自動化することができます．<br>もちろん，ちゃんとしたやり方で認証するよりは多少はセキュリティが落ちると思いますので，使う際は自己責任で……（ただめちゃめちゃ便利）</p>
+</li>
+<li><p>課題をGoogle Tasksに追加する<br>NUCTにはカレンダーのエクスポート機能があります．それをGoogleカレンダーに取り込んで，Google Tasksに変換するという仕組みです．詳しくは<a href="/2021/08/10/nuct-schedule-to-gtasks-with-gas/">こちら</a></p>
+</li>
+<li><p>SakaiのiOSクライアント<br>以下のようなSakaiのiOSクライアントを開発されている方がいらっしゃいます．<br>iOSのアプリ開発がわかる方，動かしてみてくれないかなあ……<br><a target="_blank" rel="noopener" href="https://github.com/alihen/Sakai-iOS">https://github.com/alihen/Sakai-iOS</a><br><a target="_blank" rel="noopener" href="https://github.com/PRAN1999/SakaiClientiOS">https://github.com/PRAN1999/SakaiClientiOS</a></p>
+</li>
+</ol>
+<h1 id="終わりに"><a href="#終わりに" class="headerlink" title="終わりに"></a>終わりに</h1><p>いかがでしたでしょうか．この記事を見て誰かがいい感じのNUCT拡張を作ってくれないかな…と期待しています…！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>他の公開チャンネルへようこそ</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/nac_39_kiitos">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/coding/" rel="tag"># coding</a>
+              <a href="/tags/NUCT/" rel="tag"># NUCT</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/25/organizing-files-for-school/" rel="prev" title="授業のリソースの整理法">
+                  <i class="fa fa-chevron-left"></i> 授業のリソースの整理法
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nac-39</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
