@@ -16,7 +16,7 @@ categories: ["NUCT"]
 ![nuctにpowerd-by-sakaiと書いてある](/images/nuct-powerd-by-sakai.png)
 このように[Powerd by Sakai](https://www.sakailms.org/)と書いてあります．SakaiはオープンソースのLMS(学習管理システム: Learning Management System)です．オープンソースなので，だれでも[こちら](http://source.sakaiproject.org/release/22.0/)からダウンロードして自由に使うことができますし，ソースコードは[こちら](https://github.com/sakaiproject/sakai)に公開されています．
 
-ということは，NUCTではSakaiが提供するツールが使えるということではないでしょうか？
+つまり，NUCTではSakaiのために開発されたツールを使うことができるのです！
 
 <details>
 <summary>コラム：NUCTをさらに詳しく知る</summary>
