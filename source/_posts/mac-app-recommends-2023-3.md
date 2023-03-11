@@ -145,3 +145,9 @@ Mac の CPU 使用率に応じてコマ送りの速度が変化するアニメ�
 [github](https://github.com/nac-39/slides/tree/main/jack-lt-2022-fall)
 
 <embed src="https://nac-39.github.io/slides/jack-lt-2022-fall/slide.pdf" width="100%" height="500" title="最高に怠惰なターミナルのスライド" />
+
+## 終わりに
+
+前にも似たような記事を書いていて、こちらの方が網羅性が高いので、もっとたくさんのアプリを知りたい！と思っている人は参考にしてください。[Mac 勢おすすめのアプリ](/2022/03/29/best-apps-for-mac-users/)
+
+また、こういう便利系アプリを知るのが好きなので、他にもいいアプリがあるよーと言う方は教えていただけると嬉しいです！
